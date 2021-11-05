@@ -1,2 +1,0 @@
-# VisualNovel
-Visual Novel 
