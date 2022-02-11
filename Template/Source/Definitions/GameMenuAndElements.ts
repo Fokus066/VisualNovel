@@ -11,9 +11,13 @@ namespace Template {
 
   export function showStatistic(): void {
     ƒS.Text.setClass("statistic");
-    ƒS.Text.print("Lebensenergie: " + dataForSave.health + "<br>Lebenskraft: " + dataForSave.power + "<br>"  );
-};
+    ƒS.Text.print("Lebensenergie: " + dataForSave.health + "<br>Lebenskraft: " + dataForSave.power + "<br>");
+  };
 
+  export function showCredits(): void {
+    ƒS.Text.setClass("statistic");
+    ƒS.Text.print("Programming: Romtham Gebhardt <br> Characters: Sims 3 <br> Music and Sound : https://www.zapsplat.com Pictures: Pexels, Pixabay <br>");
+  };
   export let gameMenu: ƒS.Menu;
 
   export let inventory: boolean = false;
@@ -37,9 +41,9 @@ namespace Template {
         break;
       case inGameMenu.statistic:
         showStatistic();
-          break;
+        break;
       case inGameMenu.credit:
-        console.log("Credits: XY");
+        showCredits();
         break;
     }
   }

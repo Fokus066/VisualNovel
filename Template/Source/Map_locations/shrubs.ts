@@ -16,6 +16,9 @@ namespace Template {
       back: "Zurück",
     };
 
+    dataForSave.health -= 1;
+    dataForSave.power -= 1;
+
     ƒS.Speech.setTickerDelays(20, 2);
 
     ƒS.Sound.play(sound.jungle_insects, 1);

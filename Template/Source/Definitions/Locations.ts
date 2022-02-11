@@ -100,6 +100,10 @@ export let locations = {
       name: "Ende",
       background: "./Images/Backgrounds/Ende.jpg"
     },
+    fishing_area: {
+      name: "Ende",
+      background: "./Images/Backgrounds/fishing.jpg"
+    },
 
   };
 

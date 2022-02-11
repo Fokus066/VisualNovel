@@ -15,6 +15,7 @@ namespace Template {
             case produce_tools.axe:
               if (dataForSave.item_branch > 0 && dataForSave.item_stone > 0) {
                 ƒS.Inventory.add(items.axe);
+                dataForSave.item_axe += 1;
                 await ƒS.Speech.tell(characters.narrator, "Axt ist hergestellt und ist im Inventar.", true);
                 ƒS.Sound.fade(sound.jungle, 0, 0.1);
                 return "Shelter";
@@ -28,6 +29,7 @@ namespace Template {
             case produce_tools.spear:
               if (dataForSave.item_branch > 0 && dataForSave.item_liane > 0) {
                 ƒS.Inventory.add(items.spear);
+                dataForSave.item_spear += 1;
                 await ƒS.Speech.tell(characters.narrator, "Holz Speer ist hergestellt und ist im Inventar.", true);
                 ƒS.Sound.fade(sound.jungle, 0, 0.1);
                 return "Shelter";

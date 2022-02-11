@@ -11,7 +11,7 @@ namespace Template {
             },
             boy: {
                 T0000: "Hier gibt es frisches Wasser.",
-                T0001: "Was ist das?! Ein TIGER!!",
+                T0001: "Was ist das?! Ein KROKODIL!",
                 T0002: "Aye! Geschafft!",
                 T0003: "<i>Anscheinend fehlt mir ein Werkzeug oder ich brauche mehr Übungen...</i>",
             },
@@ -31,7 +31,7 @@ namespace Template {
 
         ƒS.Speech.setTickerDelays(20, 2);
 
-        ƒS.Sound.fade(sound.waterfall, 1, 6);
+        ƒS.Sound.play(sound.waterfall, 1);
         await ƒS.Location.show(locations.jungle_lake);
         await ƒS.update(transitions.wet.duration, transitions.wet.alpha, transitions.wet.edge);
         await ƒS.Character.show(characters.boy, characters.boy.pose.standby, ƒS.positionPercent(50, 140));
@@ -46,13 +46,13 @@ namespace Template {
 
         await ƒS.Location.show(locations.jungle_lake);
         await ƒS.update(transitions.wet.duration, transitions.wet.alpha, transitions.wet.edge);
-        await ƒS.Character.show(characters.crocodile, characters.crocodile.pose.aggressiv, ƒS.positionPercent(80, 100));
+        await ƒS.Character.show(characters.crocodile, characters.crocodile.pose.aggressiv, ƒS.positionPercent(90, 80));
         await ƒS.update(1);
-        await ƒS.Character.show(characters.boy, characters.boy.pose.explain, ƒS.positionPercent(10, 150));
+        //await ƒS.Character.show(characters.boy, characters.boy.pose.explain, ƒS.positionPercent(10, 130));
         
         await ƒS.Speech.tell(characters.narrator, text.narrator.T0000, true);
-        await ƒS.Character.show(characters.uncle, characters.uncle.pose.fit, ƒS.positionPercent(50, 140));
-        await ƒS.Character.show(characters.girl, characters.girl.pose.desperate, ƒS.positionPercent(30, 140));
+        await ƒS.Character.show(characters.uncle, characters.uncle.pose.fit, ƒS.positionPercent(30, 130));
+        await ƒS.Character.show(characters.girl, characters.girl.pose.desperate, ƒS.positionPercent(10, 130));
         await ƒS.update(1);
 
         await ƒS.Speech.tell(characters.girl, text.girl.T0000, true);
@@ -62,10 +62,10 @@ namespace Template {
 
         let action_choice = {
             stay: "Mit Onkel bleiben.",
-            flee: "Mit der Schwester wegrennen.", 
+            flee: "Mit der Cousine wegrennen.", 
         };
 
-        let action_request = await ƒS.Menu.getInput(action_choice, "location_options");
+        let action_request = await ƒS.Menu.getInput(action_choice, "options");
 
         switch (action_request) {
 
@@ -77,7 +77,7 @@ namespace Template {
             case action_choice.flee:
               ƒS.Sound.play(sound.click, 1);
               ƒS.Character.hideAll();
-              ƒS.Sound.fade(sound.jungle_insects, 0, 0.1);
+              ƒS.Sound.fade(sound.waterfall, 0, 0.1);
               return "Ending2";
               break;
           }

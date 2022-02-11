@@ -5,35 +5,33 @@ namespace Template {
 
       let text = {
         narrator: {
-          T0000: "Wie aus dem Nichts wird der Himmel dunkel. ",
-          T0001: "Das Land ist sehr gekannt für seine Natur und heißes Wetter.",
-          T0002: "Nach dem langen Flug und stressigen Reise seid ihr endlich angekommmen.",
-          T0003: "Am nächsten Tag macht deine Familie einen Bootausflug in den Regenwald. Da gibt es sehr viele Tiere und exotische Pflanzen.",
-          T0004: "Wie ist dein Name?<br>"
-
+          T0000: "Wie aus dem Nichts wird es dunkel und es beginnt zu regnen. ",
+          T0001: "Das Land ist sehr bekannt für Fauna und Flora."
         },
         boy: {
-          T0000: "Hä! was ist los. Auf einmal ist es dunkel.",
-          T0001: "Hoffentlich darauf war ich nicht vorbereitet.",
-          T0002: "Das ist echt blöd. Ich hoffe wir werden unseren Ausflug nicht abbrechen.",
-          T0003: "Einverstanden. Mir wird es auch langsam schlecht.",
-          T0004: "Du bist der Beste Onkel Ben."
+          T0000: "Hä! Auf einmal ist es dunkel. Ich verstehe das nicht...",
+          T0001: "Hoffentlich, darauf war ich nicht vorbereitet.",
+          T0002: "Das ist echt blöd. Ich hoffe, wir werden unseren Ausflug nicht abbrechen.",
+          T0003: "Einverstanden. Mir wird es langsam schlecht."
         },
         girl: {
-          T0000: "Oh jee! Ich verstehe das nicht. Warum gibt es so ein Wetterumschwung.",
+          T0000: "Oh jee! Das sieht nicht gut aus...",
           T0001: "Ich habe leider keinen Regenschirm mitgenommen.",
           T0002: "Das wäre ziemlich schade. Wir sind so weit gereist.",
-          T0003: "Ja bitte."
+          T0003: "Ja, da vorne können wir unser Boot anlegen."
 
         },
         uncle: { 
-          T0000: "Da es hier zur Zeit Regenzeit ist, ist es normal das es auf einmal regnet.",
-          T0001: "Ihr sollte euch keine Sorgen machen. Der Regen ist schnell wieder vorbei.",
-          T0002: "Wie gesagt es wird bald vorbei sein. Mach euch keinen Kopf. Wir haben genug Zeit.",
-          T0003: "Wir sollten vielleicht eine Pause einlegen. Auf dem Wasser ist es gefährlich wegen den Wellen",
+          T0000: "Hier ist zur Zeit Regenzeit. Es ist normal, dass es auf einmal regnet.",
+          T0001: "Mach euch keine Sorgen. Der Regen ist schnell wieder vorbei.",
+          T0002: "Es wird bald vorbei sein. Mach euch keinen Kopf.",
+          T0003: "Hmm... Vielleicht ist es besser, wenn wir an dieser Stelle eine Pause einlegen. Mit diesen Wellen ist es zu gefährlich.",
           T0004: "Beruhigt euch. Gott sei dank habe ich zwei Wasserflasche dabei."
         }
       };
+
+      dataForSave.health -= 5;
+      dataForSave.power -= 5;
 
       ƒS.Speech.setTickerDelays(20, 2);
       ƒS.Sound.play(sound.lightning, 1);     
@@ -70,7 +68,10 @@ namespace Template {
 
       await ƒS.Speech.tell(characters.uncle, text.uncle.T0003, true);
       await ƒS.Speech.tell(characters.boy, text.boy.T0003, true);
-      await ƒS.Speech.tell(characters.girl, text.girl.T0003, true); 
+      await ƒS.Speech.tell(characters.girl, text.girl.T0003, true);
+      
+      dataForSave.health -= 10;
+      dataForSave.power -= 10;
 
       ƒS.Character.hideAll();
 

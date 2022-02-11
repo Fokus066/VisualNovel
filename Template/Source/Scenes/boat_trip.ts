@@ -40,7 +40,7 @@ namespace Template {
     await ƒS.update(1);
 
     //Animation girl
-    await ƒS.Character.animate(characters.girl, characters.girl.pose.angry_arm_crossed, fromOutofCanvasToLeft());
+    await ƒS.Character.animate(characters.girl, characters.girl.pose.laughing, fromOutofCanvasToLeft());
 
     await ƒS.update(1);
     
@@ -59,6 +59,8 @@ namespace Template {
     await ƒS.Speech.tell(characters.boy, text.boy.T0003, true);
     await ƒS.Speech.tell(characters.girl, text.girl.T0003, true);
     await ƒS.Speech.tell(characters.uncle, text.uncle.T0004, true);
+    ƒS.Inventory.add(items.waterbottle);
+    ƒS.Inventory.add(items.waterbottle);
     await ƒS.Speech.tell(characters.boy, text.boy.T0004, true);
     ƒS.Character.hideAll();
     ƒS.Sound.fade(sound.motorboat, 0, 0.1, true); 

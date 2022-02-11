@@ -16,6 +16,7 @@ namespace Template {
     await ƒS.Location.show(locations.map);
     await ƒS.update(transitions.goslow.duration, transitions.goslow.alpha, transitions.goslow.edge);
     await ƒS.update(1);
+    await ƒS.Speech.tell(characters.narrator, " ", true);
     
     let location_request = await ƒS.Menu.getInput(location_choice, "location_options");
     
@@ -23,10 +24,12 @@ namespace Template {
       case location_choice.location1:
         ƒS.Sound.play(sound.click, 1);
         ƒS.Sound.fade(sound.jungle, 0.1, 6); 
+        if (dataForSave.fitnessUncle == false){
+          return "Shelter_Uncle_pain";
+        }
+        else 
         return "Shelter";
         break;
-   
-
       case location_choice.location2:
         ƒS.Sound.play(sound.click, 1);
         ƒS.Sound.fade(sound.jungle, 0, 0.1); 
@@ -42,9 +45,13 @@ namespace Template {
         ƒS.Sound.fade(sound.jungle, 0, 0.1); 
         return "Shrubs";
         break;
-      case location_choice.location5:
+      case location_choice.location5:        
         ƒS.Sound.play(sound.click, 1);
         ƒS.Sound.fade(sound.jungle, 0, 0.1);  
+        if (dataForSave.no_water == true){
+          return "Waterfall_no_water";
+        }
+        else 
         return "Waterfall";
         break;
     }

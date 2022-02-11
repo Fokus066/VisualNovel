@@ -12,12 +12,14 @@ namespace Template {
     
         // sound
         click: "./Audio/button_click.mp3",
-        gunshot: "./Audio/gunshot.ogg",
         lightning: "./Audio/lightning.ogg",
         motorboat: "./Audio/motorboat.ogg",
         rain: "./Audio/rain.ogg",
         storm: "./Audio/storm.ogg",
         waterfall: "./Audio/rainforest_waterfall.mp3",
+        helicopter: "./Audio/helicopter.mp3",
+        flare_gun: "./Audio/fireworks_screamers.mp3",
+        gunshot: "./Audio/gunshot.ogg"
     
       };
 }

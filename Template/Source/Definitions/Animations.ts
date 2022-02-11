@@ -11,20 +11,20 @@ namespace Template {
     };
   }
 
-  export function RightFightAnimationTiger(): ƒS.AnimationDefinition {
+  export function RightFightAnimationCrocodile(): ƒS.AnimationDefinition {
     return {
-      start: { translation: ƒS.positionPercent(80, 100), color: ƒS.Color.CSS("white", 0) },
-      end: { translation: ƒS.positionPercent(20, 140), color: ƒS.Color.CSS("red") },
+      start: { translation: ƒS.positionPercent(70, 80), color: ƒS.Color.CSS("white", 0) },
+      end: { translation: ƒS.positionPercent(20, 80), color: ƒS.Color.CSS("red") },
       duration: 1.5,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCESTOPAFTER
     };
   }
 
   
-  export function EscapeAnimationTiger(): ƒS.AnimationDefinition {
+  export function EscapeAnimationCrocodile(): ƒS.AnimationDefinition {
     return {
-      start: { translation: ƒS.positionPercent(80, 100)},
-      end: { translation: ƒS.positionPercent(180, 140)},
+      start: { translation: ƒS.positionPercent(70, 80)},
+      end: { translation: ƒS.positionPercent(180,120)},
       duration: 1.5,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCESTOPAFTER
     };
@@ -50,8 +50,8 @@ namespace Template {
 
   export function fromOutofCanvasToLeft(): ƒS.AnimationDefinition {
     return {
-      start: { translation: ƒS.positionPercent(0, 140) },
-      end: { translation: ƒS.positionPercent(10, 140) },
+      start: { translation: ƒS.positionPercent(0, 120) },
+      end: { translation: ƒS.positionPercent(10, 120) },
       duration: 1,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
     };

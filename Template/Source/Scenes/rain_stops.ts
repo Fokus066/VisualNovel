@@ -8,29 +8,29 @@ namespace Template {
         T0000: "Der Regen hört langsam auf.",
       },
       boy: {
-        T0000: "Genug geschlafen! Lass uns geschlafen. Lass uns endlich zum Hotel zurückfahren.",
-        T0001: "",
+        T0000: "Oh nein!",
+        T0001: "Onkel Ben, wach auf!",
         T0002: "Nein! Das Wasser hat unser Boot weg getrieben.",
-        T0003: "Uncle Ben, wach auf!",
-        T0004: "Ruhig bleiben! Ich schaue mal nach dem Boot. Vielleicht gibt es etwas, was uns weiterhilft.",
+        T0003: "Ok.. Ich schaue mal nach dem Boot. Vielleicht gibt es etwas, was uns weiterhilft.",
+        T0004: "",
       },
       girl: {
-        T0000: "Was für ein ereignisreicher Tag!",
-        T0001: "Ja! Es war ein schreckliches Erlebnis.",
+        T0000: "Onkel Ben, gehen wir! ",
+        T0001: "Was sollen wir machen?",
         T0002: "Wir sind hier in der Wildnis gefangen.",
         T0003: "Lass uns zurückgehen und einen Plan überlegen.",
-        T0004: "Er ist ohnmächtig geworden. Wir müssen ihn wecken.",
+        T0004: "Er ist sehr erschöpft.Wir sollten ihn ausruhen lassen.",
         T0005: "Sei bitte vorsichtig. Ich bleibe hier und passe auf Onkel Ben auf."
       },
       uncle: {
-        T0000: "Das war ziemlich anstrengend. Ich bin körperlich fertig.",
-        T0001: "Wie sollten uns ausruhen.",
+        T0000: "...",
+        T0001: "ZZZ",
         T0002: "...",
       }
     };
 
-    dataForSave.health = 50;
-    dataForSave.power = 50;
+    dataForSave.health -= 5;
+    dataForSave.power -= 5;
 
     ƒS.Speech.setTickerDelays(20, 2);
 
@@ -55,10 +55,10 @@ namespace Template {
     await ƒS.Speech.tell(characters.boy, text.boy.T0000, true);
     await ƒS.Speech.tell(characters.girl, text.girl.T0001, true);
 
-    await ƒS.Speech.tell(characters.boy, text.boy.T0003, true);
+    await ƒS.Speech.tell(characters.boy, text.boy.T0001, true);
     await ƒS.Speech.tell(characters.uncle, text.uncle.T0002, true);
     await ƒS.Speech.tell(characters.girl, text.girl.T0004, true);
-    await ƒS.Speech.tell(characters.boy, text.boy.T0004, true);
+    await ƒS.Speech.tell(characters.boy, text.boy.T0003, true);
     await ƒS.Speech.tell(characters.girl, text.girl.T0005, true);
     await ƒS.update(1);
 

@@ -1,19 +1,21 @@
 namespace Template {
-  export async function waterfall(): ƒS.SceneReturn {
+  export async function waterfall_no_water(): ƒS.SceneReturn {
     console.log("Boat river");
 
     let action_choice = {
+      explore: "Erkunden",
       fish: "Fischen",
-      back: "Zurück",
+      back: "Zurück"
     };
+
     let text = {
       boy: {
-        T0000: "Mal sehen, ob wir was zu essen finden.",
-        T0001: "Die Fische schwimmen viel zu schnell.",
-        T0002: "Aye! Geschafft!",
-        T0003: "<i>Anscheinend fehlt mir ein Werkzeug oder ich brauche mehr Übungen...</i>",
+          T0000: "AH! Ich habe die Stelle gefunden.",
+          T0001: "<i>Mist! Das Boot ist beschädigt. Wir können so nicht zurückfahren.</i>",
+          T0002: "<i>Oh was ist das? Ein Koffer?!</i>",
+          T0003: "<i>Er lässt sich nicht öffnen...<br> Ist er verschlossen? Vielleicht kann Jenna mir weiterhelfen.</i>",
       }
-    };
+    }
 
     dataForSave.health -= 1;
     dataForSave.power -= 1;
@@ -31,6 +33,22 @@ namespace Template {
     let action_request = await ƒS.Menu.getInput(action_choice, "location_options");
 
     switch (action_request) {
+
+      case action_choice.explore:
+        ƒS.Sound.play(sound.click, 1);
+        ƒS.Character.hideAll();
+
+        if (random_boolean == true) {
+          ƒS.Character.hideAll();
+          ƒS.Sound.fade(sound.waterfall, 0, 1, false);
+          return "Waterfall_End";
+        } else {
+          await ƒS.Speech.tell(characters.narrator, "Hier gibt es nichts zu sehen. Vielleicht wann anders.", true);
+          ƒS.Character.hideAll();
+          ƒS.Sound.fade(sound.waterfall, 0, 1, false);
+          await ƒS.update(1);
+          return "Map";
+        }
       case action_choice.fish:
         ƒS.Sound.play(sound.click, 1);
         ƒS.Character.hideAll();

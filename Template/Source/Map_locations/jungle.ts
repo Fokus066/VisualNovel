@@ -14,6 +14,9 @@ namespace Template {
           T0001: "Stein gesammelt!",
         }
       };
+
+      dataForSave.health -= 1;
+      dataForSave.power -= 1;
   
       ƒS.Speech.setTickerDelays(20, 2);
   

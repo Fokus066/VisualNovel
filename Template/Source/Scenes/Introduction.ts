@@ -3,7 +3,6 @@ namespace Template {
 
     console.log("Game starts");
 
-     
     ƒS.Speech.setTickerDelays(20, 2);
   
     await ƒS.Location.show(locations.jungle_startscreen);    
@@ -12,9 +11,9 @@ namespace Template {
     await ƒS.update(1);
 
     ƒS.Text.setClass("statistic"); 
-    ƒS.Text.print("<p> Willkommen zum Jungle Survival! </p> <p> Diese Visual Novel basiert auf deine Entscheidungen und Fähigkeit.<br> Hier spielt der Zufall eine Rolle, daher kann es sein, dass man bestimmte Szene abspielen,<br>  muss um das gewünschte Ergebnis erreichen.<br> Mit einem Click auf dem Bildschirm, kommt man in der nächsten Szene weiter. <br> Für den Vollbildschirm, könnt ihr Folgendes drücken: </p> <p> Windows: F11 <br> Mac: Ctrl - Cmd – F </p> </p> <p> Viel Spaß! </p>");
+    ƒS.Text.print("<p> Willkommen zum Jungle Survival! </p> <p> In dieser Visual Novel triffst du Entscheidungen, die dann deine Geschichte beeinflussen.<br>Ereignisse können in dem Spiel zufällig passieren. An bestimmten Stellen werden bestimmte Gegenstände vorausgesetzt. <br> Es ist möglich die Handlung mehrmals durchzuführen, um ein bestimmtes Ziel zu erreichen.<br> Achte auf dein Gesundheit und deine Kraft, weil sie für bestimmten Handlungen berücksichtigt werden.<br> Hier sind sinnvolle Shortcuts, die das Spielerlebnis erleichtern.</p> <p> Vollbildschirm Windows: F11 <br>Vollbildschirm  Mac: Ctrl - Cmd – F <br> Inventar: F2 <br> Menu öffnen/schlließen: M </p>  </p> <p> Viel Spaß! </p>");
     await ƒS.Speech.tell(null, null, true);
-    ƒS.Text.print("<p> Du spielst die Rolle eines Jungen,der gemeinsam <br> mit seinem Onkel und seiner Cousine Urlaub machst.<br>");
+    ƒS.Text.print("<p> Du spielst die Rolle von einem Jungen, der mit seinen Verwandten nach Chalana fliegt.<br>Dort befindet sich ein Regenwald. Dieser ist ein Naturschutzgebiet und ist seit kurzem für Tourismus geöffnet.<br> Gemeinsam mit deinem Onkel und deiner Cousine leiht ihr ein Boot aus und fährt in die Wildnis hinein.</p>");
     await ƒS.Speech.tell(null, null, true);
     await ƒS.Speech.tell(characters.narrator, "Wie möchtest du im Spiel genannt werden?<br> " , true);
     dataForSave.nameProtagonist = await ƒS.Speech.getInput();

@@ -5,12 +5,12 @@ namespace Template {
 
         let text = {
             narrator: {
-                T0000: "Wie ist der Code? <br>",
+                T0000: "Es ist eine Zahl zwischen 1 und 100.Wie könnte die Zahl sein? <br>",
                 T0001: "Die Zahl ist zu groß.",
                 T0002: "Die Zahl ist zu klein.",
                 T0003: "Es ist unmöglich diesen Koffer zu öffnen.",
-                T0004: "Geschafft!. Eine Landkarte, eine Wasserflasche und ein Feuerzeug und eine Erste-Hilfe Kiste liegen im Koffer.",
-                T0005: "Du kannst die Landkarte ansehen.",
+                T0004: "Geschafft! Eine Wasserflasche, ein Feuerzeug, eine Erste-Hilfe Box und sogar eine Leuchtpistole liegen im Koffer.",
+
             }
         }
         const randomInt = Math.floor(Math.random()*(100-1+1)+1);
@@ -31,9 +31,8 @@ namespace Template {
                 ƒS.Inventory.add(items.waterbottle);
                 ƒS.Inventory.add(items.first_aid_kit);
                 dataForSave.open_suitcase = true,
-                await ƒS.Speech.tell(characters.narrator, text.narrator.T0005, true);
                 ƒS.Character.hideAll();
-                return "Map";
+                return "Shelter_Uncle_pain";
             }
             if (number > randomInt){
                 await ƒS.Speech.tell(characters.narrator, text.narrator.T0001, true);

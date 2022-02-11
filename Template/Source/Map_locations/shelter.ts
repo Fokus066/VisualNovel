@@ -10,33 +10,20 @@ namespace Template {
     };
 
     let text = {
-      narrator: {
-        T0000: "",
-        T0001: "Das Land ist sehr gekannt für seine Natur und heißes Wetter.",
-        T0002: "Nach dem langen Flug und stressigen Reise seid ihr endlich angekommmen.",
-        T0003: "Am nächsten Tag macht deine Familie einen Bootausflug in den Regenwald. Da gibt es sehr viele Tiere und exotische Pflanzen.",
-        T0004: "Wie ist dein Name?<br>",
-      },
       boy: {
-        T0000: "Aufwachen! Wir brauchen dich. ",
-        T0001: "<i>Vielleicht gibt es eine Pflanze, die hilft.</i>",
-        T0002: "Das ist echt blöd. Ich hoffe wir werden unseren Ausflug nicht abbrechen.",
-        T0003: "Einverstanden. Mir wird es auch langsam schlecht.",
-        T0004: "Du bist der Beste Onkel Ben.",
+        T0000: "Aufwachen! Wir brauchen dich. "
       },
       girl: {
-        T0000: "Ich habe Hunger. Was gibt es hier zum essen?",
-        T0001: "Ich habe leider keinen Regenschirm mitgenommen.",
-        T0002: "Das wäre ziemlich schade. Wir sind so weit gereist.",
+        T0000: "Ich habe Hunger. Was gibt es hier zum essen?"
       },
       uncle: {
         T0000: "...",
-        T0001: "Wir sollten was zum essen holen.",
-        T0002: "Wie gesagt es wird bald vorbei sein. Mach euch keinen Kopf. Wir haben genug Zeit.",
-        T0003: "Wir sollten vielleicht eine Pause einlegen. Auf dem Wasser ist es gefährlich wegen den Wellen",
+        T0001: "Wir sollten was zum essen und trinken holen.<br> Hier sind bestimmt Waldbeeren, die wir essen können. <br> In der Nähe ist ein Wasserfall. Da gibts sauberes Wasser."
       }
     };
 
+    dataForSave.health -= 1;
+    dataForSave.power -= 1;
 
     ƒS.Speech.setTickerDelays(20, 2);
 

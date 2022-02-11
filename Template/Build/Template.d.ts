@@ -4,8 +4,8 @@ declare namespace Template {
 }
 declare namespace Template {
     function LeftFightAnimation(): ƒS.AnimationDefinition;
-    function RightFightAnimationTiger(): ƒS.AnimationDefinition;
-    function EscapeAnimationTiger(): ƒS.AnimationDefinition;
+    function RightFightAnimationCrocodile(): ƒS.AnimationDefinition;
+    function EscapeAnimationCrocodile(): ƒS.AnimationDefinition;
     function shakingRightSide1(): ƒS.AnimationDefinition;
     function shakingRightSide2(): ƒS.AnimationDefinition;
     function fromOutofCanvasToLeft(): ƒS.AnimationDefinition;
@@ -77,6 +77,7 @@ declare namespace Template {
         health: number;
         power: number;
         fitnessUncle: boolean;
+        no_water: boolean;
         item_waterbottle: number;
         item_acaiberry: number;
         item_branch: number;
@@ -84,6 +85,7 @@ declare namespace Template {
         item_fish: number;
         item_spear: number;
         item_liane: number;
+        item_axe: number;
         item_suitcase: boolean;
         open_suitcase: boolean;
         uncle_alive: boolean;
@@ -98,6 +100,7 @@ declare namespace Template {
         credit: string;
     };
     function showStatistic(): void;
+    function showCredits(): void;
     let gameMenu: ƒS.Menu;
     let inventory: boolean;
     let menu: boolean;
@@ -283,6 +286,10 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        fishing_area: {
+            name: string;
+            background: string;
+        };
     };
 }
 declare namespace Template {
@@ -295,12 +302,14 @@ declare namespace Template {
         river_jungle: string;
         jungle_insects: string;
         click: string;
-        gunshot: string;
         lightning: string;
         motorboat: string;
         rain: string;
         storm: string;
         waterfall: string;
+        helicopter: string;
+        flare_gun: string;
+        gunshot: string;
     };
 }
 declare namespace Template {
@@ -406,6 +415,9 @@ declare namespace Template {
     function Eat(): ƒS.SceneReturn;
 }
 declare namespace Template {
+    function Fishing_Meter(): ƒS.SceneReturn;
+}
+declare namespace Template {
     function Unlocksuitcase(): ƒS.SceneReturn;
 }
 declare namespace Template {
@@ -424,10 +436,16 @@ declare namespace Template {
     function shelter(): ƒS.SceneReturn;
 }
 declare namespace Template {
+    function shelter_uncle_unconscious(): ƒS.SceneReturn;
+}
+declare namespace Template {
     function shrubs(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function waterfall(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function waterfall_no_water(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function Labyrinth2(): ƒS.SceneReturn;
@@ -445,6 +463,9 @@ declare namespace Template {
     function Good_Bad_Ending_lifesaving(): ƒS.SceneReturn;
 }
 declare namespace Template {
+    function Introduction(): ƒS.SceneReturn;
+}
+declare namespace Template {
     function boat_trip(): ƒS.SceneReturn;
 }
 declare namespace Template {
@@ -454,9 +475,6 @@ declare namespace Template {
     function heavy_rain(): ƒS.SceneReturn;
 }
 declare namespace Template {
-    function Introduction(): ƒS.SceneReturn;
-}
-declare namespace Template {
     function lake_crocodile(): ƒS.SceneReturn;
 }
 declare namespace Template {
@@ -464,7 +482,4 @@ declare namespace Template {
 }
 declare namespace Template {
     function rain_stops(): ƒS.SceneReturn;
-}
-declare namespace Template {
-    function shelter_uncle_unconscious(): ƒS.SceneReturn;
 }
