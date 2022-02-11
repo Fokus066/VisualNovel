@@ -1040,11 +1040,13 @@ var Template;
                     Template.dataForSave.fitnessUncle = true;
                     await Template.ƒS.Character.hide(Template.characters.girl);
                     Template.ƒS.Sound.fade(Template.sound.jungle, 0, 1, false);
+                    Template.ƒS.Character.hideAll();
                     return "Shelter";
                     break;
                 case action_choice_uncle_pain.back:
                     Template.ƒS.Sound.play(Template.sound.click, 1);
                     Template.ƒS.Sound.fade(Template.sound.jungle, 0, 1, false);
+                    Template.ƒS.Character.hideAll();
                     return "Map";
                     break;
             }
@@ -1217,10 +1219,10 @@ var Template;
         };
         let text = {
             boy: {
-                T0000: "AH! Ich habe die Stelle gefunden.",
-                T0001: "<i>Mist! Das Boot ist beschädigt. Wir können so nicht zurückfahren.</i>",
-                T0002: "<i>Oh was ist das? Ein Koffer?!</i>",
-                T0003: "<i>Er lässt sich nicht öffnen...<br> Ist er verschlossen? Vielleicht kann Jenna mir weiterhelfen.</i>",
+                T0000: "Mal sehen, ob wir was zu essen finden.",
+                T0001: "Die Fische schwimmen viel zu schnell.",
+                T0002: "Aye! Geschafft!",
+                T0003: "<i>Anscheinend fehlt mir ein Werkzeug oder ich brauche mehr Übungen...</i>",
             }
         };
         Template.dataForSave.health -= 1;
@@ -1550,8 +1552,8 @@ var Template;
 (function (Template) {
     async function fight_crocodile() {
         Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 0.1);
+        Template.ƒS.Sound.play(Template.sound.fight, 1);
         if (Template.dataForSave.health > 75 && Template.dataForSave.power > 75 && Template.dataForSave.fitnessUncle == true && Template.dataForSave.item_axe > 0) {
-            Template.ƒS.Sound.play(Template.sound.fight, 1);
             await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.fit, Template.ƒS.positionPercent(15, 140));
             await Template.ƒS.Character.show(Template.characters.crocodile, Template.characters.crocodile.pose.aggressiv, Template.ƒS.positionPercent(70, 80));
             await Template.ƒS.update(1);
@@ -1568,7 +1570,6 @@ var Template;
             return "Ending2";
         }
         else {
-            Template.ƒS.Sound.fade(Template.sound.fight, 0, 0.1);
             await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.fit, Template.ƒS.positionPercent(15, 140));
             await Template.ƒS.Character.show(Template.characters.crocodile, Template.characters.crocodile.pose.aggressiv, Template.ƒS.positionPercent(70, 80));
             await Template.ƒS.update(1);
@@ -1801,7 +1802,7 @@ var Template;
                 T0004: "Sieh mal da drüben! Da ist eine kleine Hütte. Lass uns dahin gehen!"
             },
             uncle: {
-                T0000: "Wir sollten Schutz suchen. Der Regen ist heftig als ich dachte.",
+                T0000: "Wir sollten Schutz suchen. Der Regen ist heftiger als ich vermutet habe.",
                 T0001: "So ist es unmöglich mit dem Boot zu fahren. Warten wir solange ab, bis der Regen aufhört.",
                 T0002: "Die Wellen sind viel zu stark. Wir sollten abwarten.",
                 T0003: "Habt ihr vielleicht Handyempfang. Mein Handy habe ich wohl von dem Bootsfahrt verloren.",

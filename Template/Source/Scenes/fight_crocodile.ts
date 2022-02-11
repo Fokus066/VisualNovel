@@ -2,10 +2,10 @@ namespace Template {
     export async function fight_crocodile(): ƒS.SceneReturn {
         
         ƒS.Sound.fade(sound.waterfall, 0, 0.1);
+
+        ƒS.Sound.play(sound.fight, 1);
     
         if (dataForSave.health > 75 && dataForSave.power > 75 && dataForSave.fitnessUncle == true && dataForSave.item_axe > 0) {
-
-            ƒS.Sound.play(sound.fight, 1);
 
             await ƒS.Character.show(characters.uncle, characters.uncle.pose.fit, ƒS.positionPercent(15, 140));
             await ƒS.Character.show(characters.crocodile, characters.crocodile.pose.aggressiv, ƒS.positionPercent(70, 80));
@@ -31,7 +31,7 @@ namespace Template {
             return "Ending2";
 
         }else {
-            ƒS.Sound.fade(sound.fight, 0, 0.1);
+            
 
             await ƒS.Character.show(characters.uncle, characters.uncle.pose.fit, ƒS.positionPercent(15, 140));
             await ƒS.Character.show(characters.crocodile, characters.crocodile.pose.aggressiv, ƒS.positionPercent(70, 80));

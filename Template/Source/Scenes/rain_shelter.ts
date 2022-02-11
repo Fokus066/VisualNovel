@@ -19,7 +19,7 @@ namespace Template {
         T0004: "Sieh mal da drüben! Da ist eine kleine Hütte. Lass uns dahin gehen!"
       },
       uncle: { 
-        T0000: "Wir sollten Schutz suchen. Der Regen ist heftig als ich dachte.",
+        T0000: "Wir sollten Schutz suchen. Der Regen ist heftiger als ich vermutet habe.",
         T0001: "So ist es unmöglich mit dem Boot zu fahren. Warten wir solange ab, bis der Regen aufhört.",
         T0002: "Die Wellen sind viel zu stark. Wir sollten abwarten.",
         T0003: "Habt ihr vielleicht Handyempfang. Mein Handy habe ich wohl von dem Bootsfahrt verloren.",

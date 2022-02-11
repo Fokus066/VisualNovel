@@ -62,12 +62,14 @@ namespace Template {
                     dataForSave.fitnessUncle = true;
                     await ƒS.Character.hide(characters.girl);
                     ƒS.Sound.fade(sound.jungle, 0, 1, false);
+                    ƒS.Character.hideAll();
                     return "Shelter";
                     break;
 
                 case action_choice_uncle_pain.back:
                     ƒS.Sound.play(sound.click, 1);
                     ƒS.Sound.fade(sound.jungle, 0, 1, false);
+                    ƒS.Character.hideAll();
                     return "Map";
                     break;
             }

@@ -10,13 +10,13 @@ namespace Template {
 
     let text = {
       boy: {
-          T0000: "AH! Ich habe die Stelle gefunden.",
-          T0001: "<i>Mist! Das Boot ist beschädigt. Wir können so nicht zurückfahren.</i>",
-          T0002: "<i>Oh was ist das? Ein Koffer?!</i>",
-          T0003: "<i>Er lässt sich nicht öffnen...<br> Ist er verschlossen? Vielleicht kann Jenna mir weiterhelfen.</i>",
+        T0000: "Mal sehen, ob wir was zu essen finden.",
+        T0001: "Die Fische schwimmen viel zu schnell.",
+        T0002: "Aye! Geschafft!",
+        T0003: "<i>Anscheinend fehlt mir ein Werkzeug oder ich brauche mehr Übungen...</i>",
       }
-    }
-
+    };
+    
     dataForSave.health -= 1;
     dataForSave.power -= 1;
 
