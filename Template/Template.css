@@ -1,5 +1,261 @@
+@font-face {
+  font-family: 'Stanberry'; 
+  src: url("./Fonts/Stanberry.ttf") format("opentype");
+  font-style: normal;
+}
+/* Color Theme Swatches in Hex */
+.jungle-1-hex { color: #3B7302; }
+.jungle-2-hex { color: #214001; }
+.jungle-3-hex { color: #74BF04; }
+.jungle-4-hex { color: #BFA004; }
+.jungle-5-hex { color: #8C4E03; }
+
+/* Color Theme Swatches in RGBA */
+.jungle-1-rgba { color: rgba(58, 114, 2, 1); }
+.jungle-2-rgba { color: rgba(32, 63, 1, 1); }
+.jungle-3-rgba { color: rgba(116, 191, 3, 1); }
+.jungle-4-rgba { color: rgba(191, 160, 3, 1); }
+.jungle-5-rgba { color: rgba(140, 78, 2, 1); }
+
+.statistic {
+  text-align: left;
+  font-family: Stanberry;
+  border: solid rgba(191, 160, 3, 1);
+  border-radius: 10px;
+  background-color: rgb(0, 0, 0, 0.8);
+  color: rgb(230, 241, 255);
+  font-size: 2vmin;
+  background-image: none;
+}
+dialog.text {
+  color: rgb(32, 80, 36);
+  font-size: 2vh;
+  font-weight: bold;
+  width: 20vw;
+  height: 20vh;
+  font-family: 'Century Gothic';
+  background-image: url("Images/Backgrounds/ferns.jpg");
+}
+
+dialog[type="inventory"]{
+  top: 0px;
+  width: 50%;
+  height: 50%;
+  background: rgba(0, 0, 0, 0.747);
+  border: solid rgba(191, 160, 3, 1);
+  border-radius: 10px;
+}
+
+dialog[type="inventory"] > p{
+  font-family: Stanberry;
+  display: inline-block;
+  text-align: center;
+  font-size: 3vmin;
+  color: #8C4E03;  
+  border-bottom: 1px solid rgba(191, 160, 3, 1);
+  width: 100%;
+}
+
+.escape_button{
+right: 0;
+top: 0;
+position: absolute;
+width: 80px;
+line-height: 4;
+cursor: pointer;
+outline: 0;
+background-color: transparent;
+font-weight: 900;
+font-size: 14pt;
+border: none;
+color: #BFA004;
+text-align: center;
+vertical-align: middle;
+}
+.escape_button:hover {
+  color: #8C4E03;
+  background: #BFA004;
+}
+
+dialog[type="inventory"] > ul > li{
+  display: inline-block;
+  color: #BFA004;  
+  font-size: 2.75vmin;
+  max-width: 60px;
+  border: none;
+  list-style-type: none;
+  top: 0;
+  margin-right: 20px;
+}
+
+dialog[type="inventory"] > ul > li > amount{
+  left: -50px;
+  text-align: bottom;
+}
+
+dialog[type="inventory"] > ul > li > name,dialog[type="inventory"] > ul > li > description  {
+  visibility: hidden;
+}
+
+dialog[class="gameMenu"]{
+  
+  position: fixed;
+  width: auto;
+  height: auto;
+  display: table;
+  bottom: 0;
+  background: transparent;
+  left: 0;
+  border: none;
+}
+
+dialog[class="gameMenu"] > button{
+  font-family: Stanberry;
+  font-size: 1.9vmin;
+  background-color: transparent;
+  color: #BFA004;
+  border: none;
+  margin: 0 10px;
+}
+
+dialog[class="gameMenu"] > button:hover {
+  transition: all .1s ease;
+  box-shadow: 0 0 0 0 #fff, 0 0 0 3px #BFA004;
+}
+
+dialog[class="options"] {
+  margin: auto;
+  background: transparent;
+  border: none;
+}
+
+dialog[class="location_options"] {
+  margin: auto auto 18vh auto;
+  background: transparent;
+  border: none;
+}
+
+input {
+  font-family: Stanberry;
+  outline: 0;
+  font-size: 14pt;
+  border: solid;
+  border-width: 0 0 1px;
+  background: transparent;
+  border-color: #BFA004;
+  color: white;
+}
+
+dialog[class="location_options"] > button {
+  font-family: Stanberry;
+  background: rgba(0, 0, 0, 0.747);
+  border: none;
+  color: #fff;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size:  2vmin;
+  cursor: pointer;
+  float: left;
+  margin: 0px 5px;
+  transition:all 400ms ease-out;
+  box-shadow:0 0 10px 8px rgba(3, 3, 3, 0.808);
+  border: 2px none rgba(3, 3, 3, 0.808);
+
+}
+
+dialog[class="options"] > button {
+  font-family: Stanberry;
+  outline: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  border: solid transparent;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.747);
+  line-height: 1.15;
+  font-size: 2vmin;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px 0;
+  width: 100%;
+  display: block;
+
+}
+
+dialog[class="options"] > button:hover, dialog[class="location_options"] > button:hover {
+  transition: all .12s ease-in;
+  box-shadow: 0 0 0 0 #BFA004, 0 0 0 2px #BFA004;
+}
+
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  /*background-color: black;*/
+  background-image: url("./Images/Backgrounds/jungle_background.jpg"); 
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 2.3vmin;
+  color: rgb(240, 18, 103);
+}
+
+
 scene {
   width: 1280px;
   height: 720px;
   display: inline-block;
+  position: absolute;
+  
+}
+
+canvas {
+  width: 100%;
+  height: 100%;  
+}
+
+/* Splashscreen */
+dialog {
+  background-image: url("Images/Backgrounds/jungle_background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+}
+
+speech {
+  font-family: Stanberry;
+  visibility: visible;
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  color: beige;
+  background-color: rgba(3, 3, 3, 0.808);
+  width: 96%;
+  height: 18vh;
+  /*border: 15px double;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to left, #BFA004, #8C4E03); */
+  transition:all 400ms ease-out;
+  box-shadow:0 0 10px 8px rgba(3, 3, 3, 0.808);
+  border: 2px none rgba(3, 3, 3, 0.808);
+}
+
+name {
+  font-size: 3vh;
+  display: block;
+  color: rgb(223, 219, 16);
+  margin-bottom: 10px;
+}
+
+speech content {
+  color: rgb(203, 253, 255);
 }
