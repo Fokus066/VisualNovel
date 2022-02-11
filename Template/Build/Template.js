@@ -1553,7 +1553,7 @@ var Template;
     async function fight_crocodile() {
         Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 0.1);
         Template.ƒS.Sound.play(Template.sound.fight, 1);
-        if (Template.dataForSave.health > 75 && Template.dataForSave.power > 75 && Template.dataForSave.fitnessUncle == true && Template.dataForSave.item_axe > 0) {
+        if (Template.dataForSave.health > 75 && Template.dataForSave.power > 75 && Template.dataForSave.item_axe > 0) {
             await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.fit, Template.ƒS.positionPercent(15, 140));
             await Template.ƒS.Character.show(Template.characters.crocodile, Template.characters.crocodile.pose.aggressiv, Template.ƒS.positionPercent(70, 80));
             await Template.ƒS.update(1);
@@ -1582,7 +1582,9 @@ var Template;
             await Template.ƒS.update(1);
             await Template.ƒS.Character.animate(Template.characters.girl, Template.characters.girl.pose.angry_arm_crossed, Template.LeftFightAnimation());
             await Template.ƒS.update(1);
-            await Template.ƒS.Speech.tell(Template.characters.narrator, "Leider waren alle körperlich zu schwach, um gegen das Krokodil zu verteidigen.", true);
+            Template.ƒS.Text.setClass("statistic");
+            Template.ƒS.Text.print("<p> Leider waren alle körperlich zu schwach, um gegen das Krokodil zu verteidigen. Eine Waffe hätte beim Kampf helfen können.</p>");
+            await Template.ƒS.Speech.tell(null, null, true);
             await Template.ƒS.Character.hide(Template.characters.crocodile);
             Template.ƒS.Sound.fade(Template.sound.fight, 0, 0.1);
             await Template.ƒS.Location.show(Template.locations.game_over);

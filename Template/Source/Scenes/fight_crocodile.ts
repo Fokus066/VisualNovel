@@ -5,7 +5,7 @@ namespace Template {
 
         ƒS.Sound.play(sound.fight, 1);
     
-        if (dataForSave.health > 75 && dataForSave.power > 75 && dataForSave.fitnessUncle == true && dataForSave.item_axe > 0) {
+        if (dataForSave.health > 75 && dataForSave.power > 75 && dataForSave.item_axe > 0) {
 
             await ƒS.Character.show(characters.uncle, characters.uncle.pose.fit, ƒS.positionPercent(15, 140));
             await ƒS.Character.show(characters.crocodile, characters.crocodile.pose.aggressiv, ƒS.positionPercent(70, 80));
@@ -52,7 +52,9 @@ namespace Template {
             await ƒS.Character.animate(characters.girl, characters.girl.pose.angry_arm_crossed, LeftFightAnimation());
             await ƒS.update(1);
 
-            await ƒS.Speech.tell(characters.narrator, "Leider waren alle körperlich zu schwach, um gegen das Krokodil zu verteidigen.", true);
+            ƒS.Text.setClass("statistic"); 
+            ƒS.Text.print("<p> Leider waren alle körperlich zu schwach, um gegen das Krokodil zu verteidigen. Eine Waffe hätte beim Kampf helfen können.</p>");
+            await ƒS.Speech.tell(null, null, true);
 
             await ƒS.Character.hide(characters.crocodile);
             ƒS.Sound.fade(sound.fight, 0, 0.1);
