@@ -15,7 +15,7 @@ namespace Template {
         }
         const randomInt = Math.floor(Math.random()*(100-1+1)+1);
         
-        ƒS.Text.print(randomInt.toString());
+        //ƒS.Text.print(randomInt.toString());
 
         let counter = 10;
 

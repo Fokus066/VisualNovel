@@ -660,7 +660,7 @@ var Template;
             }
         };
         const randomInt = Math.floor(Math.random() * (100 - 1 + 1) + 1);
-        Template.ƒS.Text.print(randomInt.toString());
+        //ƒS.Text.print(randomInt.toString());
         let counter = 10;
         do {
             await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0000 + "Anzahl der Versuche: " + counter + "<br>", true);
