@@ -186,7 +186,7 @@ var Template;
     ;
     function showCredits() {
         Template.ƒS.Text.setClass("statistic");
-        Template.ƒS.Text.print("Programming: Romtham Gebhardt <br> Characters: Sims 3 <br> Music and Sound : https://www.zapsplat.com Pictures: Pexels, Pixabay <br>");
+        Template.ƒS.Text.print("Programming: Romtham Gebhardt <br> Characters: Sims 3 <br> Music and Sound : https://www.zapsplat.com <br> Pictures: Pexels, Pixabay, bearbeitet von Romtham Gebhardt <br>");
     }
     Template.showCredits = showCredits;
     ;
