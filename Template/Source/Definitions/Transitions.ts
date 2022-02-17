@@ -15,12 +15,12 @@ namespace Template {
         t19: {
           duration: 1,
           alpha: "./Images/transitions/19.jpg",
-          edge: 5
+          edge: 1
         },
         diagonal: {
           duration: 1,
           alpha: "./Images/transitions/24.png",
-          edge: 1
+          edge: 0.5
         },
         waves: {
           duration: 1,
@@ -55,7 +55,7 @@ namespace Template {
         theatre_opening: {//gut
           duration: 1,
           alpha: "./Images/transitions/theatre_opening.jpg",
-          edge: 2
+          edge: 0.3
         },
         cwtop: {
           duration: 1,
@@ -65,7 +65,7 @@ namespace Template {
         blur: {
           duration: 1,
           alpha: "./Images/transitions/blur.jpg",
-          edge: 1
+          edge: 0.5
         },
         goslow: {
           duration: 1,
@@ -75,17 +75,17 @@ namespace Template {
         swipe: {
           duration: 1,
           alpha: "./Images/transitions/swipe.png",
-          edge: 1
+          edge: 0.75
         },
         snake2: {
           duration: 1,
           alpha: "./Images/transitions/snakes.png",
-          edge: 1
+          edge: 0.5
         },
         snake3: {
           duration: 1,
           alpha: "./Images/transitions/snake2.png",
-          edge: 1
+          edge: 0.5
         },
         water: {
           duration: 1,

@@ -4,13 +4,10 @@ declare namespace Template {
 }
 declare namespace Template {
     function LeftFightAnimation(): ƒS.AnimationDefinition;
-    function RightFightAnimationCrocodile(): ƒS.AnimationDefinition;
-    function EscapeAnimationCrocodile(): ƒS.AnimationDefinition;
     function shakingRightSide1(): ƒS.AnimationDefinition;
-    function shakingRightSide2(): ƒS.AnimationDefinition;
     function fromOutofCanvasToLeft(): ƒS.AnimationDefinition;
-    function fromOutofCanvasToRight(): ƒS.AnimationDefinition;
-    function fromOutofCanvasToCenter(): ƒS.AnimationDefinition;
+    function EscapeAnimationCrocodile(): ƒS.AnimationDefinition;
+    function CentershakingAnimationCrocodile(): ƒS.AnimationDefinition;
 }
 declare namespace Template {
     let characters: {
@@ -21,13 +18,10 @@ declare namespace Template {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
-                angry: string;
-                explain_angry: string;
-                explain: string;
-                discuss: string;
+                neutral: string;
+                serious: string;
                 pointing: string;
                 backpain: string;
-                disappointed: string;
                 fit: string;
             };
         };
@@ -35,31 +29,26 @@ declare namespace Template {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
-                angry: string;
+                neutral: string;
                 angry_arm_crossed: string;
                 annoyed: string;
                 desperate: string;
-                laughing: string;
+                thinking: string;
+                searching: string;
                 pointing: string;
-                discuss_angry: string;
-                explain: string;
-                discuss_2: string;
-                pointing_side: string;
-                deny: string;
             };
         };
         boy: {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
-                standby: string;
+                neutral: string;
                 discuss: string;
                 discuss_sideview: string;
-                discuss_angry: string;
-                explain: string;
                 pointing: string;
                 laughing: string;
                 disappointed: string;
+                idea: string;
             };
         };
         crocodile: {
@@ -74,21 +63,21 @@ declare namespace Template {
 declare namespace Template {
     let dataForSave: {
         nameProtagonist: string;
-        health: number;
-        power: number;
+        energy: number;
         fitnessUncle: boolean;
+        item_lighter: boolean;
         no_water: boolean;
-        item_waterbottle: number;
-        item_acaiberry: number;
-        item_branch: number;
-        item_stone: number;
-        item_fish: number;
-        item_spear: number;
-        item_liane: number;
-        item_axe: number;
+        item_acaiberry: boolean;
+        item_fish: boolean;
+        item_spear: boolean;
+        item_liane: boolean;
+        item_axe: boolean;
+        number_branch: number;
+        number_stone: number;
         item_suitcase: boolean;
         open_suitcase: boolean;
         uncle_alive: boolean;
+        mission: number;
     };
 }
 declare namespace Template {
@@ -445,7 +434,7 @@ declare namespace Template {
     function waterfall(): ƒS.SceneReturn;
 }
 declare namespace Template {
-    function waterfall_no_water(): ƒS.SceneReturn;
+    function waterfall_final(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function Labyrinth2(): ƒS.SceneReturn;
@@ -460,7 +449,7 @@ declare namespace Template {
     function Labyrinth_Ending(): ƒS.SceneReturn;
 }
 declare namespace Template {
-    function Good_Bad_Ending_lifesaving(): ƒS.SceneReturn;
+    function End(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function Introduction(): ƒS.SceneReturn;
@@ -469,7 +458,7 @@ declare namespace Template {
     function boat_trip(): ƒS.SceneReturn;
 }
 declare namespace Template {
-    function fight_crocodile(): ƒS.SceneReturn;
+    function general_end(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function heavy_rain(): ƒS.SceneReturn;
@@ -478,8 +467,20 @@ declare namespace Template {
     function lake_crocodile(): ƒS.SceneReturn;
 }
 declare namespace Template {
+    function lifesaving_bad_ending(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function lifesaving_ending(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function lost_fight_crocodile_ending(): ƒS.SceneReturn;
+}
+declare namespace Template {
     function rain_shelter(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function rain_stops(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function victory_fight_crocodile(): ƒS.SceneReturn;
 }

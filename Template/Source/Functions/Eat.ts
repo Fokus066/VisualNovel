@@ -4,7 +4,8 @@ namespace Template {
 
         let action_choice = {
             eat: "Essen",
-            drink: "Trinken",
+            bbQ: " Barbecue",
+            //drink: "Trinken",
             back: "Zurück"
         };
 
@@ -13,37 +14,36 @@ namespace Template {
         switch (build_tools_request) {
 
             case action_choice.eat:
-                if (dataForSave.item_acaiberry > 0 || dataForSave.item_fish > 0) {
-                    dataForSave.health += 5;
+                if (dataForSave.item_acaiberry == true && dataForSave.mission == 1) {
+                    dataForSave.energy += 15;
                     await ƒS.Speech.tell(characters.boy, "Hmm... Lecker", true);
-                    ƒS.Sound.fade(sound.jungle, 0, 0.1);
+                    dataForSave.mission += 1;
                     return "Shelter";
-                } else {
+                } 
+                if (dataForSave.item_acaiberry == true) {
+                    dataForSave.energy += 15;
+                    await ƒS.Speech.tell(characters.boy, "Hmm... Lecker", true);
+                    return "Shelter";
+                } 
+                else {
                     await ƒS.Speech.tell(characters.narrator, "Du hast kein Essen.", true);
-                    ƒS.Sound.fade(sound.jungle, 0, 0.1);
                     return "Shelter";
                 }
-                break;
 
-            case action_choice.drink:
-                if (dataForSave.item_waterbottle > 0) {
-                    dataForSave.health += 2;
-                    await ƒS.Speech.tell(characters.narrator, "Erfrischend!", true);
-                    ƒS.Sound.fade(sound.jungle, 0, 0.1);
+            case action_choice.bbQ:
+                if (dataForSave.mission == 5) {
+
+                    await ƒS.Speech.tell(characters.boy, "Hmm... Lecker. Allerdings fehlen Getränke. Am Wasserfall gibt es frisches, sauberes Wasser. Ich könnte es schnell holen.", true);
+                    dataForSave.mission += 1;
                     return "Shelter";
-                } else {
-                    dataForSave.no_water = true,
-                    await ƒS.Speech.tell(characters.narrator, "Du hast kein Wasser mehr.", true);
-                    await ƒS.Speech.tell(characters.uncle, "Beim Wasserfall gibt es bestimmt frisches, sauberes Wasser...", true);
-                    await ƒS.Speech.tell(characters.narrator, "Das sollte ich mir mal ansehen.", true);
-                    ƒS.Sound.fade(sound.jungle, 0, 0.1);
+                } 
+                else {
+                    await ƒS.Speech.tell(characters.narrator, "Du kannst noch nicht grillen. Erledige zuerst die anderen Aufgaben.", true);
                     return "Shelter";
                 }
-                break;
 
             case action_choice.back:
                 ƒS.Sound.play(sound.click, 1);
-                ƒS.Sound.fade(sound.jungle, 0, 0.1);
                 return "Shelter";
         }
 

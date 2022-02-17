@@ -30,8 +30,9 @@ namespace Template {
                 ƒS.Inventory.add(items.lighter);
                 ƒS.Inventory.add(items.waterbottle);
                 ƒS.Inventory.add(items.first_aid_kit);
-                dataForSave.open_suitcase = true,
-                ƒS.Character.hideAll();
+                dataForSave.item_lighter = true;
+                dataForSave.open_suitcase = true;
+                
                 return "Shelter_Uncle_pain";
             }
             if (number > randomInt){

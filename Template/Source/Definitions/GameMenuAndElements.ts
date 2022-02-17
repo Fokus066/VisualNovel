@@ -10,8 +10,10 @@ namespace Template {
   };
 
   export function showStatistic(): void {
-    ƒS.Text.setClass("statistic");
-    ƒS.Text.print("Lebensenergie: " + dataForSave.health + "<br>Lebenskraft: " + dataForSave.power + "<br>");
+
+      ƒS.Text.setClass("statistic");
+      ƒS.Text.print(" Lebensenergie: " + dataForSave.energy + "<br> Aktuelle Mission: " + dataForSave.mission + "/6" ); 
+    
   };
 
   export function showCredits(): void {

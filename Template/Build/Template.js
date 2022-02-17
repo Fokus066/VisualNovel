@@ -22,18 +22,20 @@ var Template;
             { id: "OpenSuitcase", scene: Template.Unlocksuitcase, name: "Minigame" },
             { id: "Map", scene: Template.jungle_map, name: "overview" },
             { id: "Shelter", scene: Template.shelter, name: "Unterschlupf" },
-            { id: "build_tools", scene: Template.build_tools, name: "Wasserfall mit Krokodil" },
+            { id: "build_tools", scene: Template.build_tools, name: "Werkzeugherstellung" },
             { id: "Eat", scene: Template.Eat, name: "Essen" },
             { id: "Waterfall", scene: Template.waterfall, name: "Wasserfall" },
             { id: "Shrubs", scene: Template.shrubs, name: "Gebüsch" },
-            { id: "Waterfall_End", scene: Template.lake_crocodile, name: "Wasserfall mit Krokodil" },
             { id: "Jungle", scene: Template.jungle, name: "Regenwald" },
             { id: "River", scene: Template.river, name: "Fluss" },
-            { id: "Waterfall_no_water", scene: Template.waterfall_no_water, name: "Kein Trinkwasser" },
-            { id: "Ending1", scene: Template.fight_crocodile, name: "Kampf Krokodil" },
-            { id: "Ending2", scene: Template.Good_Bad_Ending_lifesaving, name: "Helicopter" },
-            //{ id: "Fishing_Meter", scene: Fishing_Meter, name: "Fischen"},
-            //{ scene: jungle_night, name: "rain stops" },
+            { id: "Waterfall_final", scene: Template.waterfall_final, name: "Kein Trinkwasser" },
+            { id: "unforeseen_encounter_crocodile", scene: Template.lake_crocodile, name: "Zufällige Begegnung Krokodil" },
+            { id: "victory_fight", scene: Template.victory_fight_crocodile, name: "Kampf Sieg Krokodil" },
+            { id: "lost_fight", scene: Template.lost_fight_crocodile_ending, name: "Kampf Niederlage Krokodil" },
+            { id: "general_ending", scene: Template.general_end, name: "Keine Energie" },
+            { id: "livesaving_ending", scene: Template.lifesaving_ending, name: "Helicopter Rettung" },
+            { id: "livesaving_bad_ending", scene: Template.lifesaving_bad_ending, name: "Helicopter Rettung ohne Onkel" },
+            { id: "END", scene: Template.End, name: "Endgültiges Ende" },
         ];
         let uiElement = document.querySelector("[type=interface]");
         Template.dataForSave = Template.ƒS.Progress.setData(Template.dataForSave, uiElement);
@@ -46,76 +48,50 @@ var Template;
     // Animationen für alle Szenen
     function LeftFightAnimation() {
         return {
-            start: { translation: Template.ƒS.positionPercent(15, 140), color: Template.ƒS.Color.CSS("white", 0) },
-            end: { translation: Template.ƒS.positionPercent(70, 140), color: Template.ƒS.Color.CSS("red") },
+            start: { translation: Template.ƒS.positionPercent(25, 140), color: Template.ƒS.Color.CSS("white", 0) },
+            end: { translation: Template.ƒS.positionPercent(-20, 140), color: Template.ƒS.Color.CSS("red") },
             duration: 1.5,
             playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCESTOPAFTER
         };
     }
     Template.LeftFightAnimation = LeftFightAnimation;
-    function RightFightAnimationCrocodile() {
-        return {
-            start: { translation: Template.ƒS.positionPercent(70, 80), color: Template.ƒS.Color.CSS("white", 0) },
-            end: { translation: Template.ƒS.positionPercent(20, 80), color: Template.ƒS.Color.CSS("red") },
-            duration: 1.5,
-            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCESTOPAFTER
-        };
-    }
-    Template.RightFightAnimationCrocodile = RightFightAnimationCrocodile;
-    function EscapeAnimationCrocodile() {
-        return {
-            start: { translation: Template.ƒS.positionPercent(70, 80) },
-            end: { translation: Template.ƒS.positionPercent(180, 120) },
-            duration: 1.5,
-            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCESTOPAFTER
-        };
-    }
-    Template.EscapeAnimationCrocodile = EscapeAnimationCrocodile;
     function shakingRightSide1() {
         return {
-            start: { translation: Template.ƒS.positionPercent(80, 130) },
-            end: { translation: Template.ƒS.positionPercent(78, 130) },
+            start: { translation: Template.ƒS.positionPercent(80, 140) },
+            end: { translation: Template.ƒS.positionPercent(78, 140) },
             duration: 0.25,
             playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCESTOPAFTER
         };
     }
     Template.shakingRightSide1 = shakingRightSide1;
-    function shakingRightSide2() {
-        return {
-            start: { translation: Template.ƒS.positionPercent(78, 130) },
-            end: { translation: Template.ƒS.positionPercent(82, 130) },
-            duration: 0.25,
-            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCESTOPAFTER
-        };
-    }
-    Template.shakingRightSide2 = shakingRightSide2;
     function fromOutofCanvasToLeft() {
         return {
-            start: { translation: Template.ƒS.positionPercent(0, 120) },
-            end: { translation: Template.ƒS.positionPercent(10, 120) },
+            start: { translation: Template.ƒS.positionPercent(0, 140) },
+            end: { translation: Template.ƒS.positionPercent(10, 140) },
             duration: 1,
             playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
         };
     }
     Template.fromOutofCanvasToLeft = fromOutofCanvasToLeft;
-    function fromOutofCanvasToRight() {
+    //Crocodile
+    function EscapeAnimationCrocodile() {
         return {
-            start: { translation: Template.ƒS.positionPercent(100, 140) },
-            end: { translation: Template.ƒS.positionPercent(80, 140) },
-            duration: 1,
+            start: { translation: Template.ƒS.positionPercent(70, 80) },
+            end: { translation: Template.ƒS.positionPercent(180, 80) },
+            duration: 1.5,
             playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
         };
     }
-    Template.fromOutofCanvasToRight = fromOutofCanvasToRight;
-    function fromOutofCanvasToCenter() {
+    Template.EscapeAnimationCrocodile = EscapeAnimationCrocodile;
+    function CentershakingAnimationCrocodile() {
         return {
-            start: { translation: Template.ƒS.positionPercent(40, 180) },
-            end: { translation: Template.ƒS.positionPercent(40, 140) },
-            duration: 1,
-            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+            start: { translation: Template.ƒS.positionPercent(70, 80) },
+            end: { translation: Template.ƒS.positionPercent(72, 80) },
+            duration: 0.25,
+            playmode: Template.ƒS.ANIMATION_PLAYMODE.REVERSELOOP
         };
     }
-    Template.fromOutofCanvasToCenter = fromOutofCanvasToCenter;
+    Template.CentershakingAnimationCrocodile = CentershakingAnimationCrocodile;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -128,49 +104,41 @@ var Template;
             name: "Onkel Ben",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                angry: "./Images/Characters/grandpa_angry.png",
-                explain_angry: "./Images/Characters/grandpa_explains_2.png",
-                explain: "./Images/Characters/grandpa_explains_2.png",
-                discuss: "./Images/Characters/grandpa_discuss.png",
-                pointing: "./Images/Characters/grandpa_pointing.png",
-                backpain: "./Images/Characters/grandpa_backpain.png",
-                disappointed: "./Images/Characters/grandpa_disappointed.png",
-                fit: "./Images/Characters/grandpa_annoyed.png",
+                neutral: "./Images/Characters/uncle_neutral.png",
+                serious: "./Images/Characters/uncle_serious.png",
+                pointing: "./Images/Characters/uncle_pointing.png",
+                backpain: "./Images/Characters/uncle_backpain.png",
+                fit: "./Images/Characters/uncle_annoyed.png",
             }
         },
         girl: {
             name: "Jenna",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                angry: "./Images/Characters/girl_angry.png",
+                neutral: "./Images/Characters/girl_neutral.png",
                 angry_arm_crossed: "./Images/Characters/girl_angry_arm_across.png",
                 annoyed: "./Images/Characters/girl_annoyed.png",
                 desperate: "./Images/Characters/girl_desperate.png",
-                laughing: "./Images/Characters/girl_laughing.png",
-                pointing: "./Images/Characters/girl_discuss_sideview.png",
-                discuss_angry: "./Images/Characters/girl_discuss_angry.png",
-                explain: "./Images/Characters/girl_discuss.png ",
-                discuss_2: "./Images/Characters/girl_discuss_2.png ",
-                pointing_side: "./Images/Characters/girl_pointing.png",
-                deny: "./Images/Characters/girl_no.png"
+                thinking: "./Images/Characters/girl_thinking.png",
+                searching: "./Images/Characters/girl_searching.png",
+                pointing: "./Images/Characters/girl_discuss_sideview.png"
             }
         },
         boy: {
             name: "my name",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                standby: "./Images/Characters/boy.png",
+                neutral: "./Images/Characters/boy.png",
                 discuss: "./Images/Characters/boy_discuss.png",
                 discuss_sideview: "./Images/Characters/boy_discuss_sideview.png",
-                discuss_angry: "./Images/Characters/boy_discuss_angry.png",
-                explain: "./Images/Characters/boy_explains.png",
                 pointing: "./Images/Characters/boy_pointing.png",
                 laughing: "./Images/Characters/boy_laughing.png",
-                disappointed: "./Images/Characters/boy_disappointed.png"
+                disappointed: "./Images/Characters/boy_disappointed.png",
+                idea: "./Images/Characters/boy_idea.png",
             }
         },
         crocodile: {
-            name: "Tiger",
+            name: "Krokogil",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 aggressiv: "./Images/Characters/crocodile.png",
@@ -182,22 +150,22 @@ var Template;
 (function (Template) {
     Template.dataForSave = {
         nameProtagonist: "",
-        health: 100,
-        power: 100,
+        energy: 100,
         fitnessUncle: false,
         //scorefishing: 0,
+        item_lighter: false,
         no_water: false,
-        item_waterbottle: 0,
-        item_acaiberry: 0,
-        item_branch: 0,
-        item_stone: 0,
-        item_fish: 0,
-        item_spear: 0,
-        item_liane: 0,
-        item_axe: 0,
+        item_acaiberry: false,
+        item_fish: false,
+        item_spear: false,
+        item_liane: false,
+        item_axe: false,
+        number_branch: 0,
+        number_stone: 0,
         item_suitcase: false,
         open_suitcase: false,
-        uncle_alive: true
+        uncle_alive: true,
+        mission: 1
     };
 })(Template || (Template = {}));
 var Template;
@@ -212,7 +180,7 @@ var Template;
     };
     function showStatistic() {
         Template.ƒS.Text.setClass("statistic");
-        Template.ƒS.Text.print("Lebensenergie: " + Template.dataForSave.health + "<br>Lebenskraft: " + Template.dataForSave.power + "<br>");
+        Template.ƒS.Text.print(" Lebensenergie: " + Template.dataForSave.energy + "<br> Aktuelle Mission: " + Template.dataForSave.mission + "/6");
     }
     Template.showStatistic = showStatistic;
     ;
@@ -515,12 +483,12 @@ var Template;
         t19: {
             duration: 1,
             alpha: "./Images/transitions/19.jpg",
-            edge: 5
+            edge: 1
         },
         diagonal: {
             duration: 1,
             alpha: "./Images/transitions/24.png",
-            edge: 1
+            edge: 0.5
         },
         waves: {
             duration: 1,
@@ -555,7 +523,7 @@ var Template;
         theatre_opening: {
             duration: 1,
             alpha: "./Images/transitions/theatre_opening.jpg",
-            edge: 2
+            edge: 0.3
         },
         cwtop: {
             duration: 1,
@@ -565,7 +533,7 @@ var Template;
         blur: {
             duration: 1,
             alpha: "./Images/transitions/blur.jpg",
-            edge: 1
+            edge: 0.5
         },
         goslow: {
             duration: 1,
@@ -575,17 +543,17 @@ var Template;
         swipe: {
             duration: 1,
             alpha: "./Images/transitions/swipe.png",
-            edge: 1
+            edge: 0.75
         },
         snake2: {
             duration: 1,
             alpha: "./Images/transitions/snakes.png",
-            edge: 1
+            edge: 0.5
         },
         snake3: {
             duration: 1,
             alpha: "./Images/transitions/snake2.png",
-            edge: 1
+            edge: 0.5
         },
         water: {
             duration: 1,
@@ -605,43 +573,40 @@ var Template;
         console.log("Boat river");
         let action_choice = {
             eat: "Essen",
-            drink: "Trinken",
+            bbQ: " Barbecue",
+            //drink: "Trinken",
             back: "Zurück"
         };
         let build_tools_request = await Template.ƒS.Menu.getInput(action_choice, "options");
         switch (build_tools_request) {
             case action_choice.eat:
-                if (Template.dataForSave.item_acaiberry > 0 || Template.dataForSave.item_fish > 0) {
-                    Template.dataForSave.health += 5;
+                if (Template.dataForSave.item_acaiberry == true && Template.dataForSave.mission == 1) {
+                    Template.dataForSave.energy += 15;
                     await Template.ƒS.Speech.tell(Template.characters.boy, "Hmm... Lecker", true);
-                    Template.ƒS.Sound.fade(Template.sound.jungle, 0, 0.1);
+                    Template.dataForSave.mission += 1;
+                    return "Shelter";
+                }
+                if (Template.dataForSave.item_acaiberry == true) {
+                    Template.dataForSave.energy += 15;
+                    await Template.ƒS.Speech.tell(Template.characters.boy, "Hmm... Lecker", true);
                     return "Shelter";
                 }
                 else {
                     await Template.ƒS.Speech.tell(Template.characters.narrator, "Du hast kein Essen.", true);
-                    Template.ƒS.Sound.fade(Template.sound.jungle, 0, 0.1);
                     return "Shelter";
                 }
-                break;
-            case action_choice.drink:
-                if (Template.dataForSave.item_waterbottle > 0) {
-                    Template.dataForSave.health += 2;
-                    await Template.ƒS.Speech.tell(Template.characters.narrator, "Erfrischend!", true);
-                    Template.ƒS.Sound.fade(Template.sound.jungle, 0, 0.1);
+            case action_choice.bbQ:
+                if (Template.dataForSave.mission == 5) {
+                    await Template.ƒS.Speech.tell(Template.characters.boy, "Hmm... Lecker. Allerdings fehlen Getränke. Am Wasserfall gibt es frisches, sauberes Wasser. Ich könnte es schnell holen.", true);
+                    Template.dataForSave.mission += 1;
                     return "Shelter";
                 }
                 else {
-                    Template.dataForSave.no_water = true,
-                        await Template.ƒS.Speech.tell(Template.characters.narrator, "Du hast kein Wasser mehr.", true);
-                    await Template.ƒS.Speech.tell(Template.characters.uncle, "Beim Wasserfall gibt es bestimmt frisches, sauberes Wasser...", true);
-                    await Template.ƒS.Speech.tell(Template.characters.narrator, "Das sollte ich mir mal ansehen.", true);
-                    Template.ƒS.Sound.fade(Template.sound.jungle, 0, 0.1);
+                    await Template.ƒS.Speech.tell(Template.characters.narrator, "Du kannst noch nicht grillen. Erledige zuerst die anderen Aufgaben.", true);
                     return "Shelter";
                 }
-                break;
             case action_choice.back:
                 Template.ƒS.Sound.play(Template.sound.click, 1);
-                Template.ƒS.Sound.fade(Template.sound.jungle, 0, 0.1);
                 return "Shelter";
         }
     }
@@ -706,8 +671,8 @@ var Template;
                 Template.ƒS.Inventory.add(Template.items.lighter);
                 Template.ƒS.Inventory.add(Template.items.waterbottle);
                 Template.ƒS.Inventory.add(Template.items.first_aid_kit);
-                Template.dataForSave.open_suitcase = true,
-                    Template.ƒS.Character.hideAll();
+                Template.dataForSave.item_lighter = true;
+                Template.dataForSave.open_suitcase = true;
                 return "Shelter_Uncle_pain";
             }
             if (number > randomInt) {
@@ -735,15 +700,16 @@ var Template;
         let produce_tools = {
             axe: "Axt",
             spear: "Speer",
-            back: "Zurück",
+            bonfire: "Lagerfeuer",
+            back: "Zurück"
         };
         let build_tools_request = await Template.ƒS.Menu.getInput(produce_tools, "options");
         switch (build_tools_request) {
             case produce_tools.axe:
-                if (Template.dataForSave.item_branch > 0 && Template.dataForSave.item_stone > 0) {
+                if (Template.dataForSave.number_branch >= 1 && Template.dataForSave.number_branch >= 1) {
                     Template.ƒS.Inventory.add(Template.items.axe);
-                    Template.dataForSave.item_axe += 1;
-                    await Template.ƒS.Speech.tell(Template.characters.narrator, "Axt ist hergestellt und ist im Inventar.", true);
+                    Template.dataForSave.item_axe = true;
+                    await Template.ƒS.Speech.tell(Template.characters.narrator, "Axt ist hergestellt und liegt nun im Inventar.", true);
                     Template.ƒS.Sound.fade(Template.sound.jungle, 0, 0.1);
                     return "Shelter";
                 }
@@ -754,15 +720,42 @@ var Template;
                 }
                 break;
             case produce_tools.spear:
-                if (Template.dataForSave.item_branch > 0 && Template.dataForSave.item_liane > 0) {
+                if (Template.dataForSave.number_branch >= 1 && Template.dataForSave.item_liane == true && Template.dataForSave.mission == 2) {
                     Template.ƒS.Inventory.add(Template.items.spear);
-                    Template.dataForSave.item_spear += 1;
-                    await Template.ƒS.Speech.tell(Template.characters.narrator, "Holz Speer ist hergestellt und ist im Inventar.", true);
+                    Template.dataForSave.item_spear = true;
+                    Template.dataForSave.mission += 1;
+                    await Template.ƒS.Speech.tell(Template.characters.narrator, "Holz Speer ist hergestellt und liegt nun im Inventar.", true);
+                    Template.ƒS.Sound.fade(Template.sound.jungle, 0, 0.1);
+                    return "Shelter";
+                }
+                if (Template.dataForSave.number_branch >= 1 && Template.dataForSave.item_liane == true) {
+                    Template.ƒS.Inventory.add(Template.items.spear);
+                    Template.dataForSave.item_spear = true;
+                    await Template.ƒS.Speech.tell(Template.characters.narrator, "Holz Speer ist hergestellt und liegt nun im Inventar.", true);
                     Template.ƒS.Sound.fade(Template.sound.jungle, 0, 0.1);
                     return "Shelter";
                 }
                 else {
                     await Template.ƒS.Speech.tell(Template.characters.narrator, "Es fehlt die benötigte Materialien: Mindestens 1x Holz, Mindestens 1x Liane", true);
+                    Template.ƒS.Sound.fade(Template.sound.jungle, 0, 0.1);
+                    return "Shelter";
+                }
+            case produce_tools.bonfire:
+                if (Template.dataForSave.number_stone >= 3 && Template.dataForSave.number_branch >= 3 && Template.dataForSave.item_lighter == true && Template.dataForSave.mission == 4) {
+                    Template.ƒS.Inventory.add(Template.items.spear);
+                    Template.dataForSave.mission += 1;
+                    await Template.ƒS.Speech.tell(Template.characters.narrator, "Das Lagerfeuer ist gebaut. Du kannst jetzt die Fische grillen.", true);
+                    Template.ƒS.Sound.fade(Template.sound.jungle, 0, 0.1);
+                    return "Shelter";
+                }
+                if (Template.dataForSave.number_stone >= 3 && Template.dataForSave.number_branch >= 3 && Template.dataForSave.item_lighter == true) {
+                    Template.ƒS.Inventory.add(Template.items.spear);
+                    await Template.ƒS.Speech.tell(Template.characters.narrator, "Das Lagerfeuer ist gebaut.", true);
+                    Template.ƒS.Sound.fade(Template.sound.jungle, 0, 0.1);
+                    return "Shelter";
+                }
+                else {
+                    await Template.ƒS.Speech.tell(Template.characters.narrator, "Du brauchst mindestens 3x Holz, 3x Steine und ein Feuerzeug", true);
                     Template.ƒS.Sound.fade(Template.sound.jungle, 0, 0.1);
                     return "Shelter";
                 }
@@ -785,48 +778,44 @@ var Template;
         };
         let text = {
             narrator: {
-                T0000: "Holz gesammelt!",
-                T0001: "Stein gesammelt!",
+                T0000: "1x Holz gesammelt und wurde im Inventar abgelegt!",
+                T0001: "1x Stein gesammelt und wurde im Inventar abgelegt!",
             }
         };
-        Template.dataForSave.health -= 1;
-        Template.dataForSave.power -= 1;
+        Template.dataForSave.energy -= 1;
         Template.ƒS.Speech.setTickerDelays(20, 2);
         Template.ƒS.Sound.play(Template.sound.jungle_birds, 1);
         await Template.ƒS.Location.show(Template.locations.jungle_path_2);
         await Template.ƒS.update(Template.transitions.t13.duration, Template.transitions.t13.alpha, Template.transitions.t13.edge);
-        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.standby, Template.ƒS.positionPercent(50, 140));
+        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.neutral, Template.ƒS.positionPercent(50, 140));
         await Template.ƒS.update(1);
         let action_request = await Template.ƒS.Menu.getInput(action_choice, "location_options");
         switch (action_request) {
             case action_choice.search_wood:
                 Template.ƒS.Sound.play(Template.sound.click, 1);
                 Template.ƒS.Character.hideAll();
-                await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.standby, Template.ƒS.positionPercent(50, 140));
+                await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.neutral, Template.ƒS.positionPercent(50, 140));
                 await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0000, true);
                 await Template.ƒS.update(1);
                 Template.ƒS.Inventory.add(Template.items.branch);
-                Template.ƒS.Text.print(Template.ƒS.Inventory.getAmount(Template.items.branch).toString());
-                Template.dataForSave.item_branch += 1;
-                Template.dataForSave.power -= 5,
+                Template.dataForSave.number_branch += 1;
+                Template.dataForSave.energy -= 5,
                     Template.ƒS.Inventory.open;
-                Template.ƒS.Character.hideAll();
                 Template.ƒS.Sound.fade(Template.sound.jungle_birds, 0, 1, false);
-                return "Map";
+                return "Jungle";
                 break;
             case action_choice.search_stone:
                 Template.ƒS.Sound.play(Template.sound.click, 1);
                 Template.ƒS.Character.hideAll();
-                await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.standby, Template.ƒS.positionPercent(50, 140));
+                await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.neutral, Template.ƒS.positionPercent(50, 140));
                 await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0001, true);
                 await Template.ƒS.update(1);
                 Template.ƒS.Inventory.add(Template.items.stone);
-                Template.dataForSave.item_stone += 1;
-                Template.dataForSave.power -= 5,
+                Template.dataForSave.number_stone += 1;
+                Template.dataForSave.energy -= 5,
                     Template.ƒS.Inventory.open;
-                Template.ƒS.Character.hideAll();
                 Template.ƒS.Sound.fade(Template.sound.jungle_birds, 0, 1, false);
-                return "Map";
+                return "Jungle";
                 break;
             case action_choice.back:
                 Template.ƒS.Sound.play(Template.sound.click, 1);
@@ -855,6 +844,18 @@ var Template;
         await Template.ƒS.update(Template.transitions.goslow.duration, Template.transitions.goslow.alpha, Template.transitions.goslow.edge);
         await Template.ƒS.update(1);
         await Template.ƒS.Speech.tell(Template.characters.narrator, " ", true);
+        if (Template.dataForSave.energy > 0 && Template.dataForSave.energy <= 20) {
+            Template.ƒS.Text.setClass("stylebox");
+            Template.ƒS.Text.print("<p> Du hast momentan sehr wenig Energie. Um die Energie aufzuladen, kannst du essen.</p> ");
+            await Template.ƒS.Speech.tell(null, null, true);
+        }
+        if (Template.dataForSave.energy <= 0) {
+            Template.ƒS.Character.hideAll();
+            Template.ƒS.Text.setClass("stylebox");
+            Template.ƒS.Text.print("<p> Du hast keine Energie mehr.");
+            await Template.ƒS.Speech.tell(null, null, true);
+            return "general_ending";
+        }
         let location_request = await Template.ƒS.Menu.getInput(location_choice, "location_options");
         switch (location_request) {
             case location_choice.location1:
@@ -884,11 +885,12 @@ var Template;
             case location_choice.location5:
                 Template.ƒS.Sound.play(Template.sound.click, 1);
                 Template.ƒS.Sound.fade(Template.sound.jungle, 0, 0.1);
-                if (Template.dataForSave.no_water == true) {
-                    return "Waterfall_no_water";
+                if (Template.dataForSave.mission >= 6) {
+                    return "Waterfall_final";
                 }
-                else
+                else {
                     return "Waterfall";
+                }
                 break;
         }
     }
@@ -902,22 +904,31 @@ var Template;
             collect_liane: "Liane sammeln",
             back: "Zurück"
         };
-        Template.dataForSave.health -= 1;
-        Template.dataForSave.power -= 1;
+        let text = {
+            narrator: {
+                T0000: "1x Liane gesammelt und wurde im Inventar abgelegt!"
+            }
+        };
+        Template.dataForSave.energy -= 1;
         Template.ƒS.Speech.setTickerDelays(20, 2);
         Template.ƒS.Sound.play(Template.sound.river_jungle, 1);
         await Template.ƒS.Location.show(Template.locations.jungle_river);
         await Template.ƒS.update(Template.transitions.t12.duration, Template.transitions.t12.alpha, Template.transitions.t12.edge);
-        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.standby, Template.ƒS.positionPercent(50, 140));
+        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.neutral, Template.ƒS.positionPercent(50, 140));
         await Template.ƒS.update(1);
         let action_request = await Template.ƒS.Menu.getInput(action_choice, "location_options");
         switch (action_request) {
             case action_choice.collect_liane:
                 Template.ƒS.Sound.play(Template.sound.click, 1);
+                Template.ƒS.Character.hideAll();
+                await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.neutral, Template.ƒS.positionPercent(50, 140));
+                await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0000, true);
+                await Template.ƒS.update(1);
                 Template.ƒS.Inventory.add(Template.items.liane);
-                Template.dataForSave.item_liane += 1;
-                Template.dataForSave.power -= 5,
-                    Template.ƒS.Character.hideAll();
+                Template.dataForSave.item_liane = true;
+                Template.dataForSave.energy -= 5,
+                    Template.ƒS.Inventory.open;
+                Template.ƒS.Character.hideAll();
                 Template.ƒS.Sound.fade(Template.sound.river_jungle, 0, 1, false);
                 return "Map";
             case action_choice.back:
@@ -925,7 +936,6 @@ var Template;
                 Template.ƒS.Character.hide(Template.characters.boy);
                 Template.ƒS.Sound.fade(Template.sound.river_jungle, 0, 1, false);
                 return "Map";
-                break;
         }
     }
     Template.river = river;
@@ -935,54 +945,73 @@ var Template;
     async function shelter() {
         console.log("Boat river");
         let action_choice = {
-            talk: "Unterhalten",
-            eat: "Essen",
+            talk: "Fragen",
+            eat: "Nahrung",
             produce: "Herstellen",
             back: "Zurück",
         };
         let text = {
-            boy: {
-                T0000: "Aufwachen! Wir brauchen dich. "
-            },
-            girl: {
-                T0000: "Ich habe Hunger. Was gibt es hier zum essen?"
-            },
             uncle: {
                 T0000: "...",
-                T0001: "Wir sollten was zum essen und trinken holen.<br> Hier sind bestimmt Waldbeeren, die wir essen können. <br> In der Nähe ist ein Wasserfall. Da gibts sauberes Wasser."
+                Mission1: "Wir brauchen Essen. Im Wald sind genug essbare Beeren. Wir können hier gemeinsam essen. Übrigends ist es hilfreich, wenn du eine Waffe hast. Man weiß nie, welche Tiere hier plötzlich erscheinen.",
+                Mission2: "Die Beeren sind langweilig. Beim Wasserfall gibt es Fische. Um Fische zu fangen, brauchen wir Hilfsmittel. <br> Am einfachsten ist es ein Speer herzustellen. Dazu brauchst du ein Holzstück und Liane.",
+                Mission3: "Deine Waffe ist einsatzbereit. Es wird sehr schwierig und körperlich anstrengend sein, die Fische zu treffen. Du kannst mehrmals versuchen, die Fische zu fangen.",
+                Mission4: "Wir können die Fische nicht roh essen. Wir müssen sie grillen. Dazu brauchen wir Feuer.",
+                Mission5: "Lass uns die Fische grillen. Falls du frisches Wasser trinken willst, kannst du zum Wasserfall gehen.",
             }
         };
-        Template.dataForSave.health -= 1;
-        Template.dataForSave.power -= 1;
+        Template.dataForSave.energy -= 1;
         Template.ƒS.Speech.setTickerDelays(20, 2);
         Template.ƒS.Sound.play(Template.sound.jungle, 1);
         await Template.ƒS.Location.show(Template.locations.jungle_shack);
         await Template.ƒS.update(Template.transitions.diagonal.duration, Template.transitions.diagonal.alpha, Template.transitions.diagonal.edge);
-        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.angry_arm_crossed, Template.ƒS.positionPercent(20, 140));
+        if (Template.dataForSave.energy > 0 && Template.dataForSave.energy <= 20) {
+            Template.ƒS.Text.setClass("stylebox");
+            Template.ƒS.Text.print("<p> Du hast momentan sehr wenig Energie. Um die Energie aufzuladen, kannst du essen.</p> ");
+            await Template.ƒS.Speech.tell(null, null, true);
+        }
+        if (Template.dataForSave.energy <= 0) {
+            Template.ƒS.Character.hideAll();
+            Template.ƒS.Text.setClass("stylebox");
+            Template.ƒS.Text.print("<p> Du hast keine Energie mehr.");
+            await Template.ƒS.Speech.tell(null, null, true);
+            return "general_ending";
+        }
+        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.neutral, Template.ƒS.positionPercent(20, 140));
         await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.fit, Template.ƒS.positionPercent(80, 140));
         await Template.ƒS.update(1);
-        let action_request = await Template.ƒS.Menu.getInput(action_choice, "location_options");
+        let action_request = await Template.ƒS.Menu.getInput(action_choice, "options");
         switch (action_request) {
             case action_choice.talk:
                 Template.ƒS.Sound.play(Template.sound.click, 1);
                 Template.ƒS.Sound.fade(Template.sound.jungle, 0, 0.1);
-                await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0001, true);
+                if (Template.dataForSave.mission == 1) {
+                    await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.Mission1, true);
+                }
+                if (Template.dataForSave.mission == 2) {
+                    await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.Mission2, true);
+                }
+                if (Template.dataForSave.mission == 3) {
+                    await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.Mission3, true);
+                }
+                if (Template.dataForSave.mission == 4) {
+                    await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.Mission4, true);
+                }
+                if (Template.dataForSave.mission == 5) {
+                    await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.Mission5, true);
+                }
                 return "Shelter";
-                break;
             case action_choice.eat:
                 Template.ƒS.Sound.play(Template.sound.click, 1);
                 return "Eat";
-                break;
             case action_choice.produce:
                 Template.ƒS.Sound.play(Template.sound.click, 1);
                 return "build_tools";
-                break;
             case action_choice.back:
                 Template.ƒS.Sound.play(Template.sound.click, 1);
                 Template.ƒS.Sound.fade(Template.sound.jungle, 0, 0.1);
                 Template.ƒS.Character.hideAll();
                 return "Map";
-                break;
         }
     }
     Template.shelter = shelter;
@@ -993,28 +1022,25 @@ var Template;
         console.log("Boat river");
         let text = {
             boy: {
-                T0000: "Aufwachen! Wir brauchen dich. ",
+                T0000: "Aufwachen! Wir brauchen deine Hilfe! ",
                 T0001: "<i>Vielleicht finde ich etwas, was uns weiterbringt.<i>"
             },
             girl: {
-                T0000: "Keine Chance. Er schläft tief und fest. Wir brauchen ein Gegenmittel.",
-                T0001: "Hey! Schau mal ich habe hier eine Karte gefunden. Sie kann uns bestimmt weiterhelfen. ",
-                T0002: "Das wäre ziemlich schade. Wir sind so weit gereist.",
-                T0003: "Lass mich mal ansehen. Der Koffer ist mit einer Zahlencode verschlossen worden.<br> Es scheint wohl eine Zahl zwischen 1 und 100 zu sein. Du hast allerdings nur 10 Versuchen, dann wird die Zugangszahl neu generiert.",
-                T0004: Template.characters.boy.name + ", Du bist ein Lebensretter.",
+                T0000: "Keine Chance. Er schläft tief und fest. Wir brauchen etwas, was ihn aufweckt.",
+                T0001: "Hey! Schau mal ich habe hier eine Karte gefunden. Sie ist bestimmt nützlich. ",
+                T0002: "Lass mich mal ansehen. Der Koffer ist mit einer Zahlencode verschlossen worden.<br>Es ist eine Zahl zwischen 1 und 100. Du hast 10 Versuchen den Koffer zu öffnen, dann wird die Zahl neu generiert.",
             },
             uncle: {
                 T0000: "...",
-                T0001: "Ihr sollte euch keine Sorgen machen. Der Regen ist schnell wieder vorbei.",
-                T0002: "Wie gesagt es wird bald vorbei sein. Mach euch keinen Kopf. Wir haben genug Zeit.",
-                T0003: "Wir sollten vielleicht eine Pause einlegen. Auf dem Wasser ist es gefährlich wegen den Wellen",
+                T0001: Template.characters.boy.name + ", du bist ein Lebensretter."
             }
         };
         Template.ƒS.Speech.setTickerDelays(20, 2);
         Template.ƒS.Sound.fade(Template.sound.jungle, 1, 6);
         await Template.ƒS.Location.show(Template.locations.jungle_shack);
         await Template.ƒS.update(Template.transitions.diagonal.duration, Template.transitions.diagonal.alpha, Template.transitions.diagonal.edge);
-        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.angry_arm_crossed, Template.ƒS.positionPercent(20, 140));
+        await Template.ƒS.update(1);
+        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.neutral, Template.ƒS.positionPercent(20, 140));
         await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.backpain, Template.ƒS.positionPercent(80, 140));
         await Template.ƒS.update(1);
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0001, true);
@@ -1027,33 +1053,30 @@ var Template;
             switch (action_request_pain_uncle) {
                 case action_choice_uncle_pain.heal_uncle:
                     Template.ƒS.Sound.play(Template.sound.click, 1);
-                    await Template.ƒS.Character.hideAll();
-                    await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.laughing, Template.ƒS.positionPercent(20, 140));
-                    Template.ƒS.Text.setClass("statistic");
-                    Template.ƒS.Text.print("<p> Du leistest die Erste Hilfe an Onkel an.</p>");
+                    Template.ƒS.Text.setClass("stylebox");
+                    Template.ƒS.Text.print("<p> Du leistest erste Hilfe.</p>");
                     await Template.ƒS.Speech.tell(null, null, true);
-                    Template.ƒS.Text.setClass("statistic");
+                    Template.ƒS.Character.hide(Template.characters.uncle);
+                    Template.ƒS.Text.setClass("stylebox");
                     Template.ƒS.Text.print("<p> Dein Onkel gehts wieder besser.</p>");
                     await Template.ƒS.Speech.tell(null, null, true);
                     await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.fit, Template.ƒS.positionPercent(80, 140));
-                    await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0004, true);
+                    await Template.ƒS.update(1);
+                    await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0001, true);
                     Template.dataForSave.fitnessUncle = true;
-                    await Template.ƒS.Character.hide(Template.characters.girl);
+                    //await ƒS.Character.hide(characters.girl);
                     Template.ƒS.Sound.fade(Template.sound.jungle, 0, 1, false);
-                    Template.ƒS.Character.hideAll();
                     return "Shelter";
-                    break;
                 case action_choice_uncle_pain.back:
                     Template.ƒS.Sound.play(Template.sound.click, 1);
                     Template.ƒS.Sound.fade(Template.sound.jungle, 0, 1, false);
                     Template.ƒS.Character.hideAll();
                     return "Map";
-                    break;
             }
         }
         else {
             let action_choice_uncle_pain = {
-                arouse_uncle: "Onkel aufwecken",
+                arouse_uncle: "versuchen den Onkel aufzuwecken",
                 open_suitcase: "Koffer öffnen",
                 back: "Landkarte"
             };
@@ -1067,11 +1090,10 @@ var Template;
                     await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0001, true);
                     Template.ƒS.Sound.fade(Template.sound.jungle, 0, 1, false);
                     return "Shelter_Uncle_pain";
-                    break;
                 case action_choice_uncle_pain.open_suitcase:
                     if (Template.dataForSave.item_suitcase == true && Template.dataForSave.open_suitcase == false) {
                         Template.ƒS.Sound.play(Template.sound.click, 1);
-                        await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0003, true);
+                        await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0002, true);
                         Template.ƒS.Sound.fade(Template.sound.jungle, 0, 1, false);
                         return "OpenSuitcase";
                     }
@@ -1081,7 +1103,6 @@ var Template;
                     Template.ƒS.Character.hideAll();
                     Template.ƒS.Sound.fade(Template.sound.jungle, 0, 1, false);
                     return "Map";
-                    break;
             }
         }
     }
@@ -1095,7 +1116,7 @@ var Template;
             boy: {
                 T0000: "Mal sehen, ob wir was zu essen finden.",
                 T0001: "Es gibts leider nichts",
-                T0002: "Yes. Wenigstens etwas Beeren!",
+                T0002: "Yes. Hier sind die Beeren!",
                 T0003: "<i>Vielleicht finde ich was beim nächsten Mal.</i>",
             }
         };
@@ -1103,17 +1124,16 @@ var Template;
             search_berries: "Beeren sammeln",
             back: "Zurück",
         };
-        Template.dataForSave.health -= 1;
-        Template.dataForSave.power -= 1;
+        Template.dataForSave.energy -= 1;
         Template.ƒS.Speech.setTickerDelays(20, 2);
         Template.ƒS.Sound.play(Template.sound.jungle_insects, 1);
         await Template.ƒS.Location.show(Template.locations.ferns);
         await Template.ƒS.update(Template.transitions.fur.duration, Template.transitions.fur.alpha, Template.transitions.fur.edge);
-        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.standby, Template.ƒS.positionPercent(50, 140));
+        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.neutral, Template.ƒS.positionPercent(50, 140));
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0000, true);
         await Template.ƒS.update(1);
-        let random_boolean = Math.random() < 0.5;
-        let action_request = await Template.ƒS.Menu.getInput(action_choice, "location_options");
+        let random_boolean = Math.random() < 0.8;
+        let action_request = await Template.ƒS.Menu.getInput(action_choice, "options");
         switch (action_request) {
             case (action_choice.search_berries):
                 Template.ƒS.Sound.play(Template.sound.click, 1);
@@ -1123,15 +1143,15 @@ var Template;
                     await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0002, true);
                     await Template.ƒS.update(1);
                     Template.ƒS.Inventory.add(Template.items.acaiberry);
-                    Template.dataForSave.item_acaiberry += 1;
-                    Template.dataForSave.power -= 5,
+                    Template.dataForSave.item_acaiberry = true;
+                    Template.dataForSave.energy -= 5,
                         Template.ƒS.Inventory.open;
                 }
                 else {
                     await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.disappointed, Template.ƒS.positionPercent(50, 140));
                     await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0001, true);
                     await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0003, true);
-                    Template.dataForSave.power -= 5,
+                    Template.dataForSave.energy -= 5,
                         await Template.ƒS.update(1);
                 }
                 Template.ƒS.Character.hideAll();
@@ -1151,7 +1171,7 @@ var Template;
 var Template;
 (function (Template) {
     async function waterfall() {
-        console.log("Boat river");
+        console.log("Wasser");
         let action_choice = {
             fish: "Fischen",
             back: "Zurück",
@@ -1161,30 +1181,47 @@ var Template;
                 T0000: "Mal sehen, ob wir was zu essen finden.",
                 T0001: "Die Fische schwimmen viel zu schnell.",
                 T0002: "Aye! Geschafft!",
-                T0003: "<i>Anscheinend fehlt mir ein Werkzeug oder ich brauche mehr Übungen...</i>",
+                T0003: "<i>Anscheinend fehlt mir ein Werkzeug...</i>",
+                T0004: "<i>Leider habe ich das Ziel verfehlt. Versuche gleich nochmal.</i>"
             }
         };
-        Template.dataForSave.health -= 1;
-        Template.dataForSave.power -= 1;
+        Template.dataForSave.energy -= 1;
         Template.ƒS.Speech.setTickerDelays(20, 2);
         Template.ƒS.Sound.play(Template.sound.waterfall, 1);
         await Template.ƒS.Location.show(Template.locations.jungle_lake);
         await Template.ƒS.update(Template.transitions.wet.duration, Template.transitions.wet.alpha, Template.transitions.wet.edge);
-        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.standby, Template.ƒS.positionPercent(50, 140));
+        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.neutral, Template.ƒS.positionPercent(50, 140));
         await Template.ƒS.update(1);
-        let random_boolean = Math.random() < 0.75;
-        let action_request = await Template.ƒS.Menu.getInput(action_choice, "location_options");
+        let random_boolean = Math.random() < 0.7;
+        let action_request = await Template.ƒS.Menu.getInput(action_choice, "options");
         switch (action_request) {
             case action_choice.fish:
                 Template.ƒS.Sound.play(Template.sound.click, 1);
                 Template.ƒS.Character.hideAll();
-                if (random_boolean == true && Template.dataForSave.item_spear > 0) {
+                if (random_boolean == true && Template.dataForSave.item_spear == true && Template.dataForSave.mission == 3) {
                     await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.laughing, Template.ƒS.positionPercent(50, 140));
                     await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0002, true);
                     await Template.ƒS.update(1);
                     Template.ƒS.Inventory.add(Template.items.fish_1);
-                    Template.dataForSave.item_fish += 1;
-                    Template.dataForSave.power -= 5,
+                    Template.dataForSave.mission += 1;
+                    Template.dataForSave.item_fish = true;
+                    Template.dataForSave.energy -= 5,
+                        Template.ƒS.Inventory.open;
+                }
+                if (random_boolean == false && Template.dataForSave.item_spear == true && Template.dataForSave.mission == 3) {
+                    await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.disappointed, Template.ƒS.positionPercent(50, 140));
+                    await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0004, true);
+                    Template.ƒS.Character.hideAll();
+                    await Template.ƒS.update(1);
+                    return "Map";
+                }
+                if (random_boolean == true && Template.dataForSave.item_spear == true) {
+                    await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.laughing, Template.ƒS.positionPercent(50, 140));
+                    await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0002, true);
+                    await Template.ƒS.update(1);
+                    Template.ƒS.Inventory.add(Template.items.fish_1);
+                    Template.dataForSave.item_fish = true;
+                    Template.dataForSave.energy -= 5,
                         Template.ƒS.Inventory.open;
                 }
                 else {
@@ -1196,22 +1233,18 @@ var Template;
                 Template.ƒS.Character.hideAll();
                 Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 1, false);
                 return "Map";
-                // return "Ende";   
-                break;
             case action_choice.back:
                 Template.ƒS.Sound.play(Template.sound.click, 1);
                 Template.ƒS.Character.hide(Template.characters.boy);
                 Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 1, false);
                 return "Map";
-                break;
         }
     }
     Template.waterfall = waterfall;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
-    async function waterfall_no_water() {
-        console.log("Boat river");
+    async function waterfall_final() {
         let action_choice = {
             explore: "Erkunden",
             fish: "Fischen",
@@ -1222,45 +1255,44 @@ var Template;
                 T0000: "Mal sehen, ob wir was zu essen finden.",
                 T0001: "Die Fische schwimmen viel zu schnell.",
                 T0002: "Aye! Geschafft!",
-                T0003: "<i>Anscheinend fehlt mir ein Werkzeug oder ich brauche mehr Übungen...</i>",
+                T0003: "<i>Anscheinend fehlt mir ein Werkzeug </i>",
             }
         };
-        Template.dataForSave.health -= 1;
-        Template.dataForSave.power -= 1;
+        Template.dataForSave.energy -= 1;
         Template.ƒS.Speech.setTickerDelays(20, 2);
         Template.ƒS.Sound.play(Template.sound.waterfall, 1);
         await Template.ƒS.Location.show(Template.locations.jungle_lake);
         await Template.ƒS.update(Template.transitions.wet.duration, Template.transitions.wet.alpha, Template.transitions.wet.edge);
-        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.standby, Template.ƒS.positionPercent(50, 140));
         await Template.ƒS.update(1);
-        let random_boolean = Math.random() < 0.75;
-        let action_request = await Template.ƒS.Menu.getInput(action_choice, "location_options");
+        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.neutral, Template.ƒS.positionPercent(50, 140));
+        await Template.ƒS.update(1);
+        let random_boolean = Math.random() < 0.6;
+        let action_request = await Template.ƒS.Menu.getInput(action_choice, "options");
         switch (action_request) {
             case action_choice.explore:
                 Template.ƒS.Sound.play(Template.sound.click, 1);
-                Template.ƒS.Character.hideAll();
+                Template.ƒS.Character.hide(Template.characters.boy);
                 if (random_boolean == true) {
-                    Template.ƒS.Character.hideAll();
-                    Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 1, false);
-                    return "Waterfall_End";
+                    Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 0.1);
+                    return "unforeseen_encounter_crocodile";
                 }
                 else {
-                    await Template.ƒS.Speech.tell(Template.characters.narrator, "Hier gibt es nichts zu sehen. Vielleicht wann anders.", true);
+                    await Template.ƒS.Speech.tell(Template.characters.narrator, "Hier gibt es nichts zu sehen. Vielleicht komme ich wann anders vorbei.", true);
                     Template.ƒS.Character.hideAll();
-                    Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 1, false);
+                    Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 0.1);
                     await Template.ƒS.update(1);
                     return "Map";
                 }
             case action_choice.fish:
                 Template.ƒS.Sound.play(Template.sound.click, 1);
                 Template.ƒS.Character.hideAll();
-                if (random_boolean == true && Template.dataForSave.item_spear > 0) {
+                if (random_boolean == true && Template.dataForSave.item_spear == true) {
                     await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.laughing, Template.ƒS.positionPercent(50, 140));
                     await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0002, true);
                     await Template.ƒS.update(1);
                     Template.ƒS.Inventory.add(Template.items.fish_1);
-                    Template.dataForSave.item_fish += 1;
-                    Template.dataForSave.power -= 5,
+                    Template.dataForSave.item_fish = true;
+                    Template.dataForSave.energy -= 5,
                         Template.ƒS.Inventory.open;
                 }
                 else {
@@ -1270,19 +1302,19 @@ var Template;
                     await Template.ƒS.update(1);
                 }
                 Template.ƒS.Character.hideAll();
-                Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 1, false);
+                Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 0.1);
                 return "Map";
                 // return "Ende";   
                 break;
             case action_choice.back:
                 Template.ƒS.Sound.play(Template.sound.click, 1);
                 Template.ƒS.Character.hide(Template.characters.boy);
-                Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 1, false);
+                Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 0.1);
                 return "Map";
                 break;
         }
     }
-    Template.waterfall_no_water = waterfall_no_water;
+    Template.waterfall_final = waterfall_final;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -1293,6 +1325,7 @@ var Template;
         };
         await Template.ƒS.Location.show(Template.locations.jungle_path_2);
         await Template.ƒS.update(Template.transitions.snake3.duration, Template.transitions.snake3.alpha, Template.transitions.snake3.edge);
+        Template.ƒS.update(1);
         let pathchoice = await Template.ƒS.Menu.getInput(PathDecision, "location_options");
         switch (pathchoice) {
             case PathDecision.left:
@@ -1314,6 +1347,7 @@ var Template;
         };
         await Template.ƒS.Location.show(Template.locations.jungle_path_3);
         await Template.ƒS.update(Template.transitions.wipe.duration, Template.transitions.wipe.alpha, Template.transitions.wipe.edge);
+        Template.ƒS.update(1);
         let pathchoice = await Template.ƒS.Menu.getInput(PathDecision, "location_options");
         switch (pathchoice) {
             case PathDecision.left:
@@ -1335,20 +1369,19 @@ var Template;
         };
         let text = {
             boy: {
-                T0000: "<i>Wie war nochmal der Weg? Es ist so verwirrend.</i>"
+                T0000: "<i>So... in welcher Richtung soll ich gehen?</i>"
             },
         };
         await Template.ƒS.Location.show(Template.locations.jungle_path);
         await Template.ƒS.update(Template.transitions.snake2.duration, Template.transitions.snake2.alpha, Template.transitions.snake2.edge);
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0000, true);
+        await Template.ƒS.update(1);
         let pathchoice = await Template.ƒS.Menu.getInput(PathDecision, "location_options");
         switch (pathchoice) {
             case PathDecision.left:
                 return "Labyrinth3";
-                break;
             case PathDecision.right:
                 return "Labyrinth2";
-                break;
         }
     }
     Template.Labyrinth_Beginning = Labyrinth_Beginning;
@@ -1358,8 +1391,8 @@ var Template;
     async function Labyrinth_Ending() {
         let text = {
             boy: {
-                T0000: "AH! Ich habe die Stelle gefunden.",
-                T0001: "<i>Mist! Das Boot ist beschädigt. Wir können so nicht zurückfahren.</i>",
+                T0000: "AH! Ich habe das Boot gefunden.",
+                T0001: "<i>Mist! Es ist beschädigt. Wir können so nicht zurückfahren.</i>",
                 T0002: "<i>Oh was ist das? Ein Koffer?!</i>",
                 T0003: "<i>Er lässt sich nicht öffnen...<br> Ist er verschlossen? Vielleicht kann Jenna mir weiterhelfen.</i>",
             }
@@ -1367,7 +1400,7 @@ var Template;
         await Template.ƒS.Location.show(Template.locations.sunken_boat);
         await Template.ƒS.update(Template.transitions.swipe.duration, Template.transitions.swipe.alpha, Template.transitions.swipe.edge);
         await Template.ƒS.update(1);
-        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.standby, Template.ƒS.positionPercent(15, 140));
+        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.neutral, Template.ƒS.positionPercent(15, 140));
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0000, true);
         Template.ƒS.update(1);
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0001, true);
@@ -1384,89 +1417,12 @@ var Template;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
-    async function Good_Bad_Ending_lifesaving() {
-        let text = {
-            boy: {
-                T0000: "Oh mann. Hier ist es echt gefährlich. Was sollen wir jetzt machen?",
-                T0001: "Ja, mach ich ...",
-                T0002: "Auf jeden Fall!"
-            },
-            girl: {
-                T0000: "Warte...Hörst du das auch? Ist es etwa ein Helicopter? <br> Lass schnell die Leuchtpistole abfeuern, damit sie uns bemerken.",
-                T0001: "Was machen wir mit Onkel Ben? Sollen wir auf ihn warten?",
-                T0002: "Ich hoffe er kommt bald.",
-                T0003: "Ja, du hast überlebt."
-            },
-            uncle: {
-                T0000: "Hey! Ich bin da!",
-                T0001: "Sehr gut! Ein Helicopter ist da, um uns zu retten. ",
-                T0002: "Lass uns nach Hause fliegen!",
-            }
-        };
-        Template.ƒS.Sound.play(Template.sound.helicopter, 1);
-        await Template.ƒS.Location.show(Template.locations.jungle_shack);
-        await Template.ƒS.update(Template.transitions.diagonal.duration, Template.transitions.diagonal.alpha, Template.transitions.diagonal.edge);
-        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.standby, Template.ƒS.positionPercent(15, 140));
-        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.angry_arm_crossed, Template.ƒS.positionPercent(75, 140));
-        await Template.ƒS.update(1);
-        await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0000, true);
-        await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0000, true);
-        await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0001, true);
-        //ƒS.Sound.play(sound.flare_gun, 1);
-        let shoot_flare_gun = {
-            shoot: "Abfeuern",
-        };
-        let shoot_action = await Template.ƒS.Menu.getInput(shoot_flare_gun, "options");
-        switch (shoot_action) {
-            case (shoot_flare_gun.shoot):
-                Template.ƒS.Sound.play(Template.sound.gunshot, 2);
-                Template.ƒS.Sound.fade(Template.sound.flare_gun, 0.5, 0.5);
-                break;
-        }
-        await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0001, true);
-        await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0002, true);
-        Template.dataForSave.uncle_alive = false;
-        if (Template.dataForSave.uncle_alive == false) {
-            Template.ƒS.Text.setClass("statistic");
-            Template.ƒS.Text.print("<p> Der Helikopter sieht die Überlebenden und landet in der Nähe... </p> <p> Ihr wartet stundenlang auf Ben, aber von ihm fehlt jeder Spur...</p>");
-            await Template.ƒS.Speech.tell(null, null, true);
-            await Template.ƒS.Character.hideAll();
-            await Template.ƒS.Location.show(Template.locations.helicopter);
-            await Template.ƒS.update(Template.transitions.diagonal.duration, Template.transitions.diagonal.alpha, Template.transitions.diagonal.edge);
-            Template.ƒS.Text.setClass("statistic");
-            Template.ƒS.Text.print("<p> Bevor es dunkel wird, entscheiden die Zwei ins Helikopter einzusteigen. Der Helikopter hebt ab und fliegt zum nächsten Flughafen.</p> ");
-            await Template.ƒS.Speech.tell(null, null, true);
-            Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 0.1);
-            Template.ƒS.Sound.fade(Template.sound.helicopter, 0, 0.1);
-            Template.ƒS.Sound.fade(Template.sound.flare_gun, 0, 0.1);
-            await Template.ƒS.Location.show(Template.locations.end);
-            await Template.ƒS.update(Template.transitions.t19.duration, Template.transitions.t19.alpha, Template.transitions.t19.edge);
-            Template.ƒS.Text.setClass("statistic");
-            Template.ƒS.Text.print("<p> Die Jungendliche haben in der Wildnis überlebt.<br> War es die wirklich richtige Entscheidung, den alten Mann alleine gegen das Krokodil kämpfen zu lassen?</p>");
-            await Template.ƒS.Speech.tell(null, null, true);
-            await Template.ƒS.update(1);
-        }
-        else {
-            await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.backpain, Template.ƒS.positionPercent(45, 140));
-            await Template.ƒS.update(1);
-            await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0000, true);
-            await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0003, true);
-            await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0001, true);
-            await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0002, true);
-            await Template.ƒS.Character.hideAll();
-            await Template.ƒS.Location.show(Template.locations.helicopter);
-            await Template.ƒS.update(Template.transitions.diagonal.duration, Template.transitions.diagonal.alpha, Template.transitions.diagonal.edge);
-            Template.ƒS.Text.setClass("statistic");
-            Template.ƒS.Text.print("<p> Die Helicopter kommt genau zur richtigen Zeit. Das Rettungteam sieht die Überlebenden und bringt sie zum nächsten Flughafen.</p>");
-            await Template.ƒS.Speech.tell(null, null, true);
-            await Template.ƒS.Character.hide(Template.characters.crocodile);
-            await Template.ƒS.Location.show(Template.locations.end);
-            await Template.ƒS.update(Template.transitions.t19.duration, Template.transitions.t19.alpha, Template.transitions.t19.edge);
-            await Template.ƒS.Speech.tell(Template.characters.narrator, "Glückwunsch! Alle haben dank deiner Hilfe überlebt.", true);
-            await Template.ƒS.update(1);
-        }
+    async function End() {
+        Template.ƒS.Text.print("<p>Das Spiel ist hier zu Ende.");
+        await Template.ƒS.Speech.tell(null, null, true);
+        await Template.ƒS.update(4);
     }
-    Template.Good_Bad_Ending_lifesaving = Good_Bad_Ending_lifesaving;
+    Template.End = End;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -1477,14 +1433,14 @@ var Template;
         await Template.ƒS.update(Template.transitions.t19.duration, Template.transitions.t19.alpha, Template.transitions.t19.edge);
         await Template.ƒS.update(1);
         Template.ƒS.Text.setClass("statistic");
-        Template.ƒS.Text.print("<p> Willkommen zum Jungle Survival! </p> <p> In dieser Visual Novel triffst du Entscheidungen, die dann deine Geschichte beeinflussen.<br>Ereignisse können in dem Spiel zufällig passieren. An bestimmten Stellen werden bestimmte Gegenstände vorausgesetzt. <br> Es ist möglich die Handlung mehrmals durchzuführen, um ein bestimmtes Ziel zu erreichen.<br> Achte auf dein Gesundheit und deine Kraft, weil sie für bestimmten Handlungen berücksichtigt werden.<br> Hier sind sinnvolle Shortcuts, die das Spielerlebnis erleichtern.</p> <p> Vollbildschirm Windows: F11 <br>Vollbildschirm  Mac: Ctrl - Cmd – F <br> Inventar: F2 <br> Menu öffnen/schlließen: M </p>  </p> <p> Viel Spaß! </p>");
+        Template.ƒS.Text.print("<p> Willkommen zum Jungle Survival! </p> <p> In dieser Visual Novel triffst du Entscheidungen, die dann deine Geschichte beeinflussen.<br>Ereignisse können in dem Spiel zufällig passieren. An bestimmten Stellen werden bestimmte Gegenstände vorausgesetzt. <br> Es ist möglich die Szenen mehrmals durchzuführen, um ein bestimmtes Ziel zu erreichen.<br> Achte auf deine Lebensenergie, weil sie für bestimmten Handlungen berücksichtigt werden.<br> Hier sind Shortcuts, die das Spielerlebnis erleichtern.</p> <p> Vollbildschirm Windows: F11 <br>Vollbildschirm  Mac: Ctrl - Cmd – F <br> Inventar: F2 <br> Menu öffnen/schlließen: M </p>  </p> <p> Viel Spaß! </p>");
         await Template.ƒS.Speech.tell(null, null, true);
         Template.ƒS.Text.print("<p> Du spielst die Rolle von einem Jungen, der mit seinen Verwandten nach Chalana fliegt.<br>Dort befindet sich ein Regenwald. Dieser ist ein Naturschutzgebiet und ist seit kurzem für Tourismus geöffnet.<br> Gemeinsam mit deinem Onkel und deiner Cousine leiht ihr ein Boot aus und fährt in die Wildnis hinein.</p>");
         await Template.ƒS.Speech.tell(null, null, true);
         await Template.ƒS.Speech.tell(Template.characters.narrator, "Wie möchtest du im Spiel genannt werden?<br> ", true);
         Template.dataForSave.nameProtagonist = await Template.ƒS.Speech.getInput();
         Template.characters.boy.name = Template.dataForSave.nameProtagonist;
-        Template.ƒS.Text.print("<p> Das Spiel beginnt!</p>");
+        Template.ƒS.Text.print("<p>Das Spiel beginnt!</p> <p>Tipp:</p> <p>Um spielerisch voranzukommen, kannst du dem Onkel fragen, welche Aufgabe erledigt werden müssen.</p>");
         await Template.ƒS.Speech.tell(null, null, true);
     }
     Template.Introduction = Introduction;
@@ -1495,28 +1451,24 @@ var Template;
         console.log("Game starts");
         let text = {
             boy: {
-                T0000: "Endlich sind wir da! Die Reise war anstrengend.",
-                T0001: "Durch die Bootsfahrt ist angenehmner wegen dem Gegenwind.",
-                T0002: "Ich bin gespannt, was wir heute sehen werden. Ich hoffe wir haben Glück und können Tiere sehen.",
-                T0003: "Oh nein. Das habe ich im Zimmer vergessen.",
-                T0004: "Du bist der Beste, Onkel Ben."
+                T0000: "Endlich sind wir da! Die Reise war lang und anstrengend.",
+                T0001: "Die Bootsfahrt ist entspannend.",
+                T0002: "Ich bin gespannt, was wir heute sehen werden. Ich hoffe, wir haben Glück und können Tiere sehen.",
+                T0003: "Schön, dass ich dabei sein kann.",
             },
             girl: {
-                T0000: "Ich freue mich, dass wir endlich hier sind. Das Wetter hier habe ich komplett unterschätzt. Es ist viel zu heiß.",
-                T0001: "Oh ja. Das tut gut.",
+                T0000: "Aye! Schönes Wetter heute.",
+                T0001: "Ja, das stimmt.",
                 T0002: "Da bin ich ganz deiner Meinung.",
-                T0003: "Das ist wieder mal typisch von dir. Ich werde dir nichts geben. Du bist selber schuld.",
             },
             uncle: {
-                T0000: "Schönes Wetter heute. Wenn wir schonmal hier sind, sollten unbedingt den Regenwald sehen.",
+                T0000: "Heute ist ein perfekter Tag den Regenwald zu besuchen.",
                 T0001: "Das hoffe ich auch.",
-                T0002: "Da es hier ein Naturschutzgebiet ist, leben hier viele Tiere friedlich miteinander.",
-                T0003: "Ihr sollte auf eure Gesundheit achten. Bei diesem Wetter solltet ihr viel Wasser trinken. Ich hoffe ihr habt eure Wasserflasche dabei.",
-                T0004: "Beruhigt euch. Gott sei dank habe ich zwei Wasserflasche dabei."
+                T0002: "Da es hier ein Naturschutzgebiet ist, ist die Vielfalt der Tiere enorm.",
             }
         };
         Template.ƒS.Speech.setTickerDelays(20, 2);
-        Template.ƒS.Sound.fade(Template.sound.motorboat, 0.2, 0.1, true);
+        Template.ƒS.Sound.fade(Template.sound.motorboat, 0.2, 1, true);
         await Template.ƒS.Location.show(Template.locations.jungle_boat);
         await Template.ƒS.update(Template.transitions.theatre_opening.duration, Template.transitions.theatre_opening.alpha, Template.transitions.theatre_opening.edge);
         await Template.ƒS.update(1);
@@ -1524,12 +1476,12 @@ var Template;
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0000, true);
         await Template.ƒS.update(1);
         //Animation girl
-        await Template.ƒS.Character.animate(Template.characters.girl, Template.characters.girl.pose.laughing, Template.fromOutofCanvasToLeft());
+        await Template.ƒS.Character.animate(Template.characters.girl, Template.characters.girl.pose.neutral, Template.fromOutofCanvasToLeft());
         await Template.ƒS.update(1);
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0000, true);
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0001, true);
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0001, true);
-        await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.explain, Template.ƒS.positionPercent(50, 140));
+        await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.neutral, Template.ƒS.positionPercent(50, 140));
         await Template.ƒS.update(1);
         await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0000, true);
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0002, true);
@@ -1537,11 +1489,6 @@ var Template;
         await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0001, true);
         await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0002, true);
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0003, true);
-        await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0003, true);
-        await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0004, true);
-        Template.ƒS.Inventory.add(Template.items.waterbottle);
-        Template.ƒS.Inventory.add(Template.items.waterbottle);
-        await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0004, true);
         Template.ƒS.Character.hideAll();
         Template.ƒS.Sound.fade(Template.sound.motorboat, 0, 0.1, true);
         await Template.ƒS.update(1);
@@ -1550,50 +1497,16 @@ var Template;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
-    async function fight_crocodile() {
-        Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 0.1);
-        Template.ƒS.Sound.play(Template.sound.fight, 1);
-        if (Template.dataForSave.health > 75 && Template.dataForSave.power > 75 && Template.dataForSave.item_axe > 0) {
-            await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.fit, Template.ƒS.positionPercent(15, 140));
-            await Template.ƒS.Character.show(Template.characters.crocodile, Template.characters.crocodile.pose.aggressiv, Template.ƒS.positionPercent(70, 80));
-            await Template.ƒS.update(1);
-            await Template.ƒS.Character.animate(Template.characters.crocodile, Template.characters.crocodile.pose.aggressiv, Template.RightFightAnimationCrocodile());
-            await Template.ƒS.Character.hide(Template.characters.crocodile);
-            await Template.ƒS.Character.show(Template.characters.crocodile, Template.characters.crocodile.pose.aggressiv, Template.ƒS.positionPercent(70, 80));
-            await Template.ƒS.update(2);
-            await Template.ƒS.Character.animate(Template.characters.crocodile, Template.characters.crocodile.pose.aggressiv, Template.EscapeAnimationCrocodile());
-            await Template.ƒS.Speech.tell(Template.characters.narrator, "Das Krokodil geht wieder ins Wasser und lässt euch in Ruhe", true);
-            await Template.ƒS.Character.hide(Template.characters.crocodile);
-            Template.dataForSave.uncle_alive = true;
-            Template.ƒS.Sound.fade(Template.sound.fight, 0, 0.1);
-            await Template.ƒS.Character.hideAll();
-            return "Ending2";
-        }
-        else {
-            await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.fit, Template.ƒS.positionPercent(15, 140));
-            await Template.ƒS.Character.show(Template.characters.crocodile, Template.characters.crocodile.pose.aggressiv, Template.ƒS.positionPercent(70, 80));
-            await Template.ƒS.update(1);
-            await Template.ƒS.Character.animate(Template.characters.uncle, Template.characters.uncle.pose.fit, Template.LeftFightAnimation());
-            await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.standby, Template.ƒS.positionPercent(15, 140));
-            await Template.ƒS.update(1);
-            await Template.ƒS.Character.animate(Template.characters.boy, Template.characters.boy.pose.standby, Template.LeftFightAnimation());
-            await Template.ƒS.update(1);
-            await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.angry_arm_crossed, Template.ƒS.positionPercent(15, 140));
-            await Template.ƒS.update(1);
-            await Template.ƒS.Character.animate(Template.characters.girl, Template.characters.girl.pose.angry_arm_crossed, Template.LeftFightAnimation());
-            await Template.ƒS.update(1);
-            Template.ƒS.Text.setClass("statistic");
-            Template.ƒS.Text.print("<p> Leider waren alle körperlich zu schwach, um gegen das Krokodil zu verteidigen. Eine Waffe hätte beim Kampf helfen können.</p>");
-            await Template.ƒS.Speech.tell(null, null, true);
-            await Template.ƒS.Character.hide(Template.characters.crocodile);
-            Template.ƒS.Sound.fade(Template.sound.fight, 0, 0.1);
-            await Template.ƒS.Location.show(Template.locations.game_over);
-            await Template.ƒS.Speech.tell(Template.characters.narrator, "Versuch es beim nächsten Mal besser!", true);
-            await Template.ƒS.update(Template.transitions.t19.duration, Template.transitions.t19.alpha, Template.transitions.t19.edge);
-            await Template.ƒS.update(1);
-        }
+    async function general_end() {
+        await Template.ƒS.Location.show(Template.locations.game_over);
+        await Template.ƒS.update(Template.transitions.t19.duration, Template.transitions.t19.alpha, Template.transitions.t19.edge);
+        Template.ƒS.Text.setClass("stylebox");
+        Template.ƒS.Text.print("<p>Deine Mitreisende müssen ohne dich auskommen.<br> Versuch beim nächsten Mal besser.");
+        await Template.ƒS.Speech.tell(null, null, true);
+        await Template.ƒS.update(4);
+        return "END";
     }
-    Template.fight_crocodile = fight_crocodile;
+    Template.general_end = general_end;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -1601,31 +1514,28 @@ var Template;
         console.log("Rain");
         let text = {
             narrator: {
-                T0000: "Wie aus dem Nichts wird es dunkel und es beginnt zu regnen. ",
+                T0000: "Wie aus dem Nichts wird es dunkel und es regnet... ",
                 T0001: "Das Land ist sehr bekannt für Fauna und Flora."
             },
             boy: {
-                T0000: "Hä! Auf einmal ist es dunkel. Ich verstehe das nicht...",
+                T0000: "Was ist los?! Auf einmal beginnt es zu regnen...",
                 T0001: "Hoffentlich, darauf war ich nicht vorbereitet.",
                 T0002: "Das ist echt blöd. Ich hoffe, wir werden unseren Ausflug nicht abbrechen.",
-                T0003: "Einverstanden. Mir wird es langsam schlecht."
+                T0003: "OK! Da vorne können wir unser Boot anlegen."
             },
             girl: {
-                T0000: "Oh jee! Das sieht nicht gut aus...",
-                T0001: "Ich habe leider keinen Regenschirm mitgenommen.",
+                T0000: "Oh jee! Das sieht für die heutige Tour nicht gut aus...",
+                T0001: "Bin auch nicht vorbereitet.",
                 T0002: "Das wäre ziemlich schade. Wir sind so weit gereist.",
-                T0003: "Ja, da vorne können wir unser Boot anlegen."
+                T0003: "Ist besser so. Mir wird langsam von der Bootsfahrt schlecht."
             },
             uncle: {
-                T0000: "Hier ist zur Zeit Regenzeit. Es ist normal, dass es auf einmal regnet.",
-                T0001: "Mach euch keine Sorgen. Der Regen ist schnell wieder vorbei.",
-                T0002: "Es wird bald vorbei sein. Mach euch keinen Kopf.",
-                T0003: "Hmm... Vielleicht ist es besser, wenn wir an dieser Stelle eine Pause einlegen. Mit diesen Wellen ist es zu gefährlich.",
-                T0004: "Beruhigt euch. Gott sei dank habe ich zwei Wasserflasche dabei."
+                T0000: "Zur Zeit ist Regenzeit. Es ist normal, dass es auf einmal regnet.",
+                T0001: "Mach euch keine Sorgen. Es ist bald wieder vorbei.",
+                T0003: "Die Wellen werden immer stärker. Vielleicht ist es besser, wenn wir an dieser Stelle eine Pause einlegen. Mit diesen Wellen ist es zu gefährlich."
             }
         };
-        Template.dataForSave.health -= 5;
-        Template.dataForSave.power -= 5;
+        Template.dataForSave.energy -= 5;
         Template.ƒS.Speech.setTickerDelays(20, 2);
         Template.ƒS.Sound.play(Template.sound.lightning, 1);
         await Template.ƒS.Location.show(Template.locations.thunderstorm_1);
@@ -1635,26 +1545,24 @@ var Template;
         await Template.ƒS.Location.show(Template.locations.jungle_boat_rain);
         await Template.ƒS.update(1);
         await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0000, true);
-        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.explain, Template.ƒS.positionPercent(80, 130));
+        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.discuss, Template.ƒS.positionPercent(80, 140));
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0000, true);
         await Template.ƒS.update(1);
-        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.desperate, Template.ƒS.positionPercent(20, 130));
+        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.desperate, Template.ƒS.positionPercent(20, 140));
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0000, true);
         await Template.ƒS.update(1);
-        await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.explain, Template.ƒS.positionPercent(50, 130));
+        await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.fit, Template.ƒS.positionPercent(50, 140));
         await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0000, true);
         await Template.ƒS.update(1);
         await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0001, true);
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0001, true);
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0001, true);
-        await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0002, true);
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0002, true);
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0002, true);
         await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0003, true);
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0003, true);
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0003, true);
-        Template.dataForSave.health -= 10;
-        Template.dataForSave.power -= 10;
+        Template.dataForSave.energy -= 10;
         Template.ƒS.Character.hideAll();
         await Template.ƒS.update(1);
         await Template.ƒS.Location.show(Template.locations.thunderstorm_2);
@@ -1663,80 +1571,26 @@ var Template;
     }
     Template.heavy_rain = heavy_rain;
 })(Template || (Template = {}));
-// namespace Template {
-//     export async function jungle_night(): ƒS.SceneReturn {
-//       console.log("Game starts");
-//       let text = {
-//         narrator: {
-//           T0000: "In der Nacht ist es sehr dunkel.Man kann kaum was sehen."
-//         },
-//         boy: {
-//           T0000: "Endlich sind wir da! Die Reise war echt hart.",
-//           T0001: "Durch die Bootsfahrt ist angenehmner wegen dem Gegenwind.",
-//           T0002: "Ich bin gespannt, was wir heute sehen werden. Ich hoffe wir haben Glück und können Tiere sehen.",
-//           T0003: "Oh nein. Das habe ich im Zimmer vergessen.",
-//           T0004: "Du bist der Beste, Onkel Ben."
-//         },
-//         girl: {
-//           T0000: "Hier ist ist echt gruselig. Ich kann so nicht schlafen.",
-//           T0001: "Oh ja. Das tut gut.",
-//           T0002: "Da bin ich ganz deiner Meinung.",
-//           T0003: "Das ist wieder mal typisch von dir. Ich werde dir nichts geben. Du bist selber schuld.",
-//         },
-//         uncle: { 
-//           T0000: "Schönes Wetter heute. Wenn wir schonmal hier sind, sollten unbedingt den Regenwald sehen.",
-//           T0001: "Das hoffe ich auch.",
-//           T0002: "Da es hier ein Naturschutzgebiet ist, leben hier viele Tiere friedlich miteinander.",
-//           T0003: "Ihr sollte auf eure Gesundheit achten. Bei diesem Wetter solltet ihr viel Wasser trinken. Ich hoffe ihr habt eure Wasserflasche dabei.",
-//           T0004: "Beruhigt euch. Gott sei dank habe ich zwei Wasserflasche dabei."
-//         }
-//       };
-//     ƒS.Speech.setTickerDelays(20, 2);
-//     ƒS.Sound.play(sound.deep_jungle, 1, true); 
-//     await ƒS.Location.show(locations.jungle_night_1);    
-//     await ƒS.update(transitions.t21.duration, transitions.t21.alpha, transitions.t21.edge);
-//     await ƒS.Speech.tell(characters.narrator, text.narrator.T0000, true);
-//     await ƒS.Character.animate(characters.boy, characters.boy.pose.standby, fromOutofCanvasToRight());
-//     await ƒS.Speech.tell(characters.boy, text.boy.T0000, true);
-//     await ƒS.update(1);
-//     //Animation girl
-//     await ƒS.Character.animate(characters.girl, characters.girl.pose.desperate, fromOutofCanvasToLeft());
-//     await ƒS.update(1);
-//     await ƒS.Speech.tell(characters.girl, text.girl.T0000, true);
-//     await ƒS.Character.animate(characters.uncle, characters.uncle.pose.backpain, fromOutofCanvasToCenter());
-//     await ƒS.update(1);
-//     ƒS.Character.hideAll();
-//     ƒS.Sound.fade(sound.motorboat, 0, 0.1, true); 
-//     await ƒS.update(1);
-//   }
-//   }
 var Template;
 (function (Template) {
     async function lake_crocodile() {
         console.log("Endscene");
         let text = {
             narrator: {
-                T0000: "Dein Onkel und deine Cousine kommen dir zu Hilfe.",
-                T0001: "",
-                T0002: "",
-                T0003: "",
+                T0000: "Dein Onkel und deine Cousine haben von deiner Schrei gehört und eilen dir zur Hilfe.",
             },
             boy: {
                 T0000: "Hier gibt es frisches Wasser.",
-                T0001: "Was ist das?! Ein KROKODIL!",
-                T0002: "Aye! Geschafft!",
-                T0003: "<i>Anscheinend fehlt mir ein Werkzeug oder ich brauche mehr Übungen...</i>",
+                T0001: "Was ist das?! Ein KROKODIL!"
             },
             uncle: {
-                T0000: "Er will vielleicht nur Wasser trinken. Lass uns abhauen.",
-                T0001: "Oh er ist ziemlich aggressiv. Geht ihr zurück. Ich mache das schon.",
-                T0002: "",
-                T0003: "",
+                T0000: "Es sieht hungrig aus. Lass uns lieber abhauen.",
+                T0001: "Oh! Es ist ziemlich aggressiv. Geht ihr zurück. Ich mache das schon und komme danach."
             },
             girl: {
                 T0000: "Oh nein. Das hat uns noch gerade gefehlt.",
                 T0001: "Lass uns schnell weggehen, " + Template.characters.boy.name,
-                T0002: "",
+                T0002: "Wir haben keine Waffe. Das Krokodil macht uns fertig.",
                 T0003: "",
             }
         };
@@ -1744,7 +1598,7 @@ var Template;
         Template.ƒS.Sound.play(Template.sound.waterfall, 1);
         await Template.ƒS.Location.show(Template.locations.jungle_lake);
         await Template.ƒS.update(Template.transitions.wet.duration, Template.transitions.wet.alpha, Template.transitions.wet.edge);
-        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.standby, Template.ƒS.positionPercent(50, 140));
+        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.neutral, Template.ƒS.positionPercent(50, 140));
         await Template.ƒS.update(1);
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0000, true);
         await Template.ƒS.Character.hideAll();
@@ -1758,31 +1612,197 @@ var Template;
         //await ƒS.Character.show(characters.boy, characters.boy.pose.explain, ƒS.positionPercent(10, 130));
         await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0000, true);
         await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.fit, Template.ƒS.positionPercent(30, 130));
-        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.desperate, Template.ƒS.positionPercent(10, 130));
+        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.desperate, Template.ƒS.positionPercent(10, 140));
         await Template.ƒS.update(1);
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0000, true);
         await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0000, true);
         await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0001, true);
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0001, true);
         let action_choice = {
-            stay: "Mit Onkel bleiben.",
-            flee: "Mit der Cousine wegrennen.",
+            stay: "Mit Onkel bleiben",
+            flee: "Mit der Cousine weggehen",
         };
         let action_request = await Template.ƒS.Menu.getInput(action_choice, "options");
         switch (action_request) {
             case (action_choice.stay):
-                await Template.ƒS.Character.hideAll();
-                return "Ending1";
-            // return "Ende";     
+                if (Template.dataForSave.energy > 20 && Template.dataForSave.item_axe == true) {
+                    await Template.ƒS.Character.hideAll();
+                    return "victory_fight";
+                }
+                else {
+                    await Template.ƒS.Character.hideAll();
+                    return "lost_fight";
+                }
             case action_choice.flee:
                 Template.ƒS.Sound.play(Template.sound.click, 1);
                 Template.ƒS.Character.hideAll();
                 Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 0.1);
                 return "Ending2";
-                break;
         }
     }
     Template.lake_crocodile = lake_crocodile;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function lifesaving_bad_ending() {
+        Template.ƒS.Text.setClass("stylebox");
+        Template.ƒS.Text.print("<p> Der Helikopter sieht die Überlebenden und landet in der Nähe... </p> <p> Ihr wartet stundenlang auf Ben, aber von ihm fehlt jeder Spur...</p>");
+        await Template.ƒS.Speech.tell(null, null, true);
+        await Template.ƒS.Character.hideAll();
+        await Template.ƒS.Location.show(Template.locations.helicopter);
+        await Template.ƒS.update(Template.transitions.swipe.duration, Template.transitions.swipe.alpha, Template.transitions.swipe.edge);
+        Template.ƒS.Text.setClass("stylebox");
+        Template.ƒS.Text.print("<p> Bevor es dunkel wird, entscheiden die Zwei ins Helikopter einzusteigen. Der Helikopter hebt ab und fliegt zum nächsten Flughafen.</p> ");
+        await Template.ƒS.Speech.tell(null, null, true);
+        Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 0.1);
+        Template.ƒS.Sound.fade(Template.sound.helicopter, 0, 0.1);
+        Template.ƒS.Sound.fade(Template.sound.flare_gun, 0, 0.1);
+        await Template.ƒS.Location.show(Template.locations.end);
+        await Template.ƒS.update(Template.transitions.t19.duration, Template.transitions.t19.alpha, Template.transitions.t19.edge);
+        Template.ƒS.Text.setClass("stylebox");
+        Template.ƒS.Text.print("<p> Die Jungendliche haben in der Wildnis überlebt.<br> War es die wirklich richtige Entscheidung, den alten Mann alleine gegen das Krokodil kämpfen zu lassen?</p>");
+        await Template.ƒS.Speech.tell(null, null, true);
+        await Template.ƒS.update(4);
+        return "END";
+    }
+    Template.lifesaving_bad_ending = lifesaving_bad_ending;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function lifesaving_ending() {
+        let text = {
+            boy: {
+                T0000: "Oh man. Hier ist es echt gefährlich. Was sollen wir jetzt machen?",
+                T0001: "Ja, mach ich ...",
+                T0002: "Auf jeden Fall!"
+            },
+            girl: {
+                T0000: "Warte...Hörst du das auch? Ist es etwa ein Helicopter? <br> ",
+                T0001: "Hier ist die Leuchtpistole. Lass sie schnell abfeuern, damit das Rettungsteam uns wahrnehmen.",
+                T0002: "Was machen wir mit Onkel Ben? Sollen wir auf ihn warten?",
+                T0003: "Ich hoffe er kommt bald.",
+                T0004: "Ja, du hast überlebt.",
+            },
+            uncle: {
+                T0000: "Hey! Ich bin da!",
+                T0001: "Sehr gut! Was ein Timing, dass ein Helicopter jetzt kommt, um uns zu retten. ",
+                T0002: "Lass uns von hier verschwinden!",
+            }
+        };
+        let shoot_flare_gun = {
+            shoot: "Abfeuern",
+        };
+        Template.ƒS.Sound.play(Template.sound.helicopter, 1);
+        await Template.ƒS.Location.show(Template.locations.jungle_shack);
+        await Template.ƒS.update(Template.transitions.blur.duration, Template.transitions.blur.alpha, Template.transitions.blur.edge);
+        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.neutral, Template.ƒS.positionPercent(75, 140));
+        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.searching, Template.ƒS.positionPercent(15, 140));
+        await Template.ƒS.update(1);
+        await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0000, true);
+        await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0000, true);
+        await Template.ƒS.Character.hideAll();
+        await Template.ƒS.Location.show(Template.locations.helicopter);
+        await Template.ƒS.update(Template.transitions.wipe.duration, Template.transitions.wipe.alpha, Template.transitions.wipe.edge);
+        await Template.ƒS.update(1);
+        await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0001, true);
+        await Template.ƒS.Location.show(Template.locations.jungle_shack);
+        await Template.ƒS.update(Template.transitions.wipe.duration, Template.transitions.wipe.alpha, Template.transitions.wipe.edge);
+        await Template.ƒS.update(1);
+        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.neutral, Template.ƒS.positionPercent(75, 140));
+        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.pointing, Template.ƒS.positionPercent(15, 130));
+        await Template.ƒS.update(2);
+        await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0001, true);
+        let shoot_action = await Template.ƒS.Menu.getInput(shoot_flare_gun, "options");
+        switch (shoot_action) {
+            case (shoot_flare_gun.shoot):
+                Template.ƒS.Sound.play(Template.sound.gunshot, 2);
+                Template.ƒS.Sound.fade(Template.sound.flare_gun, 0.5, 0.5);
+                break;
+        }
+        await Template.ƒS.update(2);
+        await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0002, true);
+        await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0002, true);
+        await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0003, true);
+        if (Template.dataForSave.uncle_alive == false) {
+            await Template.ƒS.Character.hideAll();
+            return "livesaving_bad_ending";
+        }
+        else {
+            await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.backpain, Template.ƒS.positionPercent(45, 140));
+            await Template.ƒS.update(1);
+            await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0000, true);
+            await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0004, true);
+            await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0001, true);
+            await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0002, true);
+            await Template.ƒS.Character.hideAll();
+            await Template.ƒS.Location.show(Template.locations.helicopter);
+            await Template.ƒS.update(Template.transitions.diagonal.duration, Template.transitions.diagonal.alpha, Template.transitions.diagonal.edge);
+            Template.ƒS.Text.setClass("stylebox");
+            Template.ƒS.Text.print("<p> Die Helicopter kommt genau zur richtigen Zeit. Das Rettungteam sieht die Überlebenden und bringt sie zum nächsten Flughafen.</p>");
+            await Template.ƒS.Speech.tell(null, null, true);
+            await Template.ƒS.Character.hide(Template.characters.crocodile);
+            await Template.ƒS.Location.show(Template.locations.end);
+            await Template.ƒS.update(Template.transitions.t19.duration, Template.transitions.t19.alpha, Template.transitions.t19.edge);
+            await Template.ƒS.Speech.tell(Template.characters.narrator, "Glückwunsch! Alle haben dank deiner Hilfe überlebt.", true);
+            await Template.ƒS.update(4);
+            return "END";
+        }
+    }
+    Template.lifesaving_ending = lifesaving_ending;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function lost_fight_crocodile_ending() {
+        let text = {
+            boy: {
+                T0000: "ONKEL BEN! ICH MACHE DICH FERTIG!",
+                T0001: "EY YEAHH!",
+            },
+            uncle: {
+                T0000: "AYY YAAAA!!!",
+                T0001: "Schau zu und lerne...",
+                T0002: "Gleich nochmal...",
+            },
+            girl: {
+                T0000: "NEIN! " + Template.dataForSave.nameProtagonist,
+                T0001: "UGHHH.......",
+            }
+        };
+        Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 0.1);
+        Template.ƒS.Sound.play(Template.sound.fight, 1);
+        await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.pointing, Template.ƒS.positionPercent(25, 140));
+        await Template.ƒS.Character.show(Template.characters.crocodile, Template.characters.crocodile.pose.aggressiv, Template.ƒS.positionPercent(70, 80));
+        await Template.ƒS.update(1);
+        await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0001, true);
+        await Template.ƒS.Character.hide(Template.characters.crocodile);
+        await Template.ƒS.Character.animate(Template.characters.crocodile, Template.characters.crocodile.pose.aggressiv, Template.CentershakingAnimationCrocodile());
+        await Template.ƒS.Character.animate(Template.characters.uncle, Template.characters.uncle.pose.pointing, Template.LeftFightAnimation());
+        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.neutral, Template.ƒS.positionPercent(25, 140));
+        await Template.ƒS.update(1);
+        await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0000, true);
+        await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0001, true);
+        await Template.ƒS.Character.animate(Template.characters.boy, Template.characters.boy.pose.neutral, Template.LeftFightAnimation());
+        await Template.ƒS.update(1);
+        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.pointing, Template.ƒS.positionPercent(25, 140));
+        await Template.ƒS.update(1);
+        await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0000, true);
+        await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0001, true);
+        await Template.ƒS.Character.animate(Template.characters.girl, Template.characters.girl.pose.pointing, Template.LeftFightAnimation());
+        await Template.ƒS.update(1);
+        await Template.ƒS.Character.hideAll();
+        await Template.ƒS.update(1);
+        Template.ƒS.Text.setClass("stylebox");
+        Template.ƒS.Text.print("<p> Leider waren alle körperlich zu schwach. Niemand hat den Krokodilangriff überlebt. Eine Waffe wäre hilfreich gewesen.</p>");
+        await Template.ƒS.Speech.tell(null, null, true);
+        await Template.ƒS.Character.hide(Template.characters.crocodile);
+        Template.ƒS.Sound.fade(Template.sound.fight, 0, 0.1);
+        await Template.ƒS.Location.show(Template.locations.game_over);
+        await Template.ƒS.Speech.tell(Template.characters.narrator, "Versuch es beim nächsten Mal besser!", true);
+        await Template.ƒS.update(Template.transitions.t19.duration, Template.transitions.t19.alpha, Template.transitions.t19.edge);
+        await Template.ƒS.update(4);
+        return "END";
+    }
+    Template.lost_fight_crocodile_ending = lost_fight_crocodile_ending;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -1793,8 +1813,7 @@ var Template;
                 T0000: "Was ein starker Regen! Es wird immer schlimmer!",
                 T0001: "Ich habe auch hier kein Empfang...",
                 T0002: "Abgesehen vom Bootsverleiher weiß es keiner. Er war irgendwie auch seltsam und hat uns nicht richtig wahrgenommen.",
-                T0003: "Hat jemand eine Idee?",
-                T0004: "Du bist der Beste Onkel Ben."
+                T0003: "Hat jemand eine Idee?"
             },
             girl: {
                 T0000: "Oh nein! Was sollen wir nur machen?! So habe ich mein Urlaub nicht vorgestellt.",
@@ -1807,30 +1826,29 @@ var Template;
                 T0000: "Wir sollten Schutz suchen. Der Regen ist heftiger als ich vermutet habe.",
                 T0001: "So ist es unmöglich mit dem Boot zu fahren. Warten wir solange ab, bis der Regen aufhört.",
                 T0002: "Die Wellen sind viel zu stark. Wir sollten abwarten.",
-                T0003: "Habt ihr vielleicht Handyempfang. Mein Handy habe ich wohl von dem Bootsfahrt verloren.",
+                T0003: "Habt ihr Handyempfang? Mein Handy habe ich wohl auf der Bootsfahrt verloren.",
                 T0004: "Hmm... Wir sollten uns überlegen, was wir jetzt tun.",
-                T0005: "Oh jee! Ich habe irgendwie Rückenschmerzen. Das muss beim Bootsausstieg passiert sein,Gehen wir!"
+                T0005: "Oh jee! Langsam bekomme ich Rückenschmerzen. Das muss beim Bootsausstieg passiert sein. Lass uns dahin gehen!"
             }
         };
-        Template.dataForSave.health -= 5;
-        Template.dataForSave.power -= 5;
+        Template.dataForSave.energy -= 5;
         Template.ƒS.Speech.setTickerDelays(20, 2);
         Template.ƒS.Sound.play(Template.sound.lightning, 1);
         await Template.ƒS.Location.show(Template.locations.jungle_rain_1);
         await Template.ƒS.update(Template.transitions.t21.duration, Template.transitions.t21.alpha, Template.transitions.t21.edge);
         await Template.ƒS.update(1);
         Template.ƒS.Sound.fade(Template.sound.storm, 2, 0.2, false);
-        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.explain, Template.ƒS.positionPercent(15, 130));
+        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.discuss, Template.ƒS.positionPercent(15, 140));
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0000, true);
         await Template.ƒS.update(1);
-        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.annoyed, Template.ƒS.positionPercent(80, 130));
+        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.annoyed, Template.ƒS.positionPercent(80, 140));
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0000, true);
         await Template.ƒS.update(1);
         await Template.ƒS.Character.animate(Template.characters.girl, Template.characters.girl.pose.annoyed, Template.shakingRightSide1());
         //await ƒS.Character.animate(characters.girl, characters.girl.pose.annoyed, shakingRightSide2());
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0000, true);
         await Template.ƒS.update(1);
-        await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.explain_angry, Template.ƒS.positionPercent(50, 140));
+        await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.serious, Template.ƒS.positionPercent(50, 140));
         await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0000, true);
         await Template.ƒS.update(1);
         await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0001, true);
@@ -1844,7 +1862,7 @@ var Template;
         await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0004, true);
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0003, true);
         await Template.ƒS.Character.hide(Template.characters.girl);
-        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.pointing, Template.ƒS.positionPercent(85, 128));
+        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.pointing, Template.ƒS.positionPercent(85, 130));
         await Template.ƒS.update(2);
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0004, true);
         await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0005, true);
@@ -1866,51 +1884,95 @@ var Template;
                 T0000: "Der Regen hört langsam auf.",
             },
             boy: {
-                T0000: "Oh nein!",
+                T0000: "Was ist mit ihm los?",
                 T0001: "Onkel Ben, wach auf!",
                 T0002: "Nein! Das Wasser hat unser Boot weg getrieben.",
-                T0003: "Ok.. Ich schaue mal nach dem Boot. Vielleicht gibt es etwas, was uns weiterhilft.",
-                T0004: "",
+                T0003: "Ok... Ich habe eine Idee. Ich schaue mal nach dem Boot. Vielleicht gibt es etwas, was uns weiterhilft.",
+                T0004: "Nicht wirklich, aber ich werde ihn schon finden.",
             },
             girl: {
-                T0000: "Onkel Ben, gehen wir! ",
-                T0001: "Was sollen wir machen?",
+                T0000: "Onkel Ben, ist bei dir alles gut? ",
+                T0001: "Er braucht wohl seine Ruhe. Was sollen wir machen?",
                 T0002: "Wir sind hier in der Wildnis gefangen.",
-                T0003: "Lass uns zurückgehen und einen Plan überlegen.",
-                T0004: "Er ist sehr erschöpft.Wir sollten ihn ausruhen lassen.",
-                T0005: "Sei bitte vorsichtig. Ich bleibe hier und passe auf Onkel Ben auf."
+                T0003: "Lass ihn! Er ist körperlich erschöpft. Wir sollten ihn ausruhen lassen.",
+                T0004: "Lass uns einen Plan überlegen.",
+                T0005: "Alles klar! Sei bitte vorsichtig. Ich bleibe hier und passe auf Onkel Ben auf. Was du noch den Weg?"
             },
             uncle: {
-                T0000: "...",
-                T0001: "ZZZ",
-                T0002: "...",
+                T0000: "..."
             }
         };
-        Template.dataForSave.health -= 5;
-        Template.dataForSave.power -= 5;
+        Template.dataForSave.energy -= 5;
         Template.ƒS.Speech.setTickerDelays(20, 2);
         Template.ƒS.Text.print("Es hat aufgehört zu regnen...");
         await Template.ƒS.Speech.tell(null, null, true);
         await Template.ƒS.Location.show(Template.locations.jungle_shack);
         await Template.ƒS.update(Template.transitions.cwtop.duration, Template.transitions.cwtop.alpha, Template.transitions.cwtop.edge);
-        await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.backpain, Template.ƒS.positionPercent(45, 150));
+        await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.backpain, Template.ƒS.positionPercent(45, 140));
         await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0000, true);
         await Template.ƒS.update(1);
-        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.angry_arm_crossed, Template.ƒS.positionPercent(80, 140));
+        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.neutral, Template.ƒS.positionPercent(80, 140));
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0000, true);
         await Template.ƒS.update(1);
-        await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0001, true);
-        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.standby, Template.ƒS.positionPercent(15, 140));
+        await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0000, true);
+        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.neutral, Template.ƒS.positionPercent(15, 140));
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0000, true);
+        Template.ƒS.Character.hide(Template.characters.girl);
+        await Template.ƒS.Character.show(Template.characters.girl, Template.characters.girl.pose.thinking, Template.ƒS.positionPercent(80, 140));
+        await Template.ƒS.update(2);
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0001, true);
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0001, true);
-        await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0002, true);
+        await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0000, true);
+        await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0003, true);
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0004, true);
+        Template.ƒS.Character.hide(Template.characters.boy);
+        await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.idea, Template.ƒS.positionPercent(15, 140));
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0003, true);
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0005, true);
+        await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0004, true);
         await Template.ƒS.update(1);
         Template.ƒS.Character.hideAll();
     }
     Template.rain_stops = rain_stops;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function victory_fight_crocodile() {
+        let text = {
+            boy: {
+                T0000: "ONKEL BEN! ICH MACHE DICH FERTIG!",
+                T0001: "EY YEAHH!",
+            },
+            uncle: {
+                T0000: "AYY YAAAA!!!",
+                T0001: "Schau zu und lerne...",
+                T0002: "Gleich nochmal...",
+            },
+            girl: {
+                T0000: "NEIN! " + Template.dataForSave.nameProtagonist,
+                T0001: "UGHHH.......",
+            }
+        };
+        Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 0.1);
+        Template.ƒS.Sound.play(Template.sound.fight, 1);
+        await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.pointing, Template.ƒS.positionPercent(15, 140));
+        await Template.ƒS.Character.show(Template.characters.crocodile, Template.characters.crocodile.pose.aggressiv, Template.ƒS.positionPercent(70, 80));
+        await Template.ƒS.update(1);
+        await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0001, true);
+        await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0000, true);
+        await Template.ƒS.Character.hide(Template.characters.crocodile);
+        await Template.ƒS.Character.animate(Template.characters.crocodile, Template.characters.crocodile.pose.aggressiv, Template.CentershakingAnimationCrocodile());
+        await Template.ƒS.Character.hide(Template.characters.crocodile);
+        await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0002, true);
+        await Template.ƒS.Speech.tell(Template.characters.uncle, text.uncle.T0000, true);
+        await Template.ƒS.Character.hide(Template.characters.crocodile);
+        await Template.ƒS.Character.animate(Template.characters.crocodile, Template.characters.crocodile.pose.aggressiv, Template.EscapeAnimationCrocodile());
+        await Template.ƒS.Speech.tell(Template.characters.narrator, "Das Krokodil geht wieder ins Wasser und lässt euch in Ruhe", true);
+        Template.dataForSave.uncle_alive = true;
+        Template.ƒS.Sound.fade(Template.sound.fight, 0, 0.1);
+        await Template.ƒS.Character.hideAll();
+        return "livesaving_ending";
+    }
+    Template.victory_fight_crocodile = victory_fight_crocodile;
 })(Template || (Template = {}));
 //# sourceMappingURL=Template.js.map

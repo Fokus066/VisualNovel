@@ -7,7 +7,8 @@ namespace Template {
 
         await ƒS.Location.show(locations.jungle_path_3);
         await ƒS.update(transitions.wipe.duration, transitions.wipe.alpha, transitions.wipe.edge);
-
+        ƒS.update(1);
+        
         let pathchoice = await ƒS.Menu.getInput(PathDecision, "location_options");
 
         switch (pathchoice) {

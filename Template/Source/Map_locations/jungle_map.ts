@@ -18,6 +18,19 @@ namespace Template {
     await ƒS.update(1);
     await ƒS.Speech.tell(characters.narrator, " ", true);
     
+    if (dataForSave.energy > 0 && dataForSave.energy <= 20) {
+      ƒS.Text.setClass("stylebox");
+      ƒS.Text.print("<p> Du hast momentan sehr wenig Energie. Um die Energie aufzuladen, kannst du essen.</p> ");
+      await ƒS.Speech.tell(null, null, true);
+    }
+    if (dataForSave.energy <= 0) {
+      ƒS.Character.hideAll();
+      ƒS.Text.setClass("stylebox");
+      ƒS.Text.print("<p> Du hast keine Energie mehr.");
+      await ƒS.Speech.tell(null, null, true);
+      return "general_ending";
+    }
+    
     let location_request = await ƒS.Menu.getInput(location_choice, "location_options");
     
     switch (location_request) {
@@ -48,11 +61,13 @@ namespace Template {
       case location_choice.location5:        
         ƒS.Sound.play(sound.click, 1);
         ƒS.Sound.fade(sound.jungle, 0, 0.1);  
-        if (dataForSave.no_water == true){
-          return "Waterfall_no_water";
+        if (dataForSave.mission >= 6){
+          return "Waterfall_final";
         }
-        else 
-        return "Waterfall";
+        else {
+
+          return "Waterfall";
+        }
         break;
     }
   }

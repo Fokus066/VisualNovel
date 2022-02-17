@@ -8,8 +8,7 @@ namespace Template {
         T0000: "Was ein starker Regen! Es wird immer schlimmer!",
         T0001: "Ich habe auch hier kein Empfang...",
         T0002: "Abgesehen vom Bootsverleiher weiß es keiner. Er war irgendwie auch seltsam und hat uns nicht richtig wahrgenommen.",
-        T0003: "Hat jemand eine Idee?",
-        T0004: "Du bist der Beste Onkel Ben."
+        T0003: "Hat jemand eine Idee?"
       },
       girl: {
         T0000: "Oh nein! Was sollen wir nur machen?! So habe ich mein Urlaub nicht vorgestellt.",
@@ -22,14 +21,13 @@ namespace Template {
         T0000: "Wir sollten Schutz suchen. Der Regen ist heftiger als ich vermutet habe.",
         T0001: "So ist es unmöglich mit dem Boot zu fahren. Warten wir solange ab, bis der Regen aufhört.",
         T0002: "Die Wellen sind viel zu stark. Wir sollten abwarten.",
-        T0003: "Habt ihr vielleicht Handyempfang. Mein Handy habe ich wohl von dem Bootsfahrt verloren.",
+        T0003: "Habt ihr Handyempfang? Mein Handy habe ich wohl auf der Bootsfahrt verloren.",
         T0004: "Hmm... Wir sollten uns überlegen, was wir jetzt tun.",
-        T0005: "Oh jee! Ich habe irgendwie Rückenschmerzen. Das muss beim Bootsausstieg passiert sein,Gehen wir!"
+        T0005: "Oh jee! Langsam bekomme ich Rückenschmerzen. Das muss beim Bootsausstieg passiert sein. Lass uns dahin gehen!"
       }
     };
 
-    dataForSave.health -= 5;
-    dataForSave.power -= 5;
+    dataForSave.energy -= 5;
 
     ƒS.Speech.setTickerDelays(20, 2);
     ƒS.Sound.play(sound.lightning, 1); 
@@ -41,11 +39,11 @@ namespace Template {
 
     ƒS.Sound.fade(sound.storm, 2, 0.2, false);
 
-    await ƒS.Character.show(characters.boy, characters.boy.pose.explain, ƒS.positionPercent(15, 130));
+    await ƒS.Character.show(characters.boy, characters.boy.pose.discuss, ƒS.positionPercent(15, 140));
     await ƒS.Speech.tell(characters.boy, text.boy.T0000, true);
     await ƒS.update(1);
 
-    await ƒS.Character.show(characters.girl, characters.girl.pose.annoyed, ƒS.positionPercent(80, 130));
+    await ƒS.Character.show(characters.girl, characters.girl.pose.annoyed, ƒS.positionPercent(80, 140));
     await ƒS.Speech.tell(characters.girl, text.girl.T0000, true);
     await ƒS.update(1);
 
@@ -54,7 +52,7 @@ namespace Template {
     await ƒS.Speech.tell(characters.girl, text.girl.T0000, true);
     await ƒS.update(1);
 
-    await ƒS.Character.show(characters.uncle, characters.uncle.pose.explain_angry, ƒS.positionPercent(50, 140));
+    await ƒS.Character.show(characters.uncle, characters.uncle.pose.serious, ƒS.positionPercent(50, 140));
     await ƒS.Speech.tell(characters.uncle, text.uncle.T0000, true);
     await ƒS.update(1);
 
@@ -71,7 +69,7 @@ namespace Template {
   
 
     await ƒS.Character.hide(characters.girl);
-    await ƒS.Character.show(characters.girl, characters.girl.pose.pointing, ƒS.positionPercent(85, 128));
+    await ƒS.Character.show(characters.girl, characters.girl.pose.pointing, ƒS.positionPercent(85, 130));
     await ƒS.update(2);
 
     await ƒS.Speech.tell(characters.girl, text.girl.T0004, true);

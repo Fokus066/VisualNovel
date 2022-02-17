@@ -3,8 +3,8 @@ namespace Template {
 
         let text = {
             boy: {
-                T0000: "AH! Ich habe die Stelle gefunden.",
-                T0001: "<i>Mist! Das Boot ist beschädigt. Wir können so nicht zurückfahren.</i>",
+                T0000: "AH! Ich habe das Boot gefunden.",
+                T0001: "<i>Mist! Es ist beschädigt. Wir können so nicht zurückfahren.</i>",
                 T0002: "<i>Oh was ist das? Ein Koffer?!</i>",
                 T0003: "<i>Er lässt sich nicht öffnen...<br> Ist er verschlossen? Vielleicht kann Jenna mir weiterhelfen.</i>",
             }
@@ -13,7 +13,7 @@ namespace Template {
         await ƒS.Location.show(locations.sunken_boat);
         await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
         await ƒS.update(1);
-        await ƒS.Character.show(characters.boy, characters.boy.pose.standby, ƒS.positionPercent(15, 140));
+        await ƒS.Character.show(characters.boy, characters.boy.pose.neutral, ƒS.positionPercent(15, 140));
         await ƒS.Speech.tell(characters.boy, text.boy.T0000, true);  
         ƒS.update(1);
 
