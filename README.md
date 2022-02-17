@@ -29,11 +29,25 @@ A FUDGE module for the easy development of interactive stories, visual novels an
 | 14 | Enden          | Wurden verschiedene Spielenden eingebaut (mind. zwei)?                                                                                                                                                                                 |
 <br>
 
-##  Abgabeformat
+##  Abgabe
 
-* Die Konzeption soll als .pdf-Dokument abgegeben werden.
-* Platziere einen Link in der Readme-Datei deines VisualNovel-Repositories auf Github auf die fertige und in Github-Pages lauffähige Anwendung.
-* Platziere ebenso Links zu den Stellen in deinem Repository, an denen der Quellcode und das Konzept-Dokument zu finden sind.
-* Stelle zudem auf diese Art dort auch ein gepacktes Archiv zur Verfügung, welches folgende Daten enthält
-  * Das Konzept-Dokument 
-  * Die Projektordner inklusive aller erforderlichen Dateien, also auch Bild- und Audiodaten
+Charakter-Konzeption:
+https://github.com/Fokus066/VisualNovel/blob/main/Template/Charakter_Konzept/Player.pdf
+
+Konzeption Diagramm:
+https://github.com/Fokus066/VisualNovel/tree/main/Template/Visual_Novel_Konzept
+
+Repository:
+https://github.com/Fokus066/VisualNovel/tree/main/Template
+
+Source Code:
+https://github.com/Fokus066/VisualNovel/tree/main/Template/Source
+
+gepacktes Archiv:
+https://github.com/Fokus066/VisualNovel/tree/main/Template/Archiv
+
+Visual Novel:
+https://fokus066.github.io/VisualNovel/Template/Template.html
+
+ISSUE:
+--- kein Befehl Item remove
