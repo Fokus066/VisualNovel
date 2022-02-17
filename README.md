@@ -32,7 +32,7 @@ A FUDGE module for the easy development of interactive stories, visual novels an
 ##  Abgabe
 
 Charakter-Konzeption:
-https://github.com/Fokus066/VisualNovel/blob/main/Template/Charakter_Konzept/Player.pdf
+https://github.com/Fokus066/VisualNovel/tree/main/Template/Charakter_Konzept
 
 Konzeption Diagramm:
 https://github.com/Fokus066/VisualNovel/tree/main/Template/Visual_Novel_Konzept
