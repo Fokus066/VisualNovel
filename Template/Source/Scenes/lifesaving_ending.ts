@@ -43,7 +43,7 @@ namespace Template {
 
         await ƒS.Character.hideAll();
 
-        await ƒS.Location.show(locations.helicopter2);
+        await ƒS.Location.show(locations.helicopter);
         await ƒS.update(transitions.wipe.duration, transitions.wipe.alpha, transitions.wipe.edge);
         await ƒS.update(1);
 

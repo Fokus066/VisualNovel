@@ -187,7 +187,7 @@ var Template;
     ;
     function showCredits() {
         Template.ƒS.Text.setClass("statistic");
-        Template.ƒS.Text.print("Programming: Romtham Gebhardt <br> Characters: Sims 3 <br> Music and Sound : https://www.zapsplat.com <br> Pictures: Pexels, Pixabay, bearbeitet von Romtham Gebhardt <br>");
+        Template.ƒS.Text.print("Programming: Romtham Gebhardt <br> Characters: Sims 3 <br> Music and Sound : https://www.zapsplat.com <br> Pictures: Pexels, Pixabay, <br> bearbeitet von Romtham Gebhardt <br>");
     }
     Template.showCredits = showCredits;
     ;
@@ -1017,7 +1017,8 @@ var Template;
             girl: {
                 T0000: "Keine Chance. Er schläft tief und fest. Wir brauchen Medizin, um ihn aufzuwecken.",
                 T0001: "Hey! Schau mal ich habe hier eine Karte gefunden. Sie ist bestimmt nützlich. ",
-                T0002: "Lass mich mal ansehen. Der Koffer ist mit einer Zahlencode verschlossen worden.<br>Es ist eine Zahl zwischen 1 und 100. Du hast 10 Versuchen den Koffer zu öffnen. Wenn du es mit 10 Versuchen nicht schaffst, wird eine neue Zahl generieren. Versuche dich strategisch der Zahl zu nähern.",
+                T0002: "Lass mich mal ansehen. Der Koffer ist mit einer Zahlencode verschlossen worden.<br>Es ist eine Zahl zwischen 1 und 100. Du hast 10 Versuchen den Koffer zu öffnen. Nach jedme Versuch bekommst du ein Feedback, ob die Zahl zu groß oder zu klein ist. Wenn du es mit 10 Versuchen nicht schaffst, wird eine neue Zahl generieren. Versuche dich strategisch der Zahl zu nähern.",
+                T0003: "Wenn du es mit 10 Versuchen nicht schaffst, wird eine neue Zahl generiert. Versuche dich strategisch der Zahl zu nähern.",
             },
             uncle: {
                 T0000: "...",
@@ -1083,6 +1084,7 @@ var Template;
                     if (Template.dataForSave.item_suitcase == true && Template.dataForSave.open_suitcase == false) {
                         Template.ƒS.Sound.play(Template.sound.click, 1);
                         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0002, true);
+                        await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0003, true);
                         //ƒS.Sound.fade(sound.jungle, 0,0 );
                         return "OpenSuitcase";
                     }
@@ -1444,7 +1446,7 @@ var Template;
         await Template.ƒS.Speech.tell(Template.characters.narrator, "Wie möchtest du im Spiel genannt werden?<br>", true);
         Template.dataForSave.nameProtagonist = await Template.ƒS.Speech.getInput();
         Template.characters.boy.name = Template.dataForSave.nameProtagonist;
-        Template.ƒS.Text.print("<p>Das Spiel beginnt!</p> <p>Tipp:</p> <p>Um weiterzukommen, kannst du dem Onkel fragen. Du kannst dich an der Statistik (in Menu) orientieren.</p>");
+        Template.ƒS.Text.print("<p>Das Spiel beginnt!</p> <p>Tipp:</p> <p>Um weiterzukommen, kannst du dem Onkel fragen. <br> Du kannst dich an der Statistik (in Menu) orientieren.</p>");
         await Template.ƒS.Speech.tell(null, null, true);
     }
     Template.Introduction = Introduction;
@@ -1642,7 +1644,7 @@ var Template;
         await Template.ƒS.Speech.tell(Template.characters.boy, text.boy.T0000, true);
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0000, true);
         await Template.ƒS.Character.hideAll();
-        await Template.ƒS.Location.show(Template.locations.helicopter2);
+        await Template.ƒS.Location.show(Template.locations.helicopter);
         await Template.ƒS.update(Template.transitions.wipe.duration, Template.transitions.wipe.alpha, Template.transitions.wipe.edge);
         await Template.ƒS.update(1);
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0001, true);

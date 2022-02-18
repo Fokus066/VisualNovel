@@ -11,14 +11,13 @@ namespace Template {
 
   export function showStatistic(): void {
 
-      ƒS.Text.setClass("statistic");
-      ƒS.Text.print(" Lebensenergie: " + dataForSave.energy + "<br> Aktuelle Mission: " + dataForSave.mission + "/6" ); 
-    
+    ƒS.Text.setClass("statistic");
+    ƒS.Text.print(" Lebensenergie: " + dataForSave.energy + "<br> Aktuelle Mission: " + dataForSave.mission + "/6"); 
   };
 
   export function showCredits(): void {
     ƒS.Text.setClass("statistic");
-    ƒS.Text.print("Programming: Romtham Gebhardt <br> Characters: Sims 3 <br> Music and Sound : https://www.zapsplat.com <br> Pictures: Pexels, Pixabay, bearbeitet von Romtham Gebhardt <br>");
+    ƒS.Text.print("Programming: Romtham Gebhardt <br> Characters: Sims 3 <br> Music and Sound : https://www.zapsplat.com <br> Pictures: Pexels, Pixabay, <br> bearbeitet von Romtham Gebhardt <br>");
   };
   export let gameMenu: ƒS.Menu;
 
