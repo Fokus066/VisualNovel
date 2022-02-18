@@ -1803,7 +1803,6 @@ var Template;
         await Template.ƒS.Speech.tell(Template.characters.girl, text.girl.T0003, true);
         Template.dataForSave.energy -= 10;
         Template.ƒS.Character.hideAll();
-        await Template.ƒS.update(1);
         await Template.ƒS.Location.show(Template.locations.thunderstorm_2);
         Template.ƒS.Sound.fade(Template.sound.rain, 0, 0.1);
         await Template.ƒS.update(1);

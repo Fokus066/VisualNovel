@@ -75,10 +75,8 @@ namespace Template {
 
       ƒS.Character.hideAll();
 
-      await ƒS.update(1);
       await ƒS.Location.show(locations.thunderstorm_2);
       ƒS.Sound.fade(sound.rain, 0, 0.1);
       await ƒS.update(1);
-
      }
   }
