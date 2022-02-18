@@ -1017,7 +1017,7 @@ var Template;
             girl: {
                 T0000: "Keine Chance. Er schläft tief und fest. Wir brauchen Medizin, um ihn aufzuwecken.",
                 T0001: "Hey! Schau mal ich habe hier eine Karte gefunden. Sie ist bestimmt nützlich. ",
-                T0002: "Lass mich mal ansehen. Der Koffer ist mit einer Zahlencode verschlossen worden.<br>Es ist eine Zahl zwischen 1 und 100. Du hast 10 Versuchen den Koffer zu öffnen. Nach jedme Versuch bekommst du ein Feedback, ob die Zahl zu groß oder zu klein ist. Wenn du es mit 10 Versuchen nicht schaffst, wird eine neue Zahl generieren. Versuche dich strategisch der Zahl zu nähern.",
+                T0002: "Lass mich mal ansehen. Der Koffer ist mit einer Zahlencode verschlossen worden.<br>Es ist eine Zahl zwischen 1 und 100. Du hast 10 Versuchen den Koffer zu öffnen. Nach jedme Versuch bekommst du ein Feedback, ob die Zahl zu groß oder zu klein ist.",
                 T0003: "Wenn du es mit 10 Versuchen nicht schaffst, wird eine neue Zahl generiert. Versuche dich strategisch der Zahl zu nähern.",
             },
             uncle: {
