@@ -4,7 +4,7 @@ namespace Template {
 
         let action_choice = {
             eat: "Essen",
-            bbQ: " Barbecue",
+            bbQ: "Fisch grillen",
             //drink: "Trinken",
             back: "Zurück"
         };
@@ -13,7 +13,7 @@ namespace Template {
 
         switch (build_tools_request) {
 
-            case action_choice.eat:
+            case action_choice.eat:                
                 if (dataForSave.item_acaiberry == true && dataForSave.mission == 1) {
                     dataForSave.energy += 15;
                     await ƒS.Speech.tell(characters.boy, "Hmm... Lecker", true);

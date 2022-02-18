@@ -12,7 +12,7 @@ namespace Template {
 
     ƒS.Speech.setTickerDelays(20, 2);
     
-    ƒS.Sound.fade(sound.jungle, 1, 6,true); 
+    ƒS.Sound.play(sound.jungle, 1, true); 
     await ƒS.Location.show(locations.map);
     await ƒS.update(transitions.goslow.duration, transitions.goslow.alpha, transitions.goslow.edge);
     await ƒS.update(1);
@@ -36,28 +36,30 @@ namespace Template {
     switch (location_request) {
       case location_choice.location1:
         ƒS.Sound.play(sound.click, 1);
-        ƒS.Sound.fade(sound.jungle, 0.1, 6); 
+        ƒS.Sound.fade(sound.jungle, 0, 0.1); 
         if (dataForSave.fitnessUncle == false){
+          
           return "Shelter_Uncle_pain";
         }
         else 
         return "Shelter";
-        break;
+        
       case location_choice.location2:
         ƒS.Sound.play(sound.click, 1);
         ƒS.Sound.fade(sound.jungle, 0, 0.1); 
         return "River";
-        break;
+       
       case location_choice.location3:
-        ƒS.Sound.play(sound.click, 1);
         ƒS.Sound.fade(sound.jungle, 0, 0.1); 
+        ƒS.Sound.play(sound.click, 1);
+        
         return "Jungle";
-        break;
+       
       case location_choice.location4:
         ƒS.Sound.play(sound.click, 1);
         ƒS.Sound.fade(sound.jungle, 0, 0.1); 
         return "Shrubs";
-        break;
+      
       case location_choice.location5:        
         ƒS.Sound.play(sound.click, 1);
         ƒS.Sound.fade(sound.jungle, 0, 0.1);  
@@ -68,7 +70,7 @@ namespace Template {
 
           return "Waterfall";
         }
-        break;
+      
     }
   }
 

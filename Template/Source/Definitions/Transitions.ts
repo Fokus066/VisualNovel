@@ -75,15 +75,15 @@ namespace Template {
         swipe: {
           duration: 1,
           alpha: "./Images/transitions/swipe.png",
-          edge: 0.75
+          edge: 1
         },
         snake2: {
-          duration: 1,
+          duration:0.5,
           alpha: "./Images/transitions/snakes.png",
           edge: 0.5
         },
         snake3: {
-          duration: 1,
+          duration: 0.5,
           alpha: "./Images/transitions/snake2.png",
           edge: 0.5
         },

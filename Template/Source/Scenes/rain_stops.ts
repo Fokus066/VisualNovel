@@ -4,9 +4,7 @@ namespace Template {
     console.log("Rain");
 
     let text = {
-      narrator: {
-        T0000: "Der Regen hört langsam auf.",
-      },
+ 
       boy: {
         T0000: "Was ist mit ihm los?",
         T0001: "Onkel Ben, wach auf!",
@@ -31,7 +29,7 @@ namespace Template {
 
     ƒS.Speech.setTickerDelays(20, 2);
 
-    ƒS.Text.print("Es hat aufgehört zu regnen...");
+    ƒS.Text.print("Es hört langsam auf zu regnen...");
     await ƒS.Speech.tell(null, null, true);
 
     await ƒS.Location.show(locations.jungle_shack);
@@ -39,16 +37,17 @@ namespace Template {
    
 
     await ƒS.Character.show(characters.uncle, characters.uncle.pose.backpain, ƒS.positionPercent(45, 140));
-    await ƒS.Speech.tell(characters.uncle, text.uncle.T0000, true);
     await ƒS.update(1);
+    await ƒS.Speech.tell(characters.uncle, text.uncle.T0000, true);
 
     await ƒS.Character.show(characters.girl, characters.girl.pose.neutral, ƒS.positionPercent(80, 140));
-    await ƒS.Speech.tell(characters.girl, text.girl.T0000, true);
     await ƒS.update(1);
+    await ƒS.Speech.tell(characters.girl, text.girl.T0000, true);
 
     await ƒS.Speech.tell(characters.uncle, text.uncle.T0000, true);
 
     await ƒS.Character.show(characters.boy, characters.boy.pose.neutral, ƒS.positionPercent(15, 140));
+    await ƒS.update(1);
     await ƒS.Speech.tell(characters.boy, text.boy.T0000, true);
 
     ƒS.Character.hide(characters.girl);
@@ -65,12 +64,12 @@ namespace Template {
     ƒS.Character.hide(characters.boy);
     await ƒS.Character.show(characters.boy, characters.boy.pose.idea, ƒS.positionPercent(15, 140));
 
+    await ƒS.update(1);
     await ƒS.Speech.tell(characters.boy, text.boy.T0003, true);
     await ƒS.Speech.tell(characters.girl, text.girl.T0005, true);
     await ƒS.Speech.tell(characters.boy, text.boy.T0004, true);
-    await ƒS.update(1);
-
+    
     ƒS.Character.hideAll();
-
+   
   }
 }

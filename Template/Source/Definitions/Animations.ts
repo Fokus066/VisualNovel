@@ -23,7 +23,7 @@ namespace Template {
   export function fromOutofCanvasToLeft(): ƒS.AnimationDefinition {
     return {
       start: { translation: ƒS.positionPercent(0, 140) },
-      end: { translation: ƒS.positionPercent(10, 140) },
+      end: { translation: ƒS.positionPercent(15, 140) },
       duration: 1,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
     };

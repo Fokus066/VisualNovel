@@ -16,7 +16,7 @@ namespace Template {
     number_stone: 0,
     item_suitcase: false,
     open_suitcase: false,
-    uncle_alive: true,
+    uncle_alive: false,
     mission: 1
   };
 

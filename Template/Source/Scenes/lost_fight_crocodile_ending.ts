@@ -57,7 +57,7 @@ namespace Template {
         await ƒS.update(1);
 
         ƒS.Text.setClass("stylebox");
-        ƒS.Text.print("<p> Leider waren alle körperlich zu schwach. Niemand hat den Krokodilangriff überlebt. Eine Waffe wäre hilfreich gewesen.</p>");
+        ƒS.Text.print("<p> Leider waren alle körperlich zu schwach. Niemand hat den Krokodilangriff überlebt. Ein Axt wäre hilfreich gewesen.</p>");
         await ƒS.Speech.tell(null, null, true);
 
         await ƒS.Character.hide(characters.crocodile);

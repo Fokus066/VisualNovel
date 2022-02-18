@@ -18,7 +18,7 @@ namespace Template {
     await ƒS.Speech.tell(characters.narrator, "Wie möchtest du im Spiel genannt werden?<br> " , true);
     dataForSave.nameProtagonist = await ƒS.Speech.getInput();
     characters.boy.name =  dataForSave.nameProtagonist
-    ƒS.Text.print("<p>Das Spiel beginnt!</p> <p>Tipp:</p> <p>Um spielerisch voranzukommen, kannst du dem Onkel fragen, welche Aufgabe erledigt werden müssen.</p>");
+    ƒS.Text.print("<p>Das Spiel beginnt!</p> <p>Tipp:</p> <p>Um spielerisch voranzukommen, kannst du dem Onkel fragen,<br> welche Aufgabe erledigt werden muss.</p>");
     await ƒS.Speech.tell(null, null, true);
     
   }

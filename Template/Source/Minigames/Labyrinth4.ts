@@ -1,5 +1,5 @@
 namespace Template {
-    export async function Labyrinth3(): ƒS.SceneReturn {
+    export async function Labyrinth4(): ƒS.SceneReturn {
         let PathDecision = {
             left: "⟵ links",
             right: "rechts ⟶"
@@ -13,10 +13,10 @@ namespace Template {
 
         switch (pathchoice) {
             case PathDecision.left:
-                return "Labyrinth_End";
+                return "Labyrinth3";
                 
             case PathDecision.right:
-                return "Labyrinth4";
+                return "Labyrinth2";
                            
         }
     }

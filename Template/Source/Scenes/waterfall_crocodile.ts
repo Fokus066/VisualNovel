@@ -1,5 +1,5 @@
 namespace Template {
-    export async function lake_crocodile(): ƒS.SceneReturn {
+    export async function waterfall_crocodile(): ƒS.SceneReturn {
         console.log("Endscene");
 
         let text = {
@@ -26,10 +26,10 @@ namespace Template {
         ƒS.Speech.setTickerDelays(20, 2);
 
         ƒS.Sound.play(sound.waterfall, 1);
-        await ƒS.Location.show(locations.jungle_lake);
-        await ƒS.update(transitions.wet.duration, transitions.wet.alpha, transitions.wet.edge);
-        await ƒS.Character.show(characters.boy, characters.boy.pose.neutral, ƒS.positionPercent(50, 140));
-        await ƒS.update(1);
+        // await ƒS.Location.show(locations.jungle_lake);
+        // await ƒS.update(transitions.wet.duration, transitions.wet.alpha, transitions.wet.edge);
+        // await ƒS.Character.show(characters.boy, characters.boy.pose.neutral, ƒS.positionPercent(50, 140));
+        // await ƒS.update(1);
 
         await ƒS.Speech.tell(characters.boy, text.boy.T0000, true);
 
@@ -73,12 +73,19 @@ namespace Template {
                     return "lost_fight";
                 }
 
-
             case action_choice.flee:
                 ƒS.Sound.play(sound.click, 1);
-                ƒS.Character.hideAll();
+                await ƒS.Character.hideAll();
                 ƒS.Sound.fade(sound.waterfall, 0, 0.1);
-                return "Ending2";
+
+                if (dataForSave.energy > 25) {
+                    dataForSave.uncle_alive = true;
+                    return "livesaving_ending";
+                } else {
+                    dataForSave.uncle_alive = false;
+                    return "livesaving_ending";
+                }
+
         }
 
     }

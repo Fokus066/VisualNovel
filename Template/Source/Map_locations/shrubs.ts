@@ -20,12 +20,12 @@ namespace Template {
 
     ƒS.Speech.setTickerDelays(20, 2);
 
-    ƒS.Sound.play(sound.jungle_insects, 1);
+    ƒS.Sound.play(sound.jungle_insects, 1, true);
     await ƒS.Location.show(locations.ferns);
     await ƒS.update(transitions.fur.duration, transitions.fur.alpha, transitions.fur.edge);
     await ƒS.Character.show(characters.boy, characters.boy.pose.neutral, ƒS.positionPercent(50, 140));
-    await ƒS.Speech.tell(characters.boy, text.boy.T0000, true);
     await ƒS.update(1);
+    await ƒS.Speech.tell(characters.boy, text.boy.T0000, true);
 
     let random_boolean = Math.random() < 0.8;
 

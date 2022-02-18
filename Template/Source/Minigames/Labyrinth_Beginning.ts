@@ -14,8 +14,8 @@ namespace Template {
 
     await ƒS.Location.show(locations.jungle_path);
     await ƒS.update(transitions.snake2.duration, transitions.snake2.alpha, transitions.snake2.edge);
+
     await ƒS.Speech.tell(characters.boy, text.boy.T0000, true);
-    await ƒS.update(1);
 
 
     let pathchoice = await ƒS.Menu.getInput(PathDecision, "location_options");

@@ -1,6 +1,6 @@
 namespace Template {
   export async function shelter(): ƒS.SceneReturn {
-    console.log("Boat river");
+    //console.log("Boat river");
 
     let action_choice = {
       talk: "Fragen",
@@ -12,11 +12,12 @@ namespace Template {
     let text = {
       uncle: {
         T0000: "...",
-        Mission1: "Wir brauchen Essen. Im Wald sind genug essbare Beeren. Wir können hier gemeinsam essen. Übrigends ist es hilfreich, wenn du eine Waffe hast. Man weiß nie, welche Tiere hier plötzlich erscheinen.",
+        Mission1: "Wir brauchen Essen. Im Wald sind genug essbare Beeren.",
         Mission2: "Die Beeren sind langweilig. Beim Wasserfall gibt es Fische. Um Fische zu fangen, brauchen wir Hilfsmittel. <br> Am einfachsten ist es ein Speer herzustellen. Dazu brauchst du ein Holzstück und Liane.",
         Mission3: "Deine Waffe ist einsatzbereit. Es wird sehr schwierig und körperlich anstrengend sein, die Fische zu treffen. Du kannst mehrmals versuchen, die Fische zu fangen.",
         Mission4: "Wir können die Fische nicht roh essen. Wir müssen sie grillen. Dazu brauchen wir Feuer.",
-        Mission5: "Lass uns die Fische grillen. Falls du frisches Wasser trinken willst, kannst du zum Wasserfall gehen.",
+        Mission5: "Lass die Fische grillen.",
+        Mission6: "Geh zum Wasserfall. Nimm eine Waffe zur Verteidigung mit. <br> Man weiß nie, welche Tiere hier plötzlich erscheinen. Also pass auf dich!",
       }
     }
 
@@ -25,7 +26,7 @@ namespace Template {
 
     ƒS.Speech.setTickerDelays(20, 2);
 
-    ƒS.Sound.play(sound.jungle, 1);
+    ƒS.Sound.play(sound.jungle, 1, true);
     await ƒS.Location.show(locations.jungle_shack);
     await ƒS.update(transitions.diagonal.duration, transitions.diagonal.alpha, transitions.diagonal.edge);
 
@@ -56,7 +57,7 @@ namespace Template {
 
       case action_choice.talk:
         ƒS.Sound.play(sound.click, 1);
-        ƒS.Sound.fade(sound.jungle, 0, 0.1);
+        //ƒS.Sound.fade(sound.jungle, 0, 0.1);
 
         if (dataForSave.mission == 1) {
           await ƒS.Speech.tell(characters.uncle, text.uncle.Mission1, true);
@@ -71,6 +72,8 @@ namespace Template {
           await ƒS.Speech.tell(characters.uncle, text.uncle.Mission4, true);
         } if (dataForSave.mission == 5) {
           await ƒS.Speech.tell(characters.uncle, text.uncle.Mission5, true);
+        } if (dataForSave.mission == 6) {
+          await ƒS.Speech.tell(characters.uncle, text.uncle.Mission6, true);
         }
         return "Shelter";
         
@@ -87,9 +90,11 @@ namespace Template {
 
       case action_choice.back:
         ƒS.Sound.play(sound.click, 1);
-        ƒS.Sound.fade(sound.jungle, 0, 0.1);
+        //ƒS.Sound.fade(sound.jungle, 0, 0.1);
         ƒS.Character.hideAll();
         return "Map";
+
+       
      
 
     }

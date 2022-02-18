@@ -43,7 +43,7 @@ namespace Template {
 
         await ƒS.Character.hideAll();
 
-        await ƒS.Location.show(locations.helicopter);
+        await ƒS.Location.show(locations.helicopter2);
         await ƒS.update(transitions.wipe.duration, transitions.wipe.alpha, transitions.wipe.edge);
         await ƒS.update(1);
 
@@ -97,7 +97,7 @@ namespace Template {
             await ƒS.update(transitions.diagonal.duration, transitions.diagonal.alpha, transitions.diagonal.edge);
     
             ƒS.Text.setClass("stylebox");
-            ƒS.Text.print("<p> Die Helicopter kommt genau zur richtigen Zeit. Das Rettungteam sieht die Überlebenden und bringt sie zum nächsten Flughafen.</p>");
+            ƒS.Text.print("<p>Der Bootsverleih hat bemerkt, dass die Touristen verschwunden sind, weil ein Boot gefehlt hat. Sie melden das Rettungsteam. <br> Die Helicopter kommt genau zur richtigen Zeit. Das Rettungteam sieht die Überlebenden und bringt sie zum nächsten Flughafen.</p>");
             await ƒS.Speech.tell(null, null, true);
     
             await ƒS.Character.hide(characters.crocodile);

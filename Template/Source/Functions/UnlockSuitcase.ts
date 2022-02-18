@@ -5,7 +5,7 @@ namespace Template {
 
         let text = {
             narrator: {
-                T0000: "Es ist eine Zahl zwischen 1 und 100.Wie könnte die Zahl sein? <br>",
+                T0000: "Es ist eine Zahl zwischen 1 und 100. Wie könnte die Zahl sein?<br>",
                 T0001: "Die Zahl ist zu groß.",
                 T0002: "Die Zahl ist zu klein.",
                 T0003: "Es ist unmöglich diesen Koffer zu öffnen.",

@@ -14,10 +14,10 @@ namespace Template {
         switch (pathchoice) {
             case PathDecision.left:
                 return "Labyrinth3";
-                break;
+                
             case PathDecision.right:
-                return "Labyrinth_End";
-                break;            
+                return "Labyrinth4";
+                            
         }
     }
 

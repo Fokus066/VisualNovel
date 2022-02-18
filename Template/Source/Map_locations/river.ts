@@ -17,7 +17,7 @@ namespace Template {
 
     ƒS.Speech.setTickerDelays(20, 2);
 
-    ƒS.Sound.play(sound.river_jungle, 1);
+    ƒS.Sound.play(sound.river_jungle, 1, true);
     await ƒS.Location.show(locations.jungle_river);
     await ƒS.update(transitions.t12.duration, transitions.t12.alpha, transitions.t12.edge);
     await ƒS.Character.show(characters.boy, characters.boy.pose.neutral, ƒS.positionPercent(50, 140));

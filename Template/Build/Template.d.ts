@@ -443,6 +443,9 @@ declare namespace Template {
     function Labyrinth3(): ƒS.SceneReturn;
 }
 declare namespace Template {
+    function Labyrinth4(): ƒS.SceneReturn;
+}
+declare namespace Template {
     function Labyrinth_Beginning(): ƒS.SceneReturn;
 }
 declare namespace Template {
@@ -464,9 +467,6 @@ declare namespace Template {
     function heavy_rain(): ƒS.SceneReturn;
 }
 declare namespace Template {
-    function lake_crocodile(): ƒS.SceneReturn;
-}
-declare namespace Template {
     function lifesaving_bad_ending(): ƒS.SceneReturn;
 }
 declare namespace Template {
@@ -476,11 +476,14 @@ declare namespace Template {
     function lost_fight_crocodile_ending(): ƒS.SceneReturn;
 }
 declare namespace Template {
-    function rain_shelter(): ƒS.SceneReturn;
+    function rain(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function rain_stops(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function victory_fight_crocodile(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function waterfall_crocodile(): ƒS.SceneReturn;
 }

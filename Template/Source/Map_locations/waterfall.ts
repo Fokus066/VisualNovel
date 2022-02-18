@@ -12,7 +12,7 @@ namespace Template {
         T0001: "Die Fische schwimmen viel zu schnell.",
         T0002: "Aye! Geschafft!",
         T0003: "<i>Anscheinend fehlt mir ein Werkzeug...</i>",
-        T0004: "<i>Leider habe ich das Ziel verfehlt. Versuche gleich nochmal.</i>"
+        T0004: "<i>Leider habe ich das Ziel verfehlt. Versuch's gleich nochmal.</i>"
       }
     };
 
@@ -20,13 +20,13 @@ namespace Template {
 
     ƒS.Speech.setTickerDelays(20, 2);
 
-    ƒS.Sound.play(sound.waterfall, 1);
+    ƒS.Sound.play(sound.waterfall, 1, true);
     await ƒS.Location.show(locations.jungle_lake);
     await ƒS.update(transitions.wet.duration, transitions.wet.alpha, transitions.wet.edge);
     await ƒS.Character.show(characters.boy, characters.boy.pose.neutral, ƒS.positionPercent(50, 140));
     await ƒS.update(1);
 
-    let random_boolean = Math.random() < 0.7;
+    let random_boolean = Math.random() < 0.5;
 
     let action_request = await ƒS.Menu.getInput(action_choice, "options");
 

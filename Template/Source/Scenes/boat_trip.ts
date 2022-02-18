@@ -8,7 +8,7 @@ namespace Template {
         T0000: "Endlich sind wir da! Die Reise war lang und anstrengend.",
         T0001: "Die Bootsfahrt ist entspannend.",
         T0002: "Ich bin gespannt, was wir heute sehen werden. Ich hoffe, wir haben Glück und können Tiere sehen.",
-        T0003: "Schön, dass ich dabei sein kann.",
+        T0003: "Es ist schön hier zu sein.",
       },
       girl: {
         T0000: "Aye! Schönes Wetter heute.",

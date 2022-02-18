@@ -1,79 +1,85 @@
 namespace Template {
-    export async function heavy_rain(): ƒS.SceneReturn {
+  export async function heavy_rain(): ƒS.SceneReturn {
 
-      console.log("Rain");
+    console.log("Rain");
 
-      let text = {
-        narrator: {
-          T0000: "Wie aus dem Nichts wird es dunkel und es regnet... ",
-          T0001: "Das Land ist sehr bekannt für Fauna und Flora."
-        },
-        boy: {
-          T0000: "Was ist los?! Auf einmal beginnt es zu regnen...",
-          T0001: "Hoffentlich, darauf war ich nicht vorbereitet.",
-          T0002: "Das ist echt blöd. Ich hoffe, wir werden unseren Ausflug nicht abbrechen.",
-          T0003: "OK! Da vorne können wir unser Boot anlegen."
-        },
-        girl: {
-          T0000: "Oh jee! Das sieht für die heutige Tour nicht gut aus...",
-          T0001: "Bin auch nicht vorbereitet.",
-          T0002: "Das wäre ziemlich schade. Wir sind so weit gereist.",
-          T0003: "Ist besser so. Mir wird langsam von der Bootsfahrt schlecht."
+    let text = {
+      boy: {
+        T0000: "Was ein starker Regen! Es wird immer schlimmer!",
+        T0001: "Ich habe auch hier kein Empfang...",
+        T0002: "Abgesehen vom Bootsverleiher weiß es keiner. Er war irgendwie auch seltsam und hat uns nicht richtig wahrgenommen.",
+        T0003: "Hat jemand eine Idee?"
+      },
+      girl: {
+        T0000: "Oh nein! Was sollen wir nur machen?! So habe ich mein Urlaub nicht vorgestellt.",
+        T0001: "Ja habe ich dabei. Wir sollten den Notruf anrufen.",
+        T0002: "OH Mist! Unter diesen Umständen hat mein Handy kein Signal.",
+        T0003: "Was sollen wir nur machen? Weiß jemand, dass wir hier sind?!",
+        T0004: "Sieh mal da drüben! Da ist eine kleine Hütte. Lass uns dahin gehen!"
+      },
+      uncle: { 
+        T0000: "Wir sollten Schutz suchen. Der Regen ist heftiger als ich vermutet habe.",
+        T0001: "So ist es unmöglich mit dem Boot zu fahren. Warten wir solange ab, bis der Regen aufhört.",
+        T0002: "Die Wellen sind viel zu stark. Wir sollten abwarten.",
+        T0003: "Habt ihr Handyempfang? Mein Handy habe ich wohl auf der Bootsfahrt verloren.",
+        T0004: "Hmm... Wir sollten uns überlegen, was wir jetzt tun.",
+        T0005: "Oh jee! Langsam bekomme ich Rückenschmerzen. Das muss beim Bootsausstieg passiert sein. Lass uns dahin gehen!"
+      }
+    };
 
-        },
-        uncle: { 
-          T0000: "Zur Zeit ist Regenzeit. Es ist normal, dass es auf einmal regnet.",
-          T0001: "Mach euch keine Sorgen. Es ist bald wieder vorbei.",
-          T0003: "Die Wellen werden immer stärker. Vielleicht ist es besser, wenn wir an dieser Stelle eine Pause einlegen. Mit diesen Wellen ist es zu gefährlich."
-        }
-      };
+    dataForSave.energy -= 5;
 
-      dataForSave.energy -= 5;
-
-      ƒS.Speech.setTickerDelays(20, 2);
-      ƒS.Sound.play(sound.lightning, 1);     
-      await ƒS.Location.show(locations.thunderstorm_1);    
-      await ƒS.update(transitions.t24.duration, transitions.t24.alpha, transitions.t24.edge);
+    ƒS.Speech.setTickerDelays(20, 2);
+    ƒS.Sound.play(sound.lightning, 1); 
   
-      await ƒS.update(1);   
+    await ƒS.Location.show(locations.jungle_rain_1);    
+    await ƒS.update(transitions.t21.duration, transitions.t21.alpha, transitions.t21.edge);
+    await ƒS.update(1);
+
+    ƒS.Sound.fade(sound.storm, 2, 0.2, false);
+
+    await ƒS.Character.show(characters.boy, characters.boy.pose.discuss, ƒS.positionPercent(15, 140));
+    await ƒS.update(1);
+    await ƒS.Speech.tell(characters.boy, text.boy.T0000, true);
+
+    await ƒS.Character.show(characters.girl, characters.girl.pose.annoyed, ƒS.positionPercent(80, 140));
+    await ƒS.update(1);
+    await ƒS.Speech.tell(characters.girl, text.girl.T0000, true);
+
+    await ƒS.Character.animate(characters.girl, characters.girl.pose.annoyed, shakingRightSide1());
+    await ƒS.Speech.tell(characters.girl, text.girl.T0000, true);
+    await ƒS.update(1);
+
+    await ƒS.Character.show(characters.uncle, characters.uncle.pose.serious, ƒS.positionPercent(50, 140));
+    await ƒS.update(1);
+    await ƒS.Speech.tell(characters.uncle, text.uncle.T0000, true);
+
+    await ƒS.Speech.tell(characters.uncle, text.uncle.T0001, true);
+    await ƒS.Speech.tell(characters.uncle, text.uncle.T0002, true);
+    await ƒS.Speech.tell(characters.uncle, text.uncle.T0003, true);
+    await ƒS.Speech.tell(characters.girl, text.girl.T0001, true);
+    await ƒS.Speech.tell(characters.girl, text.girl.T0002, true);
+    await ƒS.Speech.tell(characters.boy, text.boy.T0001, true);
+    await ƒS.Speech.tell(characters.girl, text.girl.T0003, true);
+    await ƒS.Speech.tell(characters.boy, text.boy.T0002, true);
+    await ƒS.Speech.tell(characters.uncle, text.uncle.T0004, true);
+    await ƒS.Speech.tell(characters.boy, text.boy.T0003, true);
+  
+
+    await ƒS.Character.hide(characters.girl);
+    await ƒS.Character.show(characters.girl, characters.girl.pose.pointing, ƒS.positionPercent(85, 130));
+    await ƒS.update(2);
+
+    await ƒS.Speech.tell(characters.girl, text.girl.T0004, true);
+    await ƒS.Speech.tell(characters.uncle, text.uncle.T0005, true);   
+
+    ƒS.Sound.play(sound.lightning, 1); 
+    ƒS.Character.hideAll();
+    ƒS.Sound.fade(sound.storm, 0, 0.1);
     
-      ƒS.Sound.fade(sound.rain, 5, 0.2, false);
-      
-      await ƒS.Location.show(locations.jungle_boat_rain);  
-      await ƒS.update(1);
-      
-      await ƒS.Speech.tell(characters.narrator, text.narrator.T0000, true);
+    await ƒS.Location.show(locations.jungle_shack_rain);    
+    await ƒS.update(transitions.t26.duration, transitions.t26.alpha, transitions.t26.edge);
+    await ƒS.update(1);
 
-      await ƒS.Character.show(characters.boy, characters.boy.pose.discuss, ƒS.positionPercent(80, 140));
-      await ƒS.Speech.tell(characters.boy, text.boy.T0000, true);
-      await ƒS.update(1);
-
-      await ƒS.Character.show(characters.girl, characters.girl.pose.desperate, ƒS.positionPercent(20, 140));
-      await ƒS.Speech.tell(characters.girl, text.girl.T0000, true);
-      await ƒS.update(1);
-
-      await ƒS.Character.show(characters.uncle, characters.uncle.pose.fit, ƒS.positionPercent(50, 140));
-      await ƒS.Speech.tell(characters.uncle, text.uncle.T0000, true);
-      await ƒS.update(1);
-
-      await ƒS.Speech.tell(characters.uncle, text.uncle.T0001, true);
-      await ƒS.Speech.tell(characters.boy, text.boy.T0001, true);
-      await ƒS.Speech.tell(characters.girl, text.girl.T0001, true);
-      await ƒS.Speech.tell(characters.boy, text.boy.T0002, true);
-      await ƒS.Speech.tell(characters.girl, text.girl.T0002, true);
-
-      await ƒS.Speech.tell(characters.uncle, text.uncle.T0003, true);
-      await ƒS.Speech.tell(characters.boy, text.boy.T0003, true);
-      await ƒS.Speech.tell(characters.girl, text.girl.T0003, true);
-      
-      dataForSave.energy -= 10;
-
-      ƒS.Character.hideAll();
-
-      await ƒS.update(1);
-      await ƒS.Location.show(locations.thunderstorm_2);
-      ƒS.Sound.fade(sound.rain, 0, 0.1);
-      await ƒS.update(1);
-
-     }
-  }
+   }
+}
