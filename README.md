@@ -49,7 +49,8 @@ https://github.com/Fokus066/VisualNovel/tree/main/Template/Archiv
 Visual Novel:
 https://fokus066.github.io/VisualNovel/Template/Template.html
 
-ISSUE:
+##  ISSUE 
+
 Leider gibt es keinen "Item.remove" Befehl in Fudge Story. 
 Beim Konsum (wie Herstellung, Essen etc.) wird das Item nicht entfernt und es bleibt für immer im Spielstand. 
 Man kann das Item unendlich verwenden. 
