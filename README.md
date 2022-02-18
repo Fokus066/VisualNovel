@@ -43,9 +43,6 @@ https://github.com/Fokus066/VisualNovel/tree/main/Template
 Source Code:
 https://github.com/Fokus066/VisualNovel/tree/main/Template/Source
 
-gepacktes Archiv:
-https://github.com/Fokus066/VisualNovel/tree/main/Template/Archiv
-
 Visual Novel:
 https://fokus066.github.io/VisualNovel/Template/Template.html
 
