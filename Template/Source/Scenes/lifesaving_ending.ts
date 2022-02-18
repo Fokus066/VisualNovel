@@ -4,23 +4,23 @@ namespace Template {
 
         let text = {
             boy: {
-                T0000: "Oh man. Hier ist es echt gefährlich. Was sollen wir jetzt machen?",
+                T0000: "Oh man! Hier ist es echt gefährlich. Was sollen wir jetzt machen?",
                 T0001: "Ja, mach ich ...",
                 T0002: "Auf jeden Fall!"
 
             },
             girl: {
-                T0000: "Warte...Hörst du das auch? Ist es etwa ein Helicopter? <br> ",
-                T0001: "Hier ist die Leuchtpistole. Lass sie schnell abfeuern, damit das Rettungsteam uns wahrnehmen.",
-                T0002: "Was machen wir mit Onkel Ben? Sollen wir auf ihn warten?",
+                T0000: "Sei still... hörst du das auch? Das klingt nach einem Helikopter? <br> ",
+                T0001: "Warte, hier ist die Leuchtpistole. Lass sie mich schnell abfeuern, damit das Rettungsteam uns wahrnehmen kann.",
+                T0002: "Wo ist Onkel Ben? Sollen wir auf ihn warten?",
                 T0003: "Ich hoffe er kommt bald.",
                 T0004: "Ja, du hast überlebt.",
 
             },
             uncle: {
                 T0000: "Hey! Ich bin da!",
-                T0001: "Sehr gut! Was ein Timing, dass ein Helicopter jetzt kommt, um uns zu retten. ",
-                T0002: "Lass uns von hier verschwinden!",
+                T0001: "Sehr gut! Was für ein Timing, dass der Helicopter genau jetzt kommt, um uns zu retten.",
+                T0002: "Lass uns von hier verschwinden! Wir haben für heute genug Abenteuer erlebt.",
             }
         };
 
@@ -97,7 +97,7 @@ namespace Template {
             await ƒS.update(transitions.diagonal.duration, transitions.diagonal.alpha, transitions.diagonal.edge);
     
             ƒS.Text.setClass("stylebox");
-            ƒS.Text.print("<p>Der Bootsverleih hat bemerkt, dass die Touristen verschwunden sind, weil ein Boot gefehlt hat. Sie melden das Rettungsteam. <br> Die Helicopter kommt genau zur richtigen Zeit. Das Rettungteam sieht die Überlebenden und bringt sie zum nächsten Flughafen.</p>");
+            ƒS.Text.print("<p>Der Bootsverleih hatte nur bemerkt, dass Touristen verschwunden sind, weil ihm ein Boot gefehlt hat. Er informierte daraufhin ein Rettungsteam. <br> Das Rettungteam sieht die Überlebenden und bringt sie in die Zivilisation zurück.</p>");
             await ƒS.Speech.tell(null, null, true);
     
             await ƒS.Character.hide(characters.crocodile);

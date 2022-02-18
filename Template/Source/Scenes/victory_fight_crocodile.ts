@@ -9,7 +9,7 @@ namespace Template {
             },
             uncle: {
                 T0000: "AYY YAAAA!!!",
-                T0001: "Schau zu und lerne...",
+                T0001: "Willst du sehen, wie ich ein Krokodil verjage, dann schau zu und lerne...",
                 T0002: "Gleich nochmal...",
             },
             girl: {

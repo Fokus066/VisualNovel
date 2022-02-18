@@ -6,25 +6,24 @@ namespace Template {
       let text = {
         narrator: {
           T0000: "Nach einer Weile wird es langsam dunkel und es beginnt zu regnen... ",
-          T0001: "Das Land ist sehr bekannt für Fauna und Flora."
         },
         boy: {
-          T0000: "Was ist los?! Auf einmal beginnt es zu regnen...",
+          T0000: "So ein Mist?! Es fängt an zu regnen...",
           T0001: "Hoffentlich, darauf war ich nicht vorbereitet.",
-          T0002: "Das ist echt blöd. Ich hoffe, wir werden unseren Ausflug nicht abbrechen.",
+          T0002: "Das ist echt blöd. Ich hoffe, wir müssen unseren Ausflug nicht abbrechen.",
           T0003: "OK! Da vorne können wir unser Boot anlegen."
         },
         girl: {
-          T0000: "Oh jee! Das sieht für die heutige Tour nicht gut aus...",
+          T0000: "Oh jeh! Das sieht für die heutige Tour nicht gut aus...",
           T0001: "Bin auch nicht vorbereitet.",
           T0002: "Das wäre ziemlich schade. Wir sind so weit gereist.",
           T0003: "Ist besser so. Mir wird langsam von der Bootsfahrt schlecht."
 
         },
         uncle: { 
-          T0000: "Zur Zeit ist Regenzeit. Es ist normal, dass es auf einmal regnet.",
+          T0000: "Zur Zeit ist Regenzeit. Es ist normal, dass es plötzlich regnet.",
           T0001: "Mach euch keine Sorgen. Es ist bald wieder vorbei.",
-          T0003: "Die Wellen werden immer stärker. Vielleicht ist es besser, wenn wir an dieser Stelle eine Pause einlegen. Mit diesen Wellen ist es zu gefährlich."
+          T0003: "Die Wellen werden immer stärker. Vielleicht ist es besser, wenn wir an dieser Stelle eine Pause einlegen und an Land gehen. Mit diesen Wellen ist es zu gefährlich."
         }
       };
 

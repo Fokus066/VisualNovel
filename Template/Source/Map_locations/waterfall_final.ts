@@ -28,7 +28,7 @@ namespace Template {
     await ƒS.Character.show(characters.boy, characters.boy.pose.neutral, ƒS.positionPercent(50, 140));
     await ƒS.update(1);
 
-    let random_boolean = Math.random() < 0.5;
+    let random_boolean = Math.random() < 0.75;
 
     let action_request = await ƒS.Menu.getInput(action_choice, "options");
 

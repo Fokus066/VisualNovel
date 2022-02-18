@@ -5,16 +5,16 @@ namespace Template {
         let text = {
             boy: {
                 T0000: "Aufwachen! Wir brauchen deine Hilfe! ",
-                T0001: "<i>Vielleicht finde ich etwas, was uns weiterbringt.<i>"
+                T0001: "<i>Vielleicht finde ich etwas, was uns weiterhilft.<i>"
             },
             girl: {
-                T0000: "Keine Chance. Er schläft tief und fest. Wir brauchen etwas, was ihn aufweckt.",
+                T0000: "Keine Chance. Er schläft tief und fest. Wir brauchen Medizin, um ihn aufzuwecken.",
                 T0001: "Hey! Schau mal ich habe hier eine Karte gefunden. Sie ist bestimmt nützlich. ",
-                T0002: "Lass mich mal ansehen. Der Koffer ist mit einer Zahlencode verschlossen worden.<br>Es ist eine Zahl zwischen 1 und 100. Du hast 10 Versuchen den Koffer zu öffnen, dann wird die Zahl neu generiert.",
+                T0002: "Lass mich mal ansehen. Der Koffer ist mit einer Zahlencode verschlossen worden.<br>Es ist eine Zahl zwischen 1 und 100. Du hast 10 Versuchen den Koffer zu öffnen. Wenn du es mit 10 Versuchen nicht schaffst, wird eine neue Zahl generieren. Versuche dich strategisch der Zahl zu nähern.",
             },
             uncle: {
                 T0000: "...",
-                T0001: characters.boy.name + ", du bist ein Lebensretter."
+                T0001: characters.boy.name + ", du bist mein Lebensretter."
             }
         };
 

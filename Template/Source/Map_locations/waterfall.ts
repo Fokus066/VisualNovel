@@ -9,10 +9,10 @@ namespace Template {
     let text = {
       boy: {
         T0000: "Mal sehen, ob wir was zu essen finden.",
-        T0001: "Die Fische schwimmen viel zu schnell.",
+        T0001: "Ui! Die Fische schwimmen viel zu schnell.",
         T0002: "Aye! Geschafft!",
         T0003: "<i>Anscheinend fehlt mir ein Werkzeug...</i>",
-        T0004: "<i>Leider habe ich das Ziel verfehlt. Versuch's gleich nochmal.</i>"
+        T0004: "<i>Leider habe ich den Fisch verfehlt. Versuch's gleich nochmal.</i>"
       }
     };
 

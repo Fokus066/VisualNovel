@@ -654,9 +654,9 @@ var Template;
         let text = {
             narrator: {
                 T0000: "Es ist eine Zahl zwischen 1 und 100. Wie könnte die Zahl sein?<br>",
-                T0001: "Die Zahl ist zu groß.",
-                T0002: "Die Zahl ist zu klein.",
-                T0003: "Es ist unmöglich diesen Koffer zu öffnen.",
+                T0001: "Falsche Zahl. Die Zahl ist zu groß.",
+                T0002: "Falsche Zahl. Die Zahl ist zu klein.",
+                T0003: "Es scheint unmöglich diesen Koffer zu öffnen.",
                 T0004: "Geschafft! Eine Wasserflasche, ein Feuerzeug, eine Erste-Hilfe Box und sogar eine Leuchtpistole liegen im Koffer.",
             }
         };
@@ -1012,16 +1012,16 @@ var Template;
         let text = {
             boy: {
                 T0000: "Aufwachen! Wir brauchen deine Hilfe! ",
-                T0001: "<i>Vielleicht finde ich etwas, was uns weiterbringt.<i>"
+                T0001: "<i>Vielleicht finde ich etwas, was uns weiterhilft.<i>"
             },
             girl: {
-                T0000: "Keine Chance. Er schläft tief und fest. Wir brauchen etwas, was ihn aufweckt.",
+                T0000: "Keine Chance. Er schläft tief und fest. Wir brauchen Medizin, um ihn aufzuwecken.",
                 T0001: "Hey! Schau mal ich habe hier eine Karte gefunden. Sie ist bestimmt nützlich. ",
-                T0002: "Lass mich mal ansehen. Der Koffer ist mit einer Zahlencode verschlossen worden.<br>Es ist eine Zahl zwischen 1 und 100. Du hast 10 Versuchen den Koffer zu öffnen, dann wird die Zahl neu generiert.",
+                T0002: "Lass mich mal ansehen. Der Koffer ist mit einer Zahlencode verschlossen worden.<br>Es ist eine Zahl zwischen 1 und 100. Du hast 10 Versuchen den Koffer zu öffnen. Wenn du es mit 10 Versuchen nicht schaffst, wird eine neue Zahl generieren. Versuche dich strategisch der Zahl zu nähern.",
             },
             uncle: {
                 T0000: "...",
-                T0001: Template.characters.boy.name + ", du bist ein Lebensretter."
+                T0001: Template.characters.boy.name + ", du bist mein Lebensretter."
             }
         };
         Template.ƒS.Speech.setTickerDelays(20, 2);
@@ -1168,10 +1168,10 @@ var Template;
         let text = {
             boy: {
                 T0000: "Mal sehen, ob wir was zu essen finden.",
-                T0001: "Die Fische schwimmen viel zu schnell.",
+                T0001: "Ui! Die Fische schwimmen viel zu schnell.",
                 T0002: "Aye! Geschafft!",
                 T0003: "<i>Anscheinend fehlt mir ein Werkzeug...</i>",
-                T0004: "<i>Leider habe ich das Ziel verfehlt. Versuch's gleich nochmal.</i>"
+                T0004: "<i>Leider habe ich den Fisch verfehlt. Versuch's gleich nochmal.</i>"
             }
         };
         Template.dataForSave.energy -= 1;
@@ -1255,7 +1255,7 @@ var Template;
         await Template.ƒS.update(1);
         await Template.ƒS.Character.show(Template.characters.boy, Template.characters.boy.pose.neutral, Template.ƒS.positionPercent(50, 140));
         await Template.ƒS.update(1);
-        let random_boolean = Math.random() < 0.5;
+        let random_boolean = Math.random() < 0.75;
         let action_request = await Template.ƒS.Menu.getInput(action_choice, "options");
         switch (action_request) {
             case action_choice.explore:
@@ -1437,14 +1437,14 @@ var Template;
         await Template.ƒS.update(Template.transitions.t19.duration, Template.transitions.t19.alpha, Template.transitions.t19.edge);
         await Template.ƒS.update(1);
         Template.ƒS.Text.setClass("statistic");
-        Template.ƒS.Text.print("<p> Willkommen zum Jungle Survival! </p> <p> In dieser Visual Novel triffst du Entscheidungen, die dann deine Geschichte beeinflussen.<br>Ereignisse können in dem Spiel zufällig passieren. An bestimmten Stellen werden bestimmte Gegenstände vorausgesetzt. <br> Es ist möglich die Szenen mehrmals durchzuführen, um ein bestimmtes Ziel zu erreichen.<br> Achte auf deine Lebensenergie, weil sie für bestimmten Handlungen berücksichtigt werden.<br> Hier sind Shortcuts, die das Spielerlebnis erleichtern.</p> <p> Vollbildschirm Windows: F11 <br>Vollbildschirm  Mac: Ctrl - Cmd – F <br> Inventar: F2 <br> Menu öffnen/schlließen: M </p>  </p> <p> Viel Spaß! </p>");
+        Template.ƒS.Text.print("<p> Willkommen zum Jungle Survival! </p> <p> In dieser Visual Novel triffst du Entscheidungen, die dann deine Geschichte beeinflussen.<br>Ereignisse können in dem Spiel zufällig passieren. Bei einigen Aufgaben werden bestimmte Gegenstände vorausgesetzt,<br> die ihr vorher erwerben müsst. Es ist möglich die Szenen mehrmals durchzuführen, um ein bestimmtes Ziel zu erreichen.<br> Achte auf deine Lebensenergie, weil sie für bestimmten Handlungen berücksichtigt werden.<br> Hier sind Shortcuts, die das Spielerlebnis erleichtern.</p><p>Spielsteuerung: rechte Maustaste für weiter bzw. klicke auf die Buttons<br>Vollbildschirm Windows: F11 <br>Vollbildschirm  Mac: Ctrl - Cmd – F <br> Inventar: F2 <br> Menu öffnen/schlließen: M </p>  </p> <p> Viel Spaß! </p>");
         await Template.ƒS.Speech.tell(null, null, true);
-        Template.ƒS.Text.print("<p> Du spielst die Rolle von einem Jungen, der mit seinen Verwandten nach Chalana fliegt.<br>Dort befindet sich ein Regenwald. Dieser ist ein Naturschutzgebiet und ist seit kurzem für Tourismus geöffnet.<br> Gemeinsam mit deinem Onkel und deiner Cousine leiht ihr ein Boot aus und fährt in die Wildnis hinein.</p>");
+        Template.ƒS.Text.print("<p> Du spielst die Rolle von einem Jungen, der mit seinen Verwandten nach Chalana fliegt.<br>Dort befindet sich ein Regenwald. Dieser ist ein Naturschutzgebiet und ist seit kurzem für Tourismus geöffnet.<br> Gemeinsam mit deinem Onkel und deiner Cousine leiht ihr ein Boot aus und fahrt in den Dschungel.</p>");
         await Template.ƒS.Speech.tell(null, null, true);
-        await Template.ƒS.Speech.tell(Template.characters.narrator, "Wie möchtest du im Spiel genannt werden?<br> ", true);
+        await Template.ƒS.Speech.tell(Template.characters.narrator, "Wie möchtest du im Spiel genannt werden?<br>", true);
         Template.dataForSave.nameProtagonist = await Template.ƒS.Speech.getInput();
         Template.characters.boy.name = Template.dataForSave.nameProtagonist;
-        Template.ƒS.Text.print("<p>Das Spiel beginnt!</p> <p>Tipp:</p> <p>Um spielerisch voranzukommen, kannst du dem Onkel fragen,<br> welche Aufgabe erledigt werden muss.</p>");
+        Template.ƒS.Text.print("<p>Das Spiel beginnt!</p> <p>Tipp:</p> <p>Um weiterzukommen, kannst du dem Onkel fragen. Du kannst dich an der Statistik (in Menu) orientieren.</p>");
         await Template.ƒS.Speech.tell(null, null, true);
     }
     Template.Introduction = Introduction;
@@ -1468,7 +1468,7 @@ var Template;
             uncle: {
                 T0000: "Heute ist ein perfekter Tag den Regenwald zu besuchen.",
                 T0001: "Das hoffe ich auch.",
-                T0002: "Da es hier ein Naturschutzgebiet ist, ist die Vielfalt der Tiere enorm.",
+                T0002: "Da es hier ein Naturschutzgebiet ist, leben hier sehr viele Tiere.",
             }
         };
         Template.ƒS.Speech.setTickerDelays(20, 2);
@@ -1505,7 +1505,7 @@ var Template;
         await Template.ƒS.Location.show(Template.locations.game_over);
         await Template.ƒS.update(Template.transitions.t19.duration, Template.transitions.t19.alpha, Template.transitions.t19.edge);
         Template.ƒS.Text.setClass("stylebox");
-        Template.ƒS.Text.print("<p>Deine Mitreisende müssen ohne dich auskommen.<br> Versuch beim nächsten Mal besser.");
+        Template.ƒS.Text.print("<p>Deine Mitreisende müssen jetzt leider ohne dich auskommen.<br> Versuch beim nächsten Mal besser.");
         await Template.ƒS.Speech.tell(null, null, true);
         await Template.ƒS.update(4);
         return "END";
@@ -1520,23 +1520,23 @@ var Template;
             boy: {
                 T0000: "Was ein starker Regen! Es wird immer schlimmer!",
                 T0001: "Ich habe auch hier kein Empfang...",
-                T0002: "Abgesehen vom Bootsverleiher weiß es keiner. Er war irgendwie auch seltsam und hat uns nicht richtig wahrgenommen.",
+                T0002: "Abgesehen vom Bootsverleiher weiß keiner, wo wir sind. Ich hoffe er hat mitbekommen, wohin wir fahren wollen.",
                 T0003: "Hat jemand eine Idee?"
             },
             girl: {
                 T0000: "Oh nein! Was sollen wir nur machen?! So habe ich mein Urlaub nicht vorgestellt.",
-                T0001: "Ja habe ich dabei. Wir sollten den Notruf anrufen.",
-                T0002: "OH Mist! Unter diesen Umständen hat mein Handy kein Signal.",
+                T0001: "Ja, habe ich dabei. Wir sollten den Notruf anrufen.",
+                T0002: "OH Mist! Im Urwald hat mein Handy kein Signal.",
                 T0003: "Was sollen wir nur machen? Weiß jemand, dass wir hier sind?!",
                 T0004: "Sieh mal da drüben! Da ist eine kleine Hütte. Lass uns dahin gehen!"
             },
             uncle: {
-                T0000: "Wir sollten Schutz suchen. Der Regen ist heftiger als ich vermutet habe.",
-                T0001: "So ist es unmöglich mit dem Boot zu fahren. Warten wir solange ab, bis der Regen aufhört.",
+                T0000: "Wir sollten Schutz suchen. Der Regen ist viel heftiger, als ich vermutet habe.",
+                T0001: "So ist es unmöglich mit dem Boot weiterzufahren. Warten wir solange ab, bis der Regen aufhört.",
                 T0002: "Die Wellen sind viel zu stark. Wir sollten abwarten.",
-                T0003: "Habt ihr Handyempfang? Mein Handy habe ich wohl auf der Bootsfahrt verloren.",
+                T0003: "Habt ihr Handyempfang? Mein Handy habe ich wohl während der Bootsfahrt verloren.",
                 T0004: "Hmm... Wir sollten uns überlegen, was wir jetzt tun.",
-                T0005: "Oh jee! Langsam bekomme ich Rückenschmerzen. Das muss beim Bootsausstieg passiert sein. Lass uns dahin gehen!"
+                T0005: "Aua! Langsam bekomme ich starke Rückenschmerzen. Das muss wohl an der langen Bootsfahrt liegen. Lass uns dahin gehen!"
             }
         };
         Template.dataForSave.energy -= 5;
@@ -1586,13 +1586,14 @@ var Template;
 (function (Template) {
     async function lifesaving_bad_ending() {
         Template.ƒS.Text.setClass("stylebox");
-        Template.ƒS.Text.print("<p>Der Bootsverleih hat bemerkt, dass die Touristen verschwunden sind, weil ein Boot gefehlt hat. Sie melden das Rettungsteam. <br> Der Helikopter kommt zum richtigen Zeitpunkt und sieht die Überlebenden und landet in der Nähe... </p> <p> Ihr wartet stundenlang auf Ben, aber von ihm fehlt jeder Spur...</p>");
+        //Der Bootsverleih hatte nur bemerkt, dass Touristen verschwunden sind, weil ihm ein Boot gefehlt hat. Er informierte daraufhin ein Rettungsteam. <br> Das Rettungteam sieht die Überlebenden und bringt sie in die Zivilisation zurück.Der Bootsverleih hatte nur bemerkt, dass Touristen verschwunden sind, weil ihm ein Boot gefehlt hat. Er informierte daraufhin ein Rettungsteam. <br> Das Rettungteam sieht die Überlebenden und bringt sie in die Zivilisation zurück
+        Template.ƒS.Text.print("<p>Der Bootsverleih hatte nur bemerkt, dass Touristen verschwunden sind, weil ihm ein Boot gefehlt hat. Er informierte daraufhin ein Rettungsteam. <br> Das Rettungteam entdeckt die Beiden. Ihr wartet stundenlang auf Onkel Ben, aber von ihm fehlt jeder Spur... </p>");
         await Template.ƒS.Speech.tell(null, null, true);
         await Template.ƒS.Character.hideAll();
         await Template.ƒS.Location.show(Template.locations.helicopter);
         await Template.ƒS.update(Template.transitions.swipe.duration, Template.transitions.swipe.alpha, Template.transitions.swipe.edge);
         Template.ƒS.Text.setClass("stylebox");
-        Template.ƒS.Text.print("<p> Bevor es dunkel wird, entscheiden die beiden ins Helikopter einzusteigen. Der Helikopter hebt ab und fliegt zum nächsten Flughafen.</p> ");
+        Template.ƒS.Text.print("<p> Bevor es dunkel wird, entscheiden die Beiden in den Helikopter einzusteigen. Der Helikopter bringt die Jugendlichen in die Zivilisation zurück.</p> ");
         await Template.ƒS.Speech.tell(null, null, true);
         Template.ƒS.Sound.fade(Template.sound.waterfall, 0, 0.1);
         Template.ƒS.Sound.fade(Template.sound.helicopter, 0, 0.1);
@@ -1612,21 +1613,21 @@ var Template;
     async function lifesaving_ending() {
         let text = {
             boy: {
-                T0000: "Oh man. Hier ist es echt gefährlich. Was sollen wir jetzt machen?",
+                T0000: "Oh man! Hier ist es echt gefährlich. Was sollen wir jetzt machen?",
                 T0001: "Ja, mach ich ...",
                 T0002: "Auf jeden Fall!"
             },
             girl: {
-                T0000: "Warte...Hörst du das auch? Ist es etwa ein Helicopter? <br> ",
-                T0001: "Hier ist die Leuchtpistole. Lass sie schnell abfeuern, damit das Rettungsteam uns wahrnehmen.",
-                T0002: "Was machen wir mit Onkel Ben? Sollen wir auf ihn warten?",
+                T0000: "Sei still... hörst du das auch? Das klingt nach einem Helikopter? <br> ",
+                T0001: "Warte, hier ist die Leuchtpistole. Lass sie mich schnell abfeuern, damit das Rettungsteam uns wahrnehmen kann.",
+                T0002: "Wo ist Onkel Ben? Sollen wir auf ihn warten?",
                 T0003: "Ich hoffe er kommt bald.",
                 T0004: "Ja, du hast überlebt.",
             },
             uncle: {
                 T0000: "Hey! Ich bin da!",
-                T0001: "Sehr gut! Was ein Timing, dass ein Helicopter jetzt kommt, um uns zu retten. ",
-                T0002: "Lass uns von hier verschwinden!",
+                T0001: "Sehr gut! Was für ein Timing, dass der Helicopter genau jetzt kommt, um uns zu retten.",
+                T0002: "Lass uns von hier verschwinden! Wir haben für heute genug Abenteuer erlebt.",
             }
         };
         let shoot_flare_gun = {
@@ -1678,7 +1679,7 @@ var Template;
             await Template.ƒS.Location.show(Template.locations.helicopter);
             await Template.ƒS.update(Template.transitions.diagonal.duration, Template.transitions.diagonal.alpha, Template.transitions.diagonal.edge);
             Template.ƒS.Text.setClass("stylebox");
-            Template.ƒS.Text.print("<p>Der Bootsverleih hat bemerkt, dass die Touristen verschwunden sind, weil ein Boot gefehlt hat. Sie melden das Rettungsteam. <br> Die Helicopter kommt genau zur richtigen Zeit. Das Rettungteam sieht die Überlebenden und bringt sie zum nächsten Flughafen.</p>");
+            Template.ƒS.Text.print("<p>Der Bootsverleih hatte nur bemerkt, dass Touristen verschwunden sind, weil ihm ein Boot gefehlt hat. Er informierte daraufhin ein Rettungsteam. <br> Das Rettungteam sieht die Überlebenden und bringt sie in die Zivilisation zurück.</p>");
             await Template.ƒS.Speech.tell(null, null, true);
             await Template.ƒS.Character.hide(Template.characters.crocodile);
             await Template.ƒS.Location.show(Template.locations.end);
@@ -1700,7 +1701,7 @@ var Template;
             },
             uncle: {
                 T0000: "AYY YAAAA!!!",
-                T0001: "Schau zu und lerne...",
+                T0001: "Willst du sehen, wie ich ein Krokodil verjage, dann schau zu und lerne...",
                 T0002: "Gleich nochmal...",
             },
             girl: {
@@ -1751,24 +1752,23 @@ var Template;
         let text = {
             narrator: {
                 T0000: "Nach einer Weile wird es langsam dunkel und es beginnt zu regnen... ",
-                T0001: "Das Land ist sehr bekannt für Fauna und Flora."
             },
             boy: {
-                T0000: "Was ist los?! Auf einmal beginnt es zu regnen...",
+                T0000: "So ein Mist?! Es fängt an zu regnen...",
                 T0001: "Hoffentlich, darauf war ich nicht vorbereitet.",
-                T0002: "Das ist echt blöd. Ich hoffe, wir werden unseren Ausflug nicht abbrechen.",
+                T0002: "Das ist echt blöd. Ich hoffe, wir müssen unseren Ausflug nicht abbrechen.",
                 T0003: "OK! Da vorne können wir unser Boot anlegen."
             },
             girl: {
-                T0000: "Oh jee! Das sieht für die heutige Tour nicht gut aus...",
+                T0000: "Oh jeh! Das sieht für die heutige Tour nicht gut aus...",
                 T0001: "Bin auch nicht vorbereitet.",
                 T0002: "Das wäre ziemlich schade. Wir sind so weit gereist.",
                 T0003: "Ist besser so. Mir wird langsam von der Bootsfahrt schlecht."
             },
             uncle: {
-                T0000: "Zur Zeit ist Regenzeit. Es ist normal, dass es auf einmal regnet.",
+                T0000: "Zur Zeit ist Regenzeit. Es ist normal, dass es plötzlich regnet.",
                 T0001: "Mach euch keine Sorgen. Es ist bald wieder vorbei.",
-                T0003: "Die Wellen werden immer stärker. Vielleicht ist es besser, wenn wir an dieser Stelle eine Pause einlegen. Mit diesen Wellen ist es zu gefährlich."
+                T0003: "Die Wellen werden immer stärker. Vielleicht ist es besser, wenn wir an dieser Stelle eine Pause einlegen und an Land gehen. Mit diesen Wellen ist es zu gefährlich."
             }
         };
         Template.dataForSave.energy -= 5;
@@ -1827,7 +1827,7 @@ var Template;
                 T0002: "Wir sind hier in der Wildnis gefangen.",
                 T0003: "Lass ihn! Er ist körperlich erschöpft. Wir sollten ihn ausruhen lassen.",
                 T0004: "Lass uns einen Plan überlegen.",
-                T0005: "Alles klar! Sei bitte vorsichtig. Ich bleibe hier und passe auf Onkel Ben auf. Was du noch den Weg?"
+                T0005: "Alles klar! Sei bitte vorsichtig. Ich bleibe hier und passe auf Onkel Ben auf. Kennst du noch den Weg zum Boot?"
             },
             uncle: {
                 T0000: "..."
@@ -1835,8 +1835,7 @@ var Template;
         };
         Template.dataForSave.energy -= 5;
         Template.ƒS.Speech.setTickerDelays(20, 2);
-        Template.ƒS.Text.print("Es hört langsam auf zu regnen...");
-        await Template.ƒS.Speech.tell(null, null, true);
+        await Template.ƒS.Speech.tell(Template.characters.narrator, "Langsam hört es auf zu regnen", true);
         await Template.ƒS.Location.show(Template.locations.jungle_shack);
         await Template.ƒS.update(Template.transitions.cwtop.duration, Template.transitions.cwtop.alpha, Template.transitions.cwtop.edge);
         await Template.ƒS.Character.show(Template.characters.uncle, Template.characters.uncle.pose.backpain, Template.ƒS.positionPercent(45, 140));
@@ -1877,7 +1876,7 @@ var Template;
             },
             uncle: {
                 T0000: "AYY YAAAA!!!",
-                T0001: "Schau zu und lerne...",
+                T0001: "Willst du sehen, wie ich ein Krokodil verjage, dann schau zu und lerne...",
                 T0002: "Gleich nochmal...",
             },
             girl: {
@@ -1913,20 +1912,20 @@ var Template;
         console.log("Endscene");
         let text = {
             narrator: {
-                T0000: "Dein Onkel und deine Cousine haben von deiner Schrei gehört und eilen dir zur Hilfe.",
+                T0000: "Dein Onkel und Cousine haben vor deinen Schreien gehört und eilen dir zur Hilfe.",
             },
             boy: {
                 T0000: "Hier gibt es frisches Wasser.",
-                T0001: "Was ist das?! Ein KROKODIL!"
+                T0001: "OH SCHRECK?! EIN GROßES KROKODIL!"
             },
             uncle: {
-                T0000: "Es sieht hungrig aus. Lass uns lieber abhauen.",
-                T0001: "Oh! Es ist ziemlich aggressiv. Geht ihr zurück. Ich mache das schon und komme danach."
+                T0000: "Es sieht gefährlich und hungrig aus. Lass uns lieber abhauen.",
+                T0001: "Oh, geht schnell zurück zur Hütte! Es ist ziemlich aggressiv. Ich kümmere mich um das Krokodil und komme dann nach."
             },
             girl: {
                 T0000: "Oh nein. Das hat uns noch gerade gefehlt.",
                 T0001: "Lass uns schnell weggehen, " + Template.characters.boy.name,
-                T0002: "Wir haben keine Waffe. Das Krokodil macht uns fertig.",
+                T0002: "Wir haben keine Waffe. Das Krokodil will uns fressen.",
                 T0003: "",
             }
         };

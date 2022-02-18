@@ -18,7 +18,7 @@ namespace Template {
         T0002: "Wir sind hier in der Wildnis gefangen.",
         T0003: "Lass ihn! Er ist körperlich erschöpft. Wir sollten ihn ausruhen lassen.",
         T0004: "Lass uns einen Plan überlegen.",
-        T0005: "Alles klar! Sei bitte vorsichtig. Ich bleibe hier und passe auf Onkel Ben auf. Was du noch den Weg?"
+        T0005: "Alles klar! Sei bitte vorsichtig. Ich bleibe hier und passe auf Onkel Ben auf. Kennst du noch den Weg zum Boot?"
       },
       uncle: {
         T0000: "..."
@@ -29,8 +29,7 @@ namespace Template {
 
     ƒS.Speech.setTickerDelays(20, 2);
 
-    ƒS.Text.print("Es hört langsam auf zu regnen...");
-    await ƒS.Speech.tell(null, null, true);
+    await ƒS.Speech.tell(characters.narrator, "Langsam hört es auf zu regnen", true);
 
     await ƒS.Location.show(locations.jungle_shack);
     await ƒS.update(transitions.cwtop.duration, transitions.cwtop.alpha, transitions.cwtop.edge);

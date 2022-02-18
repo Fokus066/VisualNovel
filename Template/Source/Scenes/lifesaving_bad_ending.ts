@@ -3,7 +3,8 @@ namespace Template {
 
 
         ƒS.Text.setClass("stylebox");
-        ƒS.Text.print("<p>Der Bootsverleih hat bemerkt, dass die Touristen verschwunden sind, weil ein Boot gefehlt hat. Sie melden das Rettungsteam. <br> Der Helikopter kommt zum richtigen Zeitpunkt und sieht die Überlebenden und landet in der Nähe... </p> <p> Ihr wartet stundenlang auf Ben, aber von ihm fehlt jeder Spur...</p>");
+        //Der Bootsverleih hatte nur bemerkt, dass Touristen verschwunden sind, weil ihm ein Boot gefehlt hat. Er informierte daraufhin ein Rettungsteam. <br> Das Rettungteam sieht die Überlebenden und bringt sie in die Zivilisation zurück.Der Bootsverleih hatte nur bemerkt, dass Touristen verschwunden sind, weil ihm ein Boot gefehlt hat. Er informierte daraufhin ein Rettungsteam. <br> Das Rettungteam sieht die Überlebenden und bringt sie in die Zivilisation zurück
+        ƒS.Text.print("<p>Der Bootsverleih hatte nur bemerkt, dass Touristen verschwunden sind, weil ihm ein Boot gefehlt hat. Er informierte daraufhin ein Rettungsteam. <br> Das Rettungteam entdeckt die Beiden. Ihr wartet stundenlang auf Onkel Ben, aber von ihm fehlt jeder Spur... </p>");
         await ƒS.Speech.tell(null, null, true);
 
         await ƒS.Character.hideAll();
@@ -12,7 +13,7 @@ namespace Template {
         await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
 
         ƒS.Text.setClass("stylebox");
-        ƒS.Text.print("<p> Bevor es dunkel wird, entscheiden die beiden ins Helikopter einzusteigen. Der Helikopter hebt ab und fliegt zum nächsten Flughafen.</p> ");
+        ƒS.Text.print("<p> Bevor es dunkel wird, entscheiden die Beiden in den Helikopter einzusteigen. Der Helikopter bringt die Jugendlichen in die Zivilisation zurück.</p> ");
         await ƒS.Speech.tell(null, null, true);
 
         ƒS.Sound.fade(sound.waterfall, 0, 0.1);

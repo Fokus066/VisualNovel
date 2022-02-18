@@ -152,9 +152,9 @@ input {
   font-size: 14pt;
   border: solid;
   border-width: 0 0 1px;
-  background: transparent;
+  background: white;
   border-color: #BFA004;
-  color: white;
+  color: black;
 }
 
 dialog[class="location_options"] > button {

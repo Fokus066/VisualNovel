@@ -19,8 +19,7 @@ namespace Template {
       uncle: {
         T0000: "Heute ist ein perfekter Tag den Regenwald zu besuchen.",
         T0001: "Das hoffe ich auch.",
-        T0002: "Da es hier ein Naturschutzgebiet ist, ist die Vielfalt der Tiere enorm.",
-
+        T0002: "Da es hier ein Naturschutzgebiet ist, leben hier sehr viele Tiere.",
       }
     };
 

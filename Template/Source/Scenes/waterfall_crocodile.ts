@@ -4,21 +4,21 @@ namespace Template {
 
         let text = {
             narrator: {
-                T0000: "Dein Onkel und deine Cousine haben von deiner Schrei gehört und eilen dir zur Hilfe.",
+                T0000: "Dein Onkel und Cousine haben vor deinen Schreien gehört und eilen dir zur Hilfe.",
             },
             boy: {
                 T0000: "Hier gibt es frisches Wasser.",
-                T0001: "Was ist das?! Ein KROKODIL!"
+                T0001: "OH SCHRECK?! EIN GROßES KROKODIL!"
             },
             uncle: {
-                T0000: "Es sieht hungrig aus. Lass uns lieber abhauen.",
-                T0001: "Oh! Es ist ziemlich aggressiv. Geht ihr zurück. Ich mache das schon und komme danach."
+                T0000: "Es sieht gefährlich und hungrig aus. Lass uns lieber abhauen.",
+                T0001: "Oh, geht schnell zurück zur Hütte! Es ist ziemlich aggressiv. Ich kümmere mich um das Krokodil und komme dann nach."
 
             },
             girl: {
                 T0000: "Oh nein. Das hat uns noch gerade gefehlt.",
                 T0001: "Lass uns schnell weggehen, " + characters.boy.name,
-                T0002: "Wir haben keine Waffe. Das Krokodil macht uns fertig.",
+                T0002: "Wir haben keine Waffe. Das Krokodil will uns fressen.",
                 T0003: "",
             }
         };

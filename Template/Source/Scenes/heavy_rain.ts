@@ -7,23 +7,23 @@ namespace Template {
       boy: {
         T0000: "Was ein starker Regen! Es wird immer schlimmer!",
         T0001: "Ich habe auch hier kein Empfang...",
-        T0002: "Abgesehen vom Bootsverleiher weiß es keiner. Er war irgendwie auch seltsam und hat uns nicht richtig wahrgenommen.",
+        T0002: "Abgesehen vom Bootsverleiher weiß keiner, wo wir sind. Ich hoffe er hat mitbekommen, wohin wir fahren wollen.",
         T0003: "Hat jemand eine Idee?"
       },
       girl: {
         T0000: "Oh nein! Was sollen wir nur machen?! So habe ich mein Urlaub nicht vorgestellt.",
-        T0001: "Ja habe ich dabei. Wir sollten den Notruf anrufen.",
-        T0002: "OH Mist! Unter diesen Umständen hat mein Handy kein Signal.",
+        T0001: "Ja, habe ich dabei. Wir sollten den Notruf anrufen.",
+        T0002: "OH Mist! Im Urwald hat mein Handy kein Signal.",
         T0003: "Was sollen wir nur machen? Weiß jemand, dass wir hier sind?!",
         T0004: "Sieh mal da drüben! Da ist eine kleine Hütte. Lass uns dahin gehen!"
       },
       uncle: { 
-        T0000: "Wir sollten Schutz suchen. Der Regen ist heftiger als ich vermutet habe.",
-        T0001: "So ist es unmöglich mit dem Boot zu fahren. Warten wir solange ab, bis der Regen aufhört.",
+        T0000: "Wir sollten Schutz suchen. Der Regen ist viel heftiger, als ich vermutet habe.",
+        T0001: "So ist es unmöglich mit dem Boot weiterzufahren. Warten wir solange ab, bis der Regen aufhört.",
         T0002: "Die Wellen sind viel zu stark. Wir sollten abwarten.",
-        T0003: "Habt ihr Handyempfang? Mein Handy habe ich wohl auf der Bootsfahrt verloren.",
+        T0003: "Habt ihr Handyempfang? Mein Handy habe ich wohl während der Bootsfahrt verloren.",
         T0004: "Hmm... Wir sollten uns überlegen, was wir jetzt tun.",
-        T0005: "Oh jee! Langsam bekomme ich Rückenschmerzen. Das muss beim Bootsausstieg passiert sein. Lass uns dahin gehen!"
+        T0005: "Aua! Langsam bekomme ich starke Rückenschmerzen. Das muss wohl an der langen Bootsfahrt liegen. Lass uns dahin gehen!"
       }
     };
 
