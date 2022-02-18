@@ -50,4 +50,9 @@ Visual Novel:
 https://fokus066.github.io/VisualNovel/Template/Template.html
 
 ISSUE:
---- kein Befehl Item remove
+Leider gibt es keinen "Item.remove" Befehl in Fudge Story. 
+Beim Konsum (wie Herstellung, Essen etc.) wird das Item nicht entfernt und es bleibt für immer im Spielstand. 
+Man kann das Item unendlich verwenden. 
+Ich hatte vor, das Item nach jedem Verbrauch zu entfernen. 
+Daher kann der Spieler schneller z.B. Lebensenergie zurückgewinnen, da sich das Essen nicht verbraucht.
+Dies ist eine Einschränkung bei der Spielprogrammierung.
