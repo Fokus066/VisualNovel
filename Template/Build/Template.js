@@ -1446,7 +1446,7 @@ var Template;
         await Template.ƒS.Speech.tell(Template.characters.narrator, "Wie möchtest du im Spiel genannt werden?<br>", true);
         Template.dataForSave.nameProtagonist = await Template.ƒS.Speech.getInput();
         Template.characters.boy.name = Template.dataForSave.nameProtagonist;
-        Template.ƒS.Text.print("<p>Das Spiel beginnt!</p> <p>Tipp:</p> <p>Um weiterzukommen, kannst du dem Onkel fragen. <br> Du kannst dich an der Statistik (in Menu) orientieren.</p>");
+        Template.ƒS.Text.print("<p>Das Spiel beginnt!</p> <p>Tipp:</p> <p>Um weiterzukommen, kannst du dem Onkel fragen. <br> Folge unbedingt die Aufgaben, die der Onkel stellt. <brr> Du kannst dich an der Statistik (in Menu) orientieren.</p>");
         await Template.ƒS.Speech.tell(null, null, true);
     }
     Template.Introduction = Introduction;
